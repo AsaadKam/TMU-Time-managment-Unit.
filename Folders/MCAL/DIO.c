@@ -2,12 +2,12 @@
  * DIO.c
  *
  * Created: 02/11/2019 00:35:26
- *  Author: Native_programmer
+ *  Author: Asaad
  */ 
 #include "DIO.h"
 
 
-u8 DIO_INIT_PORT(u8 Port_Name,u8 direction)
+uint8_t DIO_INIT_PORT(uint8_t Port_Name,uint8_t direction)
 {
 	
     switch(Port_Name)
@@ -44,7 +44,7 @@ u8 DIO_INIT_PORT(u8 Port_Name,u8 direction)
     }
 	return ERROR_OK;
 }
-u8 DIO_Init_Nibble(u8 por,u8 nibble,u8 direction)
+uint8_t DIO_Init_Nibble(uint8_t por,uint8_t nibble,uint8_t direction)
 {
 	switch(por)
 	{
@@ -220,9 +220,9 @@ u8 DIO_Init_Nibble(u8 por,u8 nibble,u8 direction)
 }
 return ERROR_OK;
 }
-u8 DIO_INIT_Pin(u8 pin, u8 direction)
+uint8_t DIO_INIT_Pin(uint8_t pin, uint8_t direction)
 {
-	u8 por;
+	uint8_t por;
 
 	if(pin>=PinsNeeded || pin>=No_of_pins ) return 0;
     else
@@ -259,7 +259,7 @@ u8 DIO_INIT_Pin(u8 pin, u8 direction)
 return ERROR_OK;
 }
 
-u8 DIO_Read_Port (u8 por, u8 * ReadData)
+uint8_t DIO_Read_Port (uint8_t por, uint8_t * ReadData)
 {
     switch(por)
     {
@@ -291,7 +291,7 @@ u8 DIO_Read_Port (u8 por, u8 * ReadData)
               break;
     }
 }
-u8 DIO_Write_Port(u8 por,u8 Data)
+uint8_t DIO_Write_Port(uint8_t por,uint8_t Data)
 {
     switch(por)
     {
@@ -322,9 +322,9 @@ u8 DIO_Write_Port(u8 por,u8 Data)
 	}
 return ERROR_OK;
 }
-u8 DIO_Read_Pin (u8 pin, u8 * ReadData)
+uint8_t DIO_Read_Pin (uint8_t pin, uint8_t * ReadData)
 {
-	u8 por;
+	uint8_t por;
 	if(pin>=PinsNeeded || pin>=No_of_pins ) return -1;
 	else
 	{
@@ -362,9 +362,9 @@ u8 DIO_Read_Pin (u8 pin, u8 * ReadData)
 	}
 return ERROR_OK;
 }
-u8 DIO_Write_Pin(u8 pin,u8 BitValue)
+uint8_t DIO_Write_Pin(uint8_t pin,uint8_t BitValue)
 {
-	u8 por;
+	uint8_t por;
  	if(pin>=PinsNeeded || pin>=No_of_pins ) return ERROR_NOK;
  	else
  	{
@@ -404,7 +404,7 @@ u8 DIO_Write_Pin(u8 pin,u8 BitValue)
 	}
 	return ERROR_OK;
 }
-u8 DIO_Toggle_Port(u8 por)
+uint8_t DIO_Toggle_Port(uint8_t por)
 {
 	switch(por)
 	{
@@ -430,9 +430,9 @@ u8 DIO_Toggle_Port(u8 por)
 		}
 return ERROR_OK;
 }
-u8 DIO_Toggle_Pin(u8 pin)
+uint8_t DIO_Toggle_Pin(uint8_t pin)
 {
-	u8 por;
+	uint8_t por;
 	if(pin>=PinsNeeded || pin>=No_of_pins ) return ERROR_NOK;
 	else
 	{
@@ -465,7 +465,7 @@ u8 DIO_Toggle_Pin(u8 pin)
 	}
 	return ERROR_OK;
 }
-u8 DIO_Read_Nibble(u8 por,u8 nibble,u8 shifted_left_or_not)
+uint8_t DIO_Read_Nibble(uint8_t por,uint8_t nibble,uint8_t shifted_left_or_not)
 {
 	switch(por)
 	{
@@ -647,7 +647,7 @@ u8 DIO_Read_Nibble(u8 por,u8 nibble,u8 shifted_left_or_not)
 	}
 	return ERROR_OK;
 }
-u8 DIO_Write_Nibble(u8 por ,u8 lower_or_higher_nibble,u8 data)
+uint8_t DIO_Write_Nibble(uint8_t por ,uint8_t lower_or_higher_nibble,uint8_t data)
 {
 	switch(por)
 	{

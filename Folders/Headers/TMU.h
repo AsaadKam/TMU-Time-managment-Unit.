@@ -13,7 +13,7 @@
 /******************************************************************/
 typedef struct 
 {
-	 u16 Periodicity_MS;
+	 int16_t Periodicity_MS;
 	 void(*PntrToFunc)(void);
 	
 }TMU_Node;
@@ -35,25 +35,25 @@ typedef struct
  * Input     : Without input
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-u8 TMU_Init();
+uint8_t TMU_Init();
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: TMU Start
  * Input     : void(*PntrToFunc)(void)->Pointer to function,Periodicity_MS->Periodicity milisecond
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-u8 TMU_Start(void(*PntrToFunc)(void),u16 Periodicity_MS);
+uint8_t TMU_Start(void(*PntrToFunc)(void),int16_t Periodicity_MS);
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: TMU Initialization
  * Input     : Without input
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-u8 TMU_Dispatch(void);
+uint8_t TMU_Dispatch(void);
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: TMU Stop
  * Input     : void(*PntrToFunc)(void)->Pointer to function
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-u8 TMU_Stop(void(*PntrToFunc)(void));
+uint8_t TMU_Stop(void(*PntrToFunc)(void));
 
 
 #endif /* TMU_H_ */

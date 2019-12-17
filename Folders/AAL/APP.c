@@ -1,8 +1,27 @@
+/*
+ * APP.C
+ *
+ * Created: 17/12/2019 18:33:53
+ *  Author: Asaad
+ */ 
+
+/*- INCLUDES ----------------------------------------------*/
+
 #include"TMU.h"
 #include<stdio.h>
 #include<assert.h>
 
+/*- LOCAL MACROS ------------------------------------------*/
 
+/*- LOCAL Dataypes ----------------------------------------*/
+
+/*- LOCAL FUNCTIONS PROTOTYPES ----------------------------*/
+
+/*- GLOBAL STATIC VARIABLES -------------------------------*/
+
+/*- GLOBAL EXTERN VARIABLES -------------------------------*/
+
+/*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 void print(void)
 {
 	printf("print");
@@ -34,3 +53,6 @@ int main()
 		assert(TMU_Dispatch()==Error_OK   );		
 /*	}*/
 }
+/*- APIs IMPLEMENTATION -----------------------------------*/
+
+

@@ -6,13 +6,13 @@
 
 TMU_Node TMU_Events_Array[TMU_Events]={0};
 
-static u8 index=0;
-u8 COUNT=0;
-u8 OverFlow_Counts=0;
-u8 Start_flag;
+static uint8_t index=0;
+uint8_t COUNT=0;
+uint8_t OverFlow_Counts=0;
+uint8_t Start_flag;
 
 
-u8 TMU_Start(void(*PntrToFunc)(void),u16 Periodicity_MS)
+uint8_t TMU_Start(void(*PntrToFunc)(void),int16_t Periodicity_MS)
 {
     Start_flag=1;
 	
@@ -31,17 +31,17 @@ u8 TMU_Start(void(*PntrToFunc)(void),u16 Periodicity_MS)
 }
 
 
-u8 TMU_Dispatch(void)
+uint8_t TMU_Dispatch(void)
 {
 
 	/***When Start_Stop_flag=0 ,we initialize the rearrange the queue.***/
     if(1U==Start_flag)
 	{
 		Start_flag=0U;
-		u8 temp=0U;
+		uint8_t temp=0U;
 		
 		/***Sort the array of events by bubble sort ***/
-        for(s8 j=0,i=(index-1)-j;i>=0;j++,i--)
+        for(int8_t j=0,i=(index-1)-j;i>=0;j++,i--)
         {			
 			if(TMU_Events_Array[i-1].Periodicity_MS>TMU_Events_Array[i].Periodicity_MS)
 			{
@@ -53,7 +53,7 @@ u8 TMU_Dispatch(void)
 		}
         /***print for debugging***/
 	    printf("\n");		
-		for( s8 i=0U;i<index;i++)
+		for( int8_t i=0U;i<index;i++)
 		{
 
 				printf("%d",TMU_Events_Array[i].Periodicity_MS);
@@ -64,7 +64,7 @@ u8 TMU_Dispatch(void)
 	/***When Start_Stop_flag=1 ,we we will start the real managment by ***/
 	else 
 	{
-	    for(u8 i=0;i<index-1;i++)
+	    for(uint8_t i=0;i<index-1;i++)
 		{ 
 	        /*We need to put counter increment in ISR and also add the idea of call back function to timers*/ 
 			if(OverFlow_Counts!=0)
@@ -77,15 +77,15 @@ u8 TMU_Dispatch(void)
 }
 
 
-u8 TMU_Stop(void(*PntrToFunc)(void))
+uint8_t TMU_Stop(void(*PntrToFunc)(void))
 {
 
-	u8 foundFlag=0;
+	uint8_t foundFlag=0;
 	
 	TMU_Node TMU_Node_temp={0,0};
 	
 	
-	for(u8 i=0;i<index-1;i++)
+	for(uint8_t i=0;i<index-1;i++)
 	{
 		if(TMU_Events_Array[i].PntrToFunc==PntrToFunc) 
 		{

@@ -2,7 +2,7 @@
  * BitManipulation.h
  *
  * Created: 02/11/2019 00:43:50
- *  Author: Native_programmer
+ *  Author: Asaad
  */ 
 
 
