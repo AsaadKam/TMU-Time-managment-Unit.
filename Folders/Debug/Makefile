@@ -1,0 +1,195 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL := cmd.exe
+RM := rm -rf
+
+USER_OBJS :=
+
+LIBS := 
+PROJ := 
+
+O_SRCS := 
+C_SRCS := 
+S_SRCS := 
+S_UPPER_SRCS := 
+OBJ_SRCS := 
+ASM_SRCS := 
+PREPROCESSING_SRCS := 
+OBJS := 
+OBJS_AS_ARGS := 
+C_DEPS := 
+C_DEPS_AS_ARGS := 
+EXECUTABLES := 
+OUTPUT_FILE_PATH :=
+OUTPUT_FILE_PATH_AS_ARGS :=
+AVR_APP_PATH :=$$$AVR_APP_PATH$$$
+QUOTE := "
+ADDITIONAL_DEPENDENCIES:=
+OUTPUT_FILE_DEP:=
+LIB_DEP:=
+LINKER_SCRIPT_DEP:=
+
+# Every subdirectory with source files must be described here
+SUBDIRS :=  \
+../AAL \
+../MCAL \
+../Headers \
+../AAL\
+../Service
+
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS +=  \
+../AAL/APP.c \
+../MCAL/DIO.c \
+../MCAL/DIO_PB_Config.c\
+../MCAL/Timer.c\
+../MCAL/Timer_PB_Config.c\
+../Service/TMU.c\
+../Service/TmuPBConfig.c
+
+
+PREPROCESSING_SRCS += 
+
+
+ASM_SRCS += 
+
+
+OBJS +=  \
+AAL/APP.o \
+MCAL/DIO.o \
+MCAL/DIO_PB_Config.o\
+MCAL/Timer.o\
+MCAL/Timer_PB_Config.o\
+Service/TMU.o\
+Service/TmuPBConfig.o
+
+OBJS_AS_ARGS +=  \
+AAL/APP.o \
+MCAL/DIO.o \
+MCAL/DIO_PB_Config.o\
+MCAL/Timer.o\
+MCAL/Timer_PB_Config.o\
+Service/TMU.o\
+Service/TmuPBConfig.o
+
+C_DEPS +=  \
+AAL/APP.d \
+MCAL/DIO.d \
+MCAL/DIO_PB_Config.d\
+MCAL/Timer.d\
+MCAL/Timer_PB_Config.d\
+Service/TMU.d\
+Service/TmuPBConfig.d
+
+C_DEPS_AS_ARGS +=  \
+AAL/APP.d \
+MCAL/DIO.d \
+MCAL/DIO_PB_Config.d\
+MCAL/Timer.d\
+MCAL/Timer_PB_Config.d\
+Service/TMU.d\
+Service/TmuPBConfig.d
+
+OUTPUT_FILE_PATH +=TMU.elf
+
+OUTPUT_FILE_PATH_AS_ARGS +=TMU.elf
+
+ADDITIONAL_DEPENDENCIES:=
+
+OUTPUT_FILE_DEP:= ./makedep.mk
+
+LIB_DEP+= 
+
+LINKER_SCRIPT_DEP+= 
+
+
+# AVR32/GNU C Compiler
+AAL/APP.o: ../AAL/APP.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/DIO.o: ../MCAL/DIO.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/Timer.o: ../MCAL/Timer.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Service/TMU.o: ../Service/TMU.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+
+Service/TmuPBConfig.o: ../Service/TmuPBConfig.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+MCAL/DIO_PB_Config.o:../MCAL/DIO_PB_Config.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+MCAL/Timer_PB_Config.o:../MCAL/Timer_PB_Config.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+# AVR32/GNU Preprocessing Assembler
+
+
+
+# AVR32/GNU Assembler
+
+
+
+
+ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+endif
+
+# Add inputs and outputs from these tool invocations to the build variables 
+
+# All Target
+all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
+
+$(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
+	@echo Building target: $@
+	@echo Invoking: AVR/GNU Linker : 5.4.0
+	avr-gcc_a -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="TMU.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32"  
+	@echo Finished building target: $@
+	avr-objcopy_a -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "TMU.elf" "TMU.hex"
+	avr-objcopy_a -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "TMU.elf" "TMU.eep" || exit 0
+	avr-objdump_a -h -S "TMU.elf" > "TMU.lss"
+	avr-objcopy_a -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "TMU.elf" "TMU.srec"
+	avr-size_a    "TMU.elf"
+	
+	
+
+
+
+
+
+# Other Targets
+clean:
+	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
+	-$(RM) $(C_DEPS_AS_ARGS)   
+	rm -rf "TMU.elf" "TMU.a" "TMU.hex" "TMU.lss" "TMU.eep" "TMU.map" "TMU.srec" "TMU.usersignatures"
+	
