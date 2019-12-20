@@ -9,7 +9,7 @@
 #ifndef ATMEGA32REGISTERS_H_
 #define ATMEGA32REGISTERS_H_
 
-#include "Data_Types.h"
+#include "DATA_types.h"
 #define  ATMEGA     32
 
 #define  DataBus    8
@@ -66,16 +66,16 @@
 #define TCNT2   ( *((volatile uint8_t* )(0X44)) )
 #define TCCR2   ( *((volatile uint8_t* )(0X45)) )
 //Timer1 Registers
-#define ICR1	( *((volatile int16_t* )(0X46)) )
+#define ICR1	( *((volatile uint16_t* )(0X46)) )
 #define ICR1L	( *((volatile uint8_t* )(0X46)) )
 #define ICR1H   ( *((volatile uint8_t* )(0X47)) )
-#define OCR1B   ( *((volatile int16_t*)(0X48)) )
+#define OCR1B   ( *((volatile uint16_t*)(0X48)) )
 #define OCR1BL  ( *((volatile uint8_t* )(0X48)) )
 #define OCR1BH  ( *((volatile uint8_t* )(0X49)) )
-#define OCR1A   ( *((volatile int16_t* )(0X4A)) )
+#define OCR1A   ( *((volatile uint16_t* )(0X4A)) )
 #define OCR1AL  ( *((volatile uint8_t* )(0X4A)) )
 #define OCR1AH  ( *((volatile uint8_t* )(0X4B)) )
-#define TCNT1   ( *((volatile int16_t* )(0X4C)) )
+#define TCNT1   ( *((volatile uint16_t* )(0X4C)) )
 #define TCNT1L  ( *((volatile uint8_t* )(0X4C)) )
 #define TCNT1H  ( *((volatile uint8_t* )(0X4D)) )
 #define TCCR1B  ( *((volatile uint8_t* )(0X4E)) )
@@ -86,7 +86,7 @@
 #define OCDR    ( *((volatile uint8_t* )(0X51)) )
 ////On-Chip Debug Register
 #define OSCCAL  ( *((volatile uint8_t* )(0X51)) )
-//Timer0 Registers
+//TIMER0 Registers
 #define TCNT0   ( *((volatile uint8_t* )(0X52)) ) 
 #define TCCR0   ( *((volatile uint8_t* )(0X53)) )
 //MCU Status and Control Registers
@@ -106,13 +106,14 @@
 #define TOIE0   0
 #define OCIE0   1
 #define TOIE1   2
+#define TOIE2   6
 //General Interrupt Flags
 #define GIFR    ( *((volatile uint8_t* )(0X5A)) )
 #define GICR    ( *((volatile uint8_t* )(0X5B)) )
 #define INT1    7
 #define INT0    6
 #define INT2    5
-//Timer0 Output Compare Register
+//TIMER0 Output Compare Register
 #define OCR0    ( *((volatile uint8_t* )(0X5C)) )
 //Stack pointer Register
 #define SPL     ( *((volatile uint8_t* )(0X5D)) )

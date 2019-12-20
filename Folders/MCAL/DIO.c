@@ -23,7 +23,7 @@ uint8_t DIO_INIT_PORT(uint8_t Port_Name,uint8_t direction)
     case 'C':
         if(direction==0){DirectionRegisterC=0x00;}else{DirectionRegisterC=0xFF;}
         break;
-
+	
     case 'D':
         if(direction==0){DirectionRegisterD=0x00;}else{DirectionRegisterD=0xFF;}
         break;
@@ -404,7 +404,7 @@ uint8_t DIO_Write_Pin(uint8_t pin,uint8_t BitValue)
 	}
 	return ERROR_OK;
 }
-uint8_t DIO_Toggle_Port(uint8_t por)
+uint8_t DIO_toggle_Port(uint8_t por)
 {
 	switch(por)
 	{
@@ -430,7 +430,7 @@ uint8_t DIO_Toggle_Port(uint8_t por)
 		}
 return ERROR_OK;
 }
-uint8_t DIO_Toggle_Pin(uint8_t pin)
+uint8_t DIO_toggle_Pin(uint8_t pin)
 {
 	uint8_t por;
 	if(pin>=PinsNeeded || pin>=No_of_pins ) return ERROR_NOK;

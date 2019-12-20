@@ -26,6 +26,6 @@
 #define GET_HIGHER_NIBBLE_AT_LOW_BITS(REG) ((REG>>4)&0x0f)
 #define GET_LOWER_NIBBLE_AT_HIGH_BITS(REG) ((REG<<4)&0xf0)
 #define GET_HIGHER_NIBBLE_AT_HIGH_BITS(REG) (REG&0xf0)
-#define SET_VAlUE_IN_POSTION_FROM_TO(i,j,REG,VALUE) REG=(  ( (~((~( 0XFF<<(j-i+1) ))<<i))&REG ) |   (VALUE<<i) )
+#define SET_VAlUE_IN_POSTION_FROM_tO(i,j,REG,VALUE) REG=(  ( (~((~( 0XFF<<(j-i+1) ))<<i))&REG ) |   (VALUE<<i) )
 
 #endif

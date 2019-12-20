@@ -8,9 +8,9 @@
 #ifndef DIO_H_
 #define DIO_H_
 
-#include "BitManipulation.h"
-#include "Data_Types.h"
-#include "DIO.h"
+#include"BitManipulation.h"
+#include"DATA_types.h"
+#include"DIO.h"
 
 /***************************************************************/
 /*                  GENERAL_PARPOUS_INPUT_OUTPUT               */
@@ -18,8 +18,8 @@
 
 #include "Atmega32Registers.h"
 
-#define PinsNeeded  32
-/* _________________DIO PINS___________________*/
+#define PinsNeeded  32U
+/* _________________DIO PINs__________________*/
 #define A0 0
 #define A1 1
 #define A2 2
@@ -147,7 +147,7 @@
 #define OUTPUT 1
 #define INPUT 0
 
-/*______________________________DIO_DATA__________________________________*/
+/*______________________________DIO_DATA_________________________________*/
 #define HIGH 1
 #define LOW 0
 
@@ -186,9 +186,9 @@ uint8_t DIO_Write_Pin(uint8_t pin,uint8_t BitValue); // function used to.....  e
 
 uint8_t DIO_Write_Nibble(uint8_t por ,uint8_t lower_or_higher_nibble,uint8_t data); // this function is used to write on nibble ... ex:- fun(LCD_DATA_PORT,LOWER_NIBBLE,'M')
 
-uint8_t DIO_Toggle_Port(uint8_t por); // this function is used to toggle defined port.....  ex:- fun(LED_LINE_PORT)
+uint8_t DIO_toggle_Port(uint8_t por); // this function is used to toggle defined port.....  ex:- fun(LED_LINE_PORT)
 
-uint8_t DIO_Toggle_Pin(uint8_t pin); // this function is used to toggle pin in a defined port .....  ex:- fun(LED_PORT,LED_PIN)
+uint8_t DIO_toggle_Pin(uint8_t pin); // this function is used to toggle pin in a defined port .....  ex:- fun(LED_PORT,LED_PIN)
 
 uint8_t DIO_Activate_Pullup (uint8_t Pin_Number);
 
