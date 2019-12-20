@@ -172,15 +172,8 @@ void N(void)
 #define  Disable                      0U
 #define  NoPeriod                    -1
 /*--Externs-------------------------------------------------*/
-extern volatile uint32_t count;
 /*- FUNCTION-LIKE MACROS -----------------------------------*/
-
-
-
 /*- FUNCTION DECLARATIONS ---------------------------------*/
-
-
-
 
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: Timer/Counter Initialization

@@ -39,10 +39,6 @@ static uint16_t index=0, sgu16_OverFlow_Counts_TMU=0;
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 
-static void TMU_Function_ISR(void)
-{
-		sgu16_OverFlow_Counts_TMU++;
-}
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
 

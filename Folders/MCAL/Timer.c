@@ -26,8 +26,7 @@ static uint8_t sgau8_Interrupt_Mode[NO_OF_CHANNELS]={0},sgau8_TIMERMode[NO_OF_CH
 static volatile PntrToFunc_t sgPntrToFunc_TIMER_OVF=0;
 static volatile uint16_t sgu16_TIMER_COUNTER_REG_BUFFER=0;
 
-/*- GLOBAL EXTERN VARIABLES -------------------------------*/
-volatile uint32_t count=0;
+/*- GLOBAL EXTERN VARIABLES -------------------------------*/س
 
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 
@@ -618,16 +617,17 @@ uint8_t Timer_Reset(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
 Timer_ISR(TIMER0_OVF_vect_num)
 {
 
-	/*count++;*/
 	TIMER0_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
     sgPntrToFunc_TIMER_OVF();
 }
 Timer_ISR(TIMER1_OVF_vect_num)
 {
+    TIMER1_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
 	sgPntrToFunc_TIMER_OVF();
 }
 
 Timer_ISR(TIMER2_OVF_vect_num)
 {
+    TIMER2_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
 	sgPntrToFunc_TIMER_OVF();
 }
