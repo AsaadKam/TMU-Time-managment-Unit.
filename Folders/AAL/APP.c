@@ -42,13 +42,13 @@ int main()
 	DIO_INIT_Pin(0,OUTPUT);
 	DIO_INIT_Pin(1,OUTPUT);
 	DIO_INIT_Pin(2,OUTPUT);
-	/*DIO_INIT_Pin(3,OUTPUT);*/
-	DIO_Write_Pin(0,LOW);
+	DIO_INIT_Pin(3,OUTPUT);
     TMU_Init();
 	
 	TMU_Start(LED_0_500mili_Oneshot,500U,TMU_Function_ONESHOT);
 	TMU_Start(LED_1_100mili_Periodic,100U,TMU_Function_PERIODIC);
-	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);    
+	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);
+    
 	while(1)
 	{
 		

@@ -3,31 +3,31 @@ Timer_managment_Unit.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000b6a  00000000  00000000  00000094  2**1
+  0 .text         00000c0a  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  00000b6a  00000bfe  2**0
+  1 .data         00000002  00800060  00000c0a  00000c9e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000024  00800062  00800062  00000c00  2**0
+  2 .bss          00000036  00800062  00800062  00000ca0  2**0
                   ALLOC
-  3 .comment      00000011  00000000  00000000  00000c00  2**0
+  3 .comment      00000011  00000000  00000000  00000ca0  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c14  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000cb4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001a8  00000000  00000000  00000c50  2**3
+  5 .debug_aranges 00000208  00000000  00000000  00000cf0  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001213  00000000  00000000  00000df8  2**0
+  6 .debug_info   0000127a  00000000  00000000  00000ef8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000009a9  00000000  00000000  0000200b  2**0
+  7 .debug_abbrev 000009e3  00000000  00000000  00002172  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00002db9  00000000  00000000  000029b4  2**0
+  8 .debug_line   00002ec2  00000000  00000000  00002b55  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000324  00000000  00000000  00005770  2**2
+  9 .debug_frame  0000038c  00000000  00000000  00005a18  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000083b  00000000  00000000  00005a94  2**0
+ 10 .debug_str    0000087c  00000000  00000000  00005da4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001a9e  00000000  00000000  000062cf  2**0
+ 11 .debug_loc    00001ad2  00000000  00000000  00006620  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000128  00000000  00000000  00007d6d  2**0
+ 12 .debug_ranges 00000128  00000000  00000000  000080f2  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -38,13 +38,13 @@ Disassembly of section .text:
    8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
    c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
   10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  14:	0c 94 87 05 	jmp	0xb0e	; 0xb0e <__vector_5>
+  14:	0c 94 ad 05 	jmp	0xb5a	; 0xb5a <__vector_5>
   18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
   1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
   20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  24:	0c 94 5a 05 	jmp	0xab4	; 0xab4 <__vector_9>
+  24:	0c 94 80 05 	jmp	0xb00	; 0xb00 <__vector_9>
   28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  2c:	0c 94 2e 05 	jmp	0xa5c	; 0xa5c <__vector_11>
+  2c:	0c 94 54 05 	jmp	0xaa8	; 0xaa8 <__vector_11>
   30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
   34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
   38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
@@ -67,8 +67,8 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ea e6       	ldi	r30, 0x6A	; 106
-  68:	fb e0       	ldi	r31, 0x0B	; 11
+  66:	ea e0       	ldi	r30, 0x0A	; 10
+  68:	fc e0       	ldi	r31, 0x0C	; 12
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
@@ -86,11 +86,11 @@ Disassembly of section .text:
   7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-  80:	a6 38       	cpi	r26, 0x86	; 134
+  80:	a8 39       	cpi	r26, 0x98	; 152
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 56 00 	call	0xac	; 0xac <main>
-  8a:	0c 94 b3 05 	jmp	0xb66	; 0xb66 <_exit>
+  8a:	0c 94 03 06 	jmp	0xc06	; 0xc06 <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -142,13 +142,12 @@ int main()
   bc:	61 e0       	ldi	r22, 0x01	; 1
   be:	82 e0       	ldi	r24, 0x02	; 2
   c0:	0e 94 83 00 	call	0x106	; 0x106 <DIO_INIT_Pin>
-	/*DIO_INIT_Pin(3,OUTPUT);*/
-	DIO_Write_Pin(0,LOW);
-  c4:	60 e0       	ldi	r22, 0x00	; 0
-  c6:	80 e0       	ldi	r24, 0x00	; 0
-  c8:	0e 94 13 01 	call	0x226	; 0x226 <DIO_Write_Pin>
+	DIO_INIT_Pin(3,OUTPUT);
+  c4:	61 e0       	ldi	r22, 0x01	; 1
+  c6:	83 e0       	ldi	r24, 0x03	; 3
+  c8:	0e 94 83 00 	call	0x106	; 0x106 <DIO_INIT_Pin>
     TMU_Init();
-  cc:	0e 94 0f 02 	call	0x41e	; 0x41e <TMU_Init>
+  cc:	0e 94 01 02 	call	0x402	; 0x402 <TMU_Init>
 	
 	TMU_Start(LED_0_500mili_Oneshot,500U,TMU_Function_ONESHOT);
   d0:	41 e0       	ldi	r20, 0x01	; 1
@@ -157,7 +156,7 @@ int main()
   d6:	71 e0       	ldi	r23, 0x01	; 1
   d8:	89 e4       	ldi	r24, 0x49	; 73
   da:	90 e0       	ldi	r25, 0x00	; 0
-  dc:	0e 94 27 02 	call	0x44e	; 0x44e <TMU_Start>
+  dc:	0e 94 19 02 	call	0x432	; 0x432 <TMU_Start>
 	TMU_Start(LED_1_100mili_Periodic,100U,TMU_Function_PERIODIC);
   e0:	50 e0       	ldi	r21, 0x00	; 0
   e2:	40 e0       	ldi	r20, 0x00	; 0
@@ -165,20 +164,21 @@ int main()
   e6:	70 e0       	ldi	r23, 0x00	; 0
   e8:	8e e4       	ldi	r24, 0x4E	; 78
   ea:	90 e0       	ldi	r25, 0x00	; 0
-  ec:	0e 94 27 02 	call	0x44e	; 0x44e <TMU_Start>
-	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);    
+  ec:	0e 94 19 02 	call	0x432	; 0x432 <TMU_Start>
+	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);
   f0:	50 e0       	ldi	r21, 0x00	; 0
   f2:	40 e0       	ldi	r20, 0x00	; 0
   f4:	68 ec       	ldi	r22, 0xC8	; 200
   f6:	70 e0       	ldi	r23, 0x00	; 0
   f8:	82 e5       	ldi	r24, 0x52	; 82
   fa:	90 e0       	ldi	r25, 0x00	; 0
-  fc:	0e 94 27 02 	call	0x44e	; 0x44e <TMU_Start>
+  fc:	0e 94 19 02 	call	0x432	; 0x432 <TMU_Start>
+    
 	while(1)
 	{
 		
       	TMU_Dispatch();
- 100:	0e 94 fb 02 	call	0x5f6	; 0x5f6 <TMU_Dispatch>
+ 100:	0e 94 cf 02 	call	0x59e	; 0x59e <TMU_Dispatch>
 	while(1)
  104:	fd cf       	rjmp	.-6      	; 0x100 <main+0x54>
 
@@ -673,1259 +673,1325 @@ uint8_t DIO_toggle_Pin(uint8_t pin)
 void  TMU_Function_ISR(void)
 {
 	/*DIO_toggle_Pin(3);*/
-	/*Looping to make incrementing for count*/	
-	for(uint16_t i=0;i<sgu16_index;i++)
+	/*Count */	
+    sgu64_TMU_Timer_ISR_Count++;
  3da:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
  3de:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 3e2:	89 2b       	or	r24, r25
- 3e4:	d9 f0       	breq	.+54     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
- 3e6:	90 e0       	ldi	r25, 0x00	; 0
- 3e8:	80 e0       	ldi	r24, 0x00	; 0
-	{
-       sga_TMU_Events[i].TMU_Node_Count=(sga_TMU_Events[i].TMU_Node_Count)+1;
- 3ea:	fc 01       	movw	r30, r24
- 3ec:	ee 0f       	add	r30, r30
- 3ee:	ff 1f       	adc	r31, r31
- 3f0:	ee 0f       	add	r30, r30
- 3f2:	ff 1f       	adc	r31, r31
- 3f4:	ee 0f       	add	r30, r30
- 3f6:	ff 1f       	adc	r31, r31
- 3f8:	e8 1b       	sub	r30, r24
- 3fa:	f9 0b       	sbc	r31, r25
- 3fc:	ec 59       	subi	r30, 0x9C	; 156
- 3fe:	ff 4f       	sbci	r31, 0xFF	; 255
- 400:	23 81       	ldd	r18, Z+3	; 0x03
- 402:	34 81       	ldd	r19, Z+4	; 0x04
- 404:	2f 5f       	subi	r18, 0xFF	; 255
- 406:	3f 4f       	sbci	r19, 0xFF	; 255
- 408:	34 83       	std	Z+4, r19	; 0x04
- 40a:	23 83       	std	Z+3, r18	; 0x03
-	for(uint16_t i=0;i<sgu16_index;i++)
- 40c:	01 96       	adiw	r24, 0x01	; 1
- 40e:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
- 412:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
- 416:	82 17       	cp	r24, r18
- 418:	93 07       	cpc	r25, r19
- 41a:	38 f3       	brcs	.-50     	; 0x3ea <TMU_Function_ISR+0x10>
-
-	}
+ 3e2:	a0 91 64 00 	lds	r26, 0x0064	; 0x800064 <__data_end+0x2>
+ 3e6:	b0 91 65 00 	lds	r27, 0x0065	; 0x800065 <__data_end+0x3>
+ 3ea:	01 96       	adiw	r24, 0x01	; 1
+ 3ec:	a1 1d       	adc	r26, r1
+ 3ee:	b1 1d       	adc	r27, r1
+ 3f0:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+ 3f4:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <__data_end+0x1>
+ 3f8:	a0 93 64 00 	sts	0x0064, r26	; 0x800064 <__data_end+0x2>
+ 3fc:	b0 93 65 00 	sts	0x0065, r27	; 0x800065 <__data_end+0x3>
 }
- 41c:	08 95       	ret
+ 400:	08 95       	ret
 
-0000041e <TMU_Init>:
+00000402 <TMU_Init>:
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
 
 TMU_Error_t TMU_Init()
 {
- 41e:	cf 93       	push	r28
- 420:	df 93       	push	r29
- 422:	00 d0       	rcall	.+0      	; 0x424 <TMU_Init+0x6>
- 424:	00 d0       	rcall	.+0      	; 0x426 <TMU_Init+0x8>
- 426:	cd b7       	in	r28, 0x3d	; 61
- 428:	de b7       	in	r29, 0x3e	; 62
+ 402:	cf 93       	push	r28
+ 404:	df 93       	push	r29
+ 406:	00 d0       	rcall	.+0      	; 0x408 <TMU_Init+0x6>
+ 408:	00 d0       	rcall	.+0      	; 0x40a <TMU_Init+0x8>
+ 40a:	cd b7       	in	r28, 0x3d	; 61
+ 40c:	de b7       	in	r29, 0x3e	; 62
 	StrTMU_Configuration_t strTMU_configuration;
 	
 	strTMU_configuration.TMU_TIMER_IDS=TMU_TIMER_ID0;
- 42a:	19 82       	std	Y+1, r1	; 0x01
+ 40e:	19 82       	std	Y+1, r1	; 0x01
 	/*******************************************
 	 *  Clock prescaler is adjusted internally *
 	 *           no need to enter it           *  
 	 *******************************************/
 	strTMU_configuration.TMU_TIMER_PSC=TMU_NO_NEED_PSC;
- 42c:	1a 82       	std	Y+2, r1	; 0x02
+ 410:	1a 82       	std	Y+2, r1	; 0x02
 	strTMU_configuration.TMU_TIMER_MODE=TMU_TIMER_MODE_MILIE;
- 42e:	82 e0       	ldi	r24, 0x02	; 2
- 430:	8b 83       	std	Y+3, r24	; 0x03
+ 412:	82 e0       	ldi	r24, 0x02	; 2
+ 414:	8b 83       	std	Y+3, r24	; 0x03
 	strTMU_configuration.TMU_TIMER_INT_Mode=TMU_TIMER_INT;
- 432:	81 e0       	ldi	r24, 0x01	; 1
- 434:	8c 83       	std	Y+4, r24	; 0x04
+ 416:	81 e0       	ldi	r24, 0x01	; 1
+ 418:	8c 83       	std	Y+4, r24	; 0x04
 	
 	Timer_Init(&strTMU_configuration);
- 436:	ce 01       	movw	r24, r28
- 438:	01 96       	adiw	r24, 0x01	; 1
- 43a:	0e 94 5b 03 	call	0x6b6	; 0x6b6 <Timer_Init>
+ 41a:	ce 01       	movw	r24, r28
+ 41c:	01 96       	adiw	r24, 0x01	; 1
+ 41e:	0e 94 81 03 	call	0x702	; 0x702 <Timer_Init>
 	
 	return TMU_Error_OK;
 }
- 43e:	80 e0       	ldi	r24, 0x00	; 0
- 440:	0f 90       	pop	r0
- 442:	0f 90       	pop	r0
- 444:	0f 90       	pop	r0
- 446:	0f 90       	pop	r0
- 448:	df 91       	pop	r29
- 44a:	cf 91       	pop	r28
- 44c:	08 95       	ret
+ 422:	80 e0       	ldi	r24, 0x00	; 0
+ 424:	0f 90       	pop	r0
+ 426:	0f 90       	pop	r0
+ 428:	0f 90       	pop	r0
+ 42a:	0f 90       	pop	r0
+ 42c:	df 91       	pop	r29
+ 42e:	cf 91       	pop	r28
+ 430:	08 95       	ret
 
-0000044e <TMU_Start>:
+00000432 <TMU_Start>:
 
 
 TMU_Error_t TMU_Start(PntrToFunc_t PntrToFunc_Copy_TMU_Start,uint16_t u16_Copy_Periodicity_MS_TMU_Start,uint16_t u16_Copy_Periodic_or_not_TMU_Start)
 {
- 44e:	e8 2f       	mov	r30, r24
- 450:	f9 2f       	mov	r31, r25
- 452:	26 2f       	mov	r18, r22
- 454:	37 2f       	mov	r19, r23
+ 432:	cf 92       	push	r12
+ 434:	df 92       	push	r13
+ 436:	ef 92       	push	r14
+ 438:	ff 92       	push	r15
+ 43a:	e8 2f       	mov	r30, r24
+ 43c:	f9 2f       	mov	r31, r25
+ 43e:	26 2f       	mov	r18, r22
+ 440:	37 2f       	mov	r19, r23
     TMU_Error_t TMU_Start_Error= TMU_Error_OK;
 	
 	if(sgu16_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
- 456:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 45a:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 45e:	04 97       	sbiw	r24, 0x04	; 4
- 460:	08 f0       	brcs	.+2      	; 0x464 <TMU_Start+0x16>
- 462:	5d c0       	rjmp	.+186    	; 0x51e <TMU_Start+0xd0>
-	else
-	{  
-
-		if(NullPointer!=PntrToFunc_Copy_TMU_Start)
- 464:	30 97       	sbiw	r30, 0x00	; 0
- 466:	09 f4       	brne	.+2      	; 0x46a <TMU_Start+0x1c>
- 468:	5c c0       	rjmp	.+184    	; 0x522 <TMU_Start+0xd4>
-		{	
-			if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_PERIODIC)
- 46a:	21 15       	cp	r18, r1
- 46c:	31 05       	cpc	r19, r1
- 46e:	09 f0       	breq	.+2      	; 0x472 <TMU_Start+0x24>
- 470:	40 c0       	rjmp	.+128    	; 0x4f2 <TMU_Start+0xa4>
-			{
-                
-				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	
- 472:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 476:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 47a:	dc 01       	movw	r26, r24
- 47c:	aa 0f       	add	r26, r26
- 47e:	bb 1f       	adc	r27, r27
- 480:	aa 0f       	add	r26, r26
- 482:	bb 1f       	adc	r27, r27
- 484:	aa 0f       	add	r26, r26
- 486:	bb 1f       	adc	r27, r27
- 488:	a8 1b       	sub	r26, r24
- 48a:	b9 0b       	sbc	r27, r25
- 48c:	ac 59       	subi	r26, 0x9C	; 156
- 48e:	bf 4f       	sbci	r27, 0xFF	; 255
- 490:	4c 93       	st	X, r20
-    TMU_Error_t TMU_Start_Error= TMU_Error_OK;
- 492:	80 e0       	ldi	r24, 0x00	; 0
-			}  
-			else 
-			{
-				TMU_Start_Error=TMU_Error_Function_type_undefined;
-			}
-			sga_TMU_Events[sgu16_index].PntrToFunc=PntrToFunc_Copy_TMU_Start;	
- 494:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <__data_end>
- 498:	50 91 63 00 	lds	r21, 0x0063	; 0x800063 <__data_end+0x1>
- 49c:	da 01       	movw	r26, r20
- 49e:	aa 0f       	add	r26, r26
- 4a0:	bb 1f       	adc	r27, r27
- 4a2:	aa 0f       	add	r26, r26
- 4a4:	bb 1f       	adc	r27, r27
- 4a6:	aa 0f       	add	r26, r26
- 4a8:	bb 1f       	adc	r27, r27
- 4aa:	a4 1b       	sub	r26, r20
- 4ac:	b5 0b       	sbc	r27, r21
- 4ae:	ac 59       	subi	r26, 0x9C	; 156
- 4b0:	bf 4f       	sbci	r27, 0xFF	; 255
- 4b2:	16 96       	adiw	r26, 0x06	; 6
- 4b4:	fc 93       	st	X, r31
- 4b6:	ee 93       	st	-X, r30
- 4b8:	15 97       	sbiw	r26, 0x05	; 5
+ 442:	c0 90 66 00 	lds	r12, 0x0066	; 0x800066 <sgu16_index>
+ 446:	d0 90 67 00 	lds	r13, 0x0067	; 0x800067 <sgu16_index+0x1>
+ 44a:	e0 90 68 00 	lds	r14, 0x0068	; 0x800068 <sgu16_index+0x2>
+ 44e:	f0 90 69 00 	lds	r15, 0x0069	; 0x800069 <sgu16_index+0x3>
+ 452:	84 e0       	ldi	r24, 0x04	; 4
+ 454:	c8 16       	cp	r12, r24
+ 456:	d1 04       	cpc	r13, r1
+ 458:	e1 04       	cpc	r14, r1
+ 45a:	f1 04       	cpc	r15, r1
+ 45c:	08 f0       	brcs	.+2      	; 0x460 <TMU_Start+0x2e>
+ 45e:	43 c0       	rjmp	.+134    	; 0x4e6 <TMU_Start+0xb4>
 			sga_TMU_Events[sgu16_index].Periodicity_MS=u16_Copy_Periodicity_MS_TMU_Start;
- 4ba:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <__data_end>
- 4be:	50 91 63 00 	lds	r21, 0x0063	; 0x800063 <__data_end+0x1>
- 4c2:	fa 01       	movw	r30, r20
- 4c4:	ee 0f       	add	r30, r30
- 4c6:	ff 1f       	adc	r31, r31
- 4c8:	ee 0f       	add	r30, r30
- 4ca:	ff 1f       	adc	r31, r31
- 4cc:	ee 0f       	add	r30, r30
- 4ce:	ff 1f       	adc	r31, r31
- 4d0:	e4 1b       	sub	r30, r20
- 4d2:	f5 0b       	sbc	r31, r21
- 4d4:	ec 59       	subi	r30, 0x9C	; 156
- 4d6:	ff 4f       	sbci	r31, 0xFF	; 255
- 4d8:	32 83       	std	Z+2, r19	; 0x02
- 4da:	21 83       	std	Z+1, r18	; 0x01
 			sgu16_index++;			
- 4dc:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
- 4e0:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
- 4e4:	2f 5f       	subi	r18, 0xFF	; 255
- 4e6:	3f 4f       	sbci	r19, 0xFF	; 255
- 4e8:	30 93 63 00 	sts	0x0063, r19	; 0x800063 <__data_end+0x1>
- 4ec:	20 93 62 00 	sts	0x0062, r18	; 0x800062 <__data_end>
- 4f0:	08 95       	ret
-				TMU_Start_Error=TMU_Error_Function_type_undefined;
- 4f2:	84 e0       	ldi	r24, 0x04	; 4
-			else if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_ONESHOT)
- 4f4:	21 30       	cpi	r18, 0x01	; 1
- 4f6:	31 05       	cpc	r19, r1
- 4f8:	69 f6       	brne	.-102    	; 0x494 <TMU_Start+0x46>
-				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	   
- 4fa:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 4fe:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 502:	dc 01       	movw	r26, r24
- 504:	aa 0f       	add	r26, r26
- 506:	bb 1f       	adc	r27, r27
- 508:	aa 0f       	add	r26, r26
- 50a:	bb 1f       	adc	r27, r27
- 50c:	aa 0f       	add	r26, r26
- 50e:	bb 1f       	adc	r27, r27
- 510:	a8 1b       	sub	r26, r24
- 512:	b9 0b       	sbc	r27, r25
- 514:	ac 59       	subi	r26, 0x9C	; 156
- 516:	bf 4f       	sbci	r27, 0xFF	; 255
- 518:	4c 93       	st	X, r20
-    TMU_Error_t TMU_Start_Error= TMU_Error_OK;
- 51a:	80 e0       	ldi	r24, 0x00	; 0
- 51c:	bb cf       	rjmp	.-138    	; 0x494 <TMU_Start+0x46>
-	if(sgu16_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
- 51e:	81 e0       	ldi	r24, 0x01	; 1
- 520:	08 95       	ret
 		}
 		else
 		{
 			TMU_Start_Error=TMU_Error_Start_Null_func;
- 522:	82 e0       	ldi	r24, 0x02	; 2
+ 460:	82 e0       	ldi	r24, 0x02	; 2
+		if(NullPointer!=PntrToFunc_Copy_TMU_Start)
+ 462:	30 97       	sbiw	r30, 0x00	; 0
+ 464:	09 f4       	brne	.+2      	; 0x468 <TMU_Start+0x36>
+ 466:	40 c0       	rjmp	.+128    	; 0x4e8 <TMU_Start+0xb6>
+			if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_PERIODIC)
+ 468:	21 15       	cp	r18, r1
+ 46a:	31 05       	cpc	r19, r1
+ 46c:	69 f5       	brne	.+90     	; 0x4c8 <TMU_Start+0x96>
+				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	
+ 46e:	8b e0       	ldi	r24, 0x0B	; 11
+ 470:	8c 9d       	mul	r24, r12
+ 472:	d0 01       	movw	r26, r0
+ 474:	8d 9d       	mul	r24, r13
+ 476:	b0 0d       	add	r27, r0
+ 478:	11 24       	eor	r1, r1
+ 47a:	a6 59       	subi	r26, 0x96	; 150
+ 47c:	bf 4f       	sbci	r27, 0xFF	; 255
+ 47e:	4c 93       	st	X, r20
+    TMU_Error_t TMU_Start_Error= TMU_Error_OK;
+ 480:	80 e0       	ldi	r24, 0x00	; 0
+			sga_TMU_Events[sgu16_index].PntrToFunc=PntrToFunc_Copy_TMU_Start;	
+ 482:	9b e0       	ldi	r25, 0x0B	; 11
+ 484:	9c 9d       	mul	r25, r12
+ 486:	d0 01       	movw	r26, r0
+ 488:	9d 9d       	mul	r25, r13
+ 48a:	b0 0d       	add	r27, r0
+ 48c:	11 24       	eor	r1, r1
+ 48e:	a6 59       	subi	r26, 0x96	; 150
+ 490:	bf 4f       	sbci	r27, 0xFF	; 255
+ 492:	1a 96       	adiw	r26, 0x0a	; 10
+ 494:	fc 93       	st	X, r31
+ 496:	ee 93       	st	-X, r30
+ 498:	19 97       	sbiw	r26, 0x09	; 9
+			sga_TMU_Events[sgu16_index].Periodicity_MS=u16_Copy_Periodicity_MS_TMU_Start;
+ 49a:	a9 01       	movw	r20, r18
+ 49c:	70 e0       	ldi	r23, 0x00	; 0
+ 49e:	60 e0       	ldi	r22, 0x00	; 0
+ 4a0:	11 96       	adiw	r26, 0x01	; 1
+ 4a2:	4d 93       	st	X+, r20
+ 4a4:	5d 93       	st	X+, r21
+ 4a6:	6d 93       	st	X+, r22
+ 4a8:	7c 93       	st	X, r23
+ 4aa:	14 97       	sbiw	r26, 0x04	; 4
+			sgu16_index++;			
+ 4ac:	9f ef       	ldi	r25, 0xFF	; 255
+ 4ae:	c9 1a       	sub	r12, r25
+ 4b0:	d9 0a       	sbc	r13, r25
+ 4b2:	e9 0a       	sbc	r14, r25
+ 4b4:	f9 0a       	sbc	r15, r25
+ 4b6:	c0 92 66 00 	sts	0x0066, r12	; 0x800066 <sgu16_index>
+ 4ba:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <sgu16_index+0x1>
+ 4be:	e0 92 68 00 	sts	0x0068, r14	; 0x800068 <sgu16_index+0x2>
+ 4c2:	f0 92 69 00 	sts	0x0069, r15	; 0x800069 <sgu16_index+0x3>
+ 4c6:	10 c0       	rjmp	.+32     	; 0x4e8 <TMU_Start+0xb6>
+				TMU_Start_Error=TMU_Error_Function_type_undefined;
+ 4c8:	84 e0       	ldi	r24, 0x04	; 4
+			else if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_ONESHOT)
+ 4ca:	21 30       	cpi	r18, 0x01	; 1
+ 4cc:	31 05       	cpc	r19, r1
+ 4ce:	c9 f6       	brne	.-78     	; 0x482 <TMU_Start+0x50>
+				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	   
+ 4d0:	8b e0       	ldi	r24, 0x0B	; 11
+ 4d2:	8c 9d       	mul	r24, r12
+ 4d4:	d0 01       	movw	r26, r0
+ 4d6:	8d 9d       	mul	r24, r13
+ 4d8:	b0 0d       	add	r27, r0
+ 4da:	11 24       	eor	r1, r1
+ 4dc:	a6 59       	subi	r26, 0x96	; 150
+ 4de:	bf 4f       	sbci	r27, 0xFF	; 255
+ 4e0:	4c 93       	st	X, r20
+    TMU_Error_t TMU_Start_Error= TMU_Error_OK;
+ 4e2:	80 e0       	ldi	r24, 0x00	; 0
+ 4e4:	ce cf       	rjmp	.-100    	; 0x482 <TMU_Start+0x50>
+	if(sgu16_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
+ 4e6:	81 e0       	ldi	r24, 0x01	; 1
 		}
 	}
 	return TMU_Start_Error;
 }
- 524:	08 95       	ret
+ 4e8:	ff 90       	pop	r15
+ 4ea:	ef 90       	pop	r14
+ 4ec:	df 90       	pop	r13
+ 4ee:	cf 90       	pop	r12
+ 4f0:	08 95       	ret
 
-00000526 <TMU_Stop>:
+000004f2 <TMU_Stop>:
 	return TMU_Dispatch_Error;
 }
 
 /*need edit*/
 TMU_Error_t TMU_Stop(PntrToFunc_t PntrToFunc_Copy_TMU_Start)
 {
- 526:	68 2f       	mov	r22, r24
- 528:	79 2f       	mov	r23, r25
+ 4f2:	cf 92       	push	r12
+ 4f4:	df 92       	push	r13
+ 4f6:	ef 92       	push	r14
+ 4f8:	ff 92       	push	r15
+ 4fa:	0f 93       	push	r16
+ 4fc:	1f 93       	push	r17
+ 4fe:	cf 93       	push	r28
+ 500:	df 93       	push	r29
+ 502:	c8 2f       	mov	r28, r24
+ 504:	d9 2f       	mov	r29, r25
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
 	if(sgu16_index==0) TMU_Dispatch_Error=TMU_Error_Nothing_To_Stop;
- 52a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 52e:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 532:	89 2b       	or	r24, r25
- 534:	09 f4       	brne	.+2      	; 0x538 <TMU_Stop+0x12>
- 536:	5d c0       	rjmp	.+186    	; 0x5f2 <TMU_Stop+0xcc>
+ 506:	c0 90 66 00 	lds	r12, 0x0066	; 0x800066 <sgu16_index>
+ 50a:	d0 90 67 00 	lds	r13, 0x0067	; 0x800067 <sgu16_index+0x1>
+ 50e:	e0 90 68 00 	lds	r14, 0x0068	; 0x800068 <sgu16_index+0x2>
+ 512:	f0 90 69 00 	lds	r15, 0x0069	; 0x800069 <sgu16_index+0x3>
+ 516:	83 e0       	ldi	r24, 0x03	; 3
+ 518:	c1 14       	cp	r12, r1
+ 51a:	d1 04       	cpc	r13, r1
+ 51c:	e1 04       	cpc	r14, r1
+ 51e:	f1 04       	cpc	r15, r1
+ 520:	a9 f1       	breq	.+106    	; 0x58c <TMU_Stop+0x9a>
 	else
 	{
 		for(uint8_t i=0;i<sgu16_index-1;i++)
- 538:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 53c:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 540:	01 97       	sbiw	r24, 0x01	; 1
- 542:	09 f4       	brne	.+2      	; 0x546 <TMU_Stop+0x20>
- 544:	4b c0       	rjmp	.+150    	; 0x5dc <TMU_Stop+0xb6>
- 546:	80 e0       	ldi	r24, 0x00	; 0
- 548:	50 e0       	ldi	r21, 0x00	; 0
- 54a:	40 e0       	ldi	r20, 0x00	; 0
- 54c:	2f c0       	rjmp	.+94     	; 0x5ac <TMU_Stop+0x86>
+ 522:	81 e0       	ldi	r24, 0x01	; 1
+ 524:	c8 1a       	sub	r12, r24
+ 526:	d1 08       	sbc	r13, r1
+ 528:	e1 08       	sbc	r14, r1
+ 52a:	f1 08       	sbc	r15, r1
+ 52c:	31 f1       	breq	.+76     	; 0x57a <TMU_Stop+0x88>
+ 52e:	80 e0       	ldi	r24, 0x00	; 0
 		{
 			if(sga_TMU_Events[i].PntrToFunc==PntrToFunc_Copy_TMU_Start) 
+ 530:	9b e0       	ldi	r25, 0x0B	; 11
 			{
 				 if(sgu16_index-1 !=i)
 				 {
 					 sga_TMU_Events[i]=sga_TMU_Events[sgu16_index-1];
- 54e:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <__data_end>
- 552:	50 91 63 00 	lds	r21, 0x0063	; 0x800063 <__data_end+0x1>
- 556:	41 50       	subi	r20, 0x01	; 1
- 558:	51 09       	sbc	r21, r1
- 55a:	9d 01       	movw	r18, r26
- 55c:	22 0f       	add	r18, r18
- 55e:	33 1f       	adc	r19, r19
- 560:	22 0f       	add	r18, r18
- 562:	33 1f       	adc	r19, r19
- 564:	22 0f       	add	r18, r18
- 566:	33 1f       	adc	r19, r19
- 568:	f9 01       	movw	r30, r18
- 56a:	ea 1b       	sub	r30, r26
- 56c:	fb 0b       	sbc	r31, r27
- 56e:	df 01       	movw	r26, r30
- 570:	ac 59       	subi	r26, 0x9C	; 156
- 572:	bf 4f       	sbci	r27, 0xFF	; 255
- 574:	fa 01       	movw	r30, r20
- 576:	ee 0f       	add	r30, r30
- 578:	ff 1f       	adc	r31, r31
- 57a:	ee 0f       	add	r30, r30
- 57c:	ff 1f       	adc	r31, r31
- 57e:	ee 0f       	add	r30, r30
- 580:	ff 1f       	adc	r31, r31
- 582:	e4 1b       	sub	r30, r20
- 584:	f5 0b       	sbc	r31, r21
- 586:	ec 59       	subi	r30, 0x9C	; 156
- 588:	ff 4f       	sbci	r31, 0xFF	; 255
- 58a:	97 e0       	ldi	r25, 0x07	; 7
- 58c:	01 90       	ld	r0, Z+
- 58e:	0d 92       	st	X+, r0
- 590:	9a 95       	dec	r25
- 592:	e1 f7       	brne	.-8      	; 0x58c <TMU_Stop+0x66>
+ 532:	9c 9d       	mul	r25, r12
+ 534:	80 01       	movw	r16, r0
+ 536:	9d 9d       	mul	r25, r13
+ 538:	10 0d       	add	r17, r0
+ 53a:	11 24       	eor	r1, r1
+ 53c:	06 59       	subi	r16, 0x96	; 150
+ 53e:	1f 4f       	sbci	r17, 0xFF	; 255
+ 540:	11 c0       	rjmp	.+34     	; 0x564 <TMU_Stop+0x72>
+ 542:	df 01       	movw	r26, r30
+ 544:	2b e0       	ldi	r18, 0x0B	; 11
+ 546:	f8 01       	movw	r30, r16
+ 548:	01 90       	ld	r0, Z+
+ 54a:	0d 92       	st	X+, r0
+ 54c:	2a 95       	dec	r18
+ 54e:	e1 f7       	brne	.-8      	; 0x548 <TMU_Stop+0x56>
 		for(uint8_t i=0;i<sgu16_index-1;i++)
- 594:	8f 5f       	subi	r24, 0xFF	; 255
- 596:	48 2f       	mov	r20, r24
- 598:	50 e0       	ldi	r21, 0x00	; 0
- 59a:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
- 59e:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
- 5a2:	21 50       	subi	r18, 0x01	; 1
- 5a4:	31 09       	sbc	r19, r1
- 5a6:	42 17       	cp	r20, r18
- 5a8:	53 07       	cpc	r21, r19
- 5aa:	c0 f4       	brcc	.+48     	; 0x5dc <TMU_Stop+0xb6>
+ 550:	8f 5f       	subi	r24, 0xFF	; 255
+ 552:	48 2f       	mov	r20, r24
+ 554:	50 e0       	ldi	r21, 0x00	; 0
+ 556:	70 e0       	ldi	r23, 0x00	; 0
+ 558:	60 e0       	ldi	r22, 0x00	; 0
+ 55a:	4c 15       	cp	r20, r12
+ 55c:	5d 05       	cpc	r21, r13
+ 55e:	6e 05       	cpc	r22, r14
+ 560:	7f 05       	cpc	r23, r15
+ 562:	58 f4       	brcc	.+22     	; 0x57a <TMU_Stop+0x88>
 			if(sga_TMU_Events[i].PntrToFunc==PntrToFunc_Copy_TMU_Start) 
- 5ac:	a8 2f       	mov	r26, r24
- 5ae:	b0 e0       	ldi	r27, 0x00	; 0
- 5b0:	97 e0       	ldi	r25, 0x07	; 7
- 5b2:	89 9f       	mul	r24, r25
- 5b4:	f0 01       	movw	r30, r0
- 5b6:	11 24       	eor	r1, r1
- 5b8:	ec 59       	subi	r30, 0x9C	; 156
- 5ba:	ff 4f       	sbci	r31, 0xFF	; 255
- 5bc:	25 81       	ldd	r18, Z+5	; 0x05
- 5be:	36 81       	ldd	r19, Z+6	; 0x06
- 5c0:	26 17       	cp	r18, r22
- 5c2:	37 07       	cpc	r19, r23
- 5c4:	39 f7       	brne	.-50     	; 0x594 <TMU_Stop+0x6e>
-				 if(sgu16_index-1 !=i)
- 5c6:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
- 5ca:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
- 5ce:	21 50       	subi	r18, 0x01	; 1
- 5d0:	31 09       	sbc	r19, r1
- 5d2:	24 17       	cp	r18, r20
- 5d4:	35 07       	cpc	r19, r21
- 5d6:	09 f0       	breq	.+2      	; 0x5da <TMU_Stop+0xb4>
- 5d8:	ba cf       	rjmp	.-140    	; 0x54e <TMU_Stop+0x28>
- 5da:	dc cf       	rjmp	.-72     	; 0x594 <TMU_Stop+0x6e>
+ 564:	98 9f       	mul	r25, r24
+ 566:	f0 01       	movw	r30, r0
+ 568:	11 24       	eor	r1, r1
+ 56a:	e6 59       	subi	r30, 0x96	; 150
+ 56c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 56e:	21 85       	ldd	r18, Z+9	; 0x09
+ 570:	32 85       	ldd	r19, Z+10	; 0x0a
+ 572:	2c 17       	cp	r18, r28
+ 574:	3d 07       	cpc	r19, r29
+ 576:	61 f7       	brne	.-40     	; 0x550 <TMU_Stop+0x5e>
+ 578:	e4 cf       	rjmp	.-56     	; 0x542 <TMU_Stop+0x50>
 			else
 			{
 			}
 		}
 	    /*Decrement the sgu16_index*/
 	    sgu16_index--;
- 5dc:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 5e0:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
- 5e4:	01 97       	sbiw	r24, 0x01	; 1
- 5e6:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <__data_end+0x1>
- 5ea:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+ 57a:	c0 92 66 00 	sts	0x0066, r12	; 0x800066 <sgu16_index>
+ 57e:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <sgu16_index+0x1>
+ 582:	e0 92 68 00 	sts	0x0068, r14	; 0x800068 <sgu16_index+0x2>
+ 586:	f0 92 69 00 	sts	0x0069, r15	; 0x800069 <sgu16_index+0x3>
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
- 5ee:	80 e0       	ldi	r24, 0x00	; 0
- 5f0:	08 95       	ret
-	if(sgu16_index==0) TMU_Dispatch_Error=TMU_Error_Nothing_To_Stop;
- 5f2:	83 e0       	ldi	r24, 0x03	; 3
+ 58a:	80 e0       	ldi	r24, 0x00	; 0
 	}
 
 	return TMU_Dispatch_Error;
 }
- 5f4:	08 95       	ret
+ 58c:	df 91       	pop	r29
+ 58e:	cf 91       	pop	r28
+ 590:	1f 91       	pop	r17
+ 592:	0f 91       	pop	r16
+ 594:	ff 90       	pop	r15
+ 596:	ef 90       	pop	r14
+ 598:	df 90       	pop	r13
+ 59a:	cf 90       	pop	r12
+ 59c:	08 95       	ret
 
-000005f6 <TMU_Dispatch>:
+0000059e <TMU_Dispatch>:
 {
- 5f6:	ef 92       	push	r14
- 5f8:	ff 92       	push	r15
- 5fa:	1f 93       	push	r17
- 5fc:	cf 93       	push	r28
- 5fe:	df 93       	push	r29
+ 59e:	7f 92       	push	r7
+ 5a0:	8f 92       	push	r8
+ 5a2:	9f 92       	push	r9
+ 5a4:	af 92       	push	r10
+ 5a6:	bf 92       	push	r11
+ 5a8:	cf 92       	push	r12
+ 5aa:	df 92       	push	r13
+ 5ac:	ef 92       	push	r14
+ 5ae:	ff 92       	push	r15
+ 5b0:	0f 93       	push	r16
+ 5b2:	1f 93       	push	r17
+ 5b4:	cf 93       	push	r28
+ 5b6:	df 93       	push	r29
+ 5b8:	00 d0       	rcall	.+0      	; 0x5ba <TMU_Dispatch+0x1c>
+ 5ba:	00 d0       	rcall	.+0      	; 0x5bc <TMU_Dispatch+0x1e>
+ 5bc:	00 d0       	rcall	.+0      	; 0x5be <TMU_Dispatch+0x20>
+ 5be:	cd b7       	in	r28, 0x3d	; 61
+ 5c0:	de b7       	in	r29, 0x3e	; 62
 	if(su8_1st_start_Dispatch_Flag==1)   
- 600:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
- 604:	81 30       	cpi	r24, 0x01	; 1
- 606:	59 f0       	breq	.+22     	; 0x61e <TMU_Dispatch+0x28>
-        for(uint16_t i=0;i<sgu16_index;i++)
- 608:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
- 60c:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
+ 5c2:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
+ 5c6:	81 30       	cpi	r24, 0x01	; 1
+ 5c8:	b1 f0       	breq	.+44     	; 0x5f6 <TMU_Dispatch+0x58>
+        for(uint64_t i=0;i<sgu16_index;i++)
+ 5ca:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <sgu16_index>
+ 5ce:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <sgu16_index+0x1>
+ 5d2:	a0 91 68 00 	lds	r26, 0x0068	; 0x800068 <sgu16_index+0x2>
+ 5d6:	b0 91 69 00 	lds	r27, 0x0069	; 0x800069 <sgu16_index+0x3>
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
- 610:	10 e0       	ldi	r17, 0x00	; 0
-        for(uint16_t i=0;i<sgu16_index;i++)
- 612:	89 2b       	or	r24, r25
- 614:	71 f0       	breq	.+28     	; 0x632 <TMU_Dispatch+0x3c>
- 616:	d0 e0       	ldi	r29, 0x00	; 0
- 618:	c0 e0       	ldi	r28, 0x00	; 0
+ 5da:	71 2c       	mov	r7, r1
+        for(uint64_t i=0;i<sgu16_index;i++)
+ 5dc:	89 2b       	or	r24, r25
+ 5de:	8a 2b       	or	r24, r26
+ 5e0:	8b 2b       	or	r24, r27
+ 5e2:	99 f0       	breq	.+38     	; 0x60a <TMU_Dispatch+0x6c>
+ 5e4:	8a e6       	ldi	r24, 0x6A	; 106
+ 5e6:	90 e0       	ldi	r25, 0x00	; 0
+ 5e8:	9e 83       	std	Y+6, r25	; 0x06
+ 5ea:	8d 83       	std	Y+5, r24	; 0x05
+ 5ec:	c1 2c       	mov	r12, r1
+ 5ee:	d1 2c       	mov	r13, r1
+ 5f0:	76 01       	movw	r14, r12
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
- 61a:	10 e0       	ldi	r17, 0x00	; 0
- 61c:	1f c0       	rjmp	.+62     	; 0x65c <TMU_Dispatch+0x66>
+ 5f2:	71 2c       	mov	r7, r1
+ 5f4:	3b c0       	rjmp	.+118    	; 0x66c <TMU_Dispatch+0xce>
 		TMU_Dispatch_Error=Timer_Start(TIMER0,0,TMU_Function_ISR);
- 61e:	4d ee       	ldi	r20, 0xED	; 237
- 620:	51 e0       	ldi	r21, 0x01	; 1
- 622:	70 e0       	ldi	r23, 0x00	; 0
- 624:	60 e0       	ldi	r22, 0x00	; 0
- 626:	80 e0       	ldi	r24, 0x00	; 0
- 628:	0e 94 a9 03 	call	0x752	; 0x752 <Timer_Start>
- 62c:	18 2f       	mov	r17, r24
+ 5f6:	4d ee       	ldi	r20, 0xED	; 237
+ 5f8:	51 e0       	ldi	r21, 0x01	; 1
+ 5fa:	70 e0       	ldi	r23, 0x00	; 0
+ 5fc:	60 e0       	ldi	r22, 0x00	; 0
+ 5fe:	80 e0       	ldi	r24, 0x00	; 0
+ 600:	0e 94 cf 03 	call	0x79e	; 0x79e <Timer_Start>
+ 604:	78 2e       	mov	r7, r24
 		su8_1st_start_Dispatch_Flag=0;
- 62e:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__data_start>
+ 606:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__data_start>
 }
- 632:	81 2f       	mov	r24, r17
- 634:	df 91       	pop	r29
- 636:	cf 91       	pop	r28
- 638:	1f 91       	pop	r17
- 63a:	ff 90       	pop	r15
- 63c:	ef 90       	pop	r14
- 63e:	08 95       	ret
+ 60a:	87 2d       	mov	r24, r7
+ 60c:	26 96       	adiw	r28, 0x06	; 6
+ 60e:	0f b6       	in	r0, 0x3f	; 63
+ 610:	f8 94       	cli
+ 612:	de bf       	out	0x3e, r29	; 62
+ 614:	0f be       	out	0x3f, r0	; 63
+ 616:	cd bf       	out	0x3d, r28	; 61
+ 618:	df 91       	pop	r29
+ 61a:	cf 91       	pop	r28
+ 61c:	1f 91       	pop	r17
+ 61e:	0f 91       	pop	r16
+ 620:	ff 90       	pop	r15
+ 622:	ef 90       	pop	r14
+ 624:	df 90       	pop	r13
+ 626:	cf 90       	pop	r12
+ 628:	bf 90       	pop	r11
+ 62a:	af 90       	pop	r10
+ 62c:	9f 90       	pop	r9
+ 62e:	8f 90       	pop	r8
+ 630:	7f 90       	pop	r7
+ 632:	08 95       	ret
 					TMU_Dispatch_Error=TMU_Stop(sga_TMU_Events[i].PntrToFunc);
- 640:	f7 01       	movw	r30, r14
- 642:	85 81       	ldd	r24, Z+5	; 0x05
- 644:	96 81       	ldd	r25, Z+6	; 0x06
- 646:	0e 94 93 02 	call	0x526	; 0x526 <TMU_Stop>
- 64a:	18 2f       	mov	r17, r24
-        for(uint16_t i=0;i<sgu16_index;i++)
- 64c:	21 96       	adiw	r28, 0x01	; 1
- 64e:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
- 652:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
- 656:	c2 17       	cp	r28, r18
- 658:	d3 07       	cpc	r29, r19
- 65a:	58 f7       	brcc	.-42     	; 0x632 <TMU_Dispatch+0x3c>
-			if((sga_TMU_Events[i].TMU_Node_Count==sga_TMU_Events[i].Periodicity_MS)&&(sga_TMU_Events[i].TMU_Node_Count!=0))
- 65c:	fe 01       	movw	r30, r28
- 65e:	ee 0f       	add	r30, r30
- 660:	ff 1f       	adc	r31, r31
- 662:	ee 0f       	add	r30, r30
- 664:	ff 1f       	adc	r31, r31
- 666:	ee 0f       	add	r30, r30
- 668:	ff 1f       	adc	r31, r31
- 66a:	ec 1b       	sub	r30, r28
- 66c:	fd 0b       	sbc	r31, r29
- 66e:	ec 59       	subi	r30, 0x9C	; 156
- 670:	ff 4f       	sbci	r31, 0xFF	; 255
- 672:	23 81       	ldd	r18, Z+3	; 0x03
- 674:	34 81       	ldd	r19, Z+4	; 0x04
- 676:	81 81       	ldd	r24, Z+1	; 0x01
- 678:	92 81       	ldd	r25, Z+2	; 0x02
- 67a:	28 17       	cp	r18, r24
- 67c:	39 07       	cpc	r19, r25
- 67e:	31 f7       	brne	.-52     	; 0x64c <TMU_Dispatch+0x56>
- 680:	fe 01       	movw	r30, r28
- 682:	ee 0f       	add	r30, r30
- 684:	ff 1f       	adc	r31, r31
- 686:	ee 0f       	add	r30, r30
- 688:	ff 1f       	adc	r31, r31
- 68a:	ee 0f       	add	r30, r30
- 68c:	ff 1f       	adc	r31, r31
- 68e:	ec 1b       	sub	r30, r28
- 690:	fd 0b       	sbc	r31, r29
- 692:	ec 59       	subi	r30, 0x9C	; 156
- 694:	ff 4f       	sbci	r31, 0xFF	; 255
- 696:	83 81       	ldd	r24, Z+3	; 0x03
- 698:	94 81       	ldd	r25, Z+4	; 0x04
- 69a:	89 2b       	or	r24, r25
- 69c:	b9 f2       	breq	.-82     	; 0x64c <TMU_Dispatch+0x56>
-				sga_TMU_Events[i].TMU_Node_Count=0;
- 69e:	7f 01       	movw	r14, r30
- 6a0:	14 82       	std	Z+4, r1	; 0x04
- 6a2:	13 82       	std	Z+3, r1	; 0x03
+ 634:	81 85       	ldd	r24, Z+9	; 0x09
+ 636:	92 85       	ldd	r25, Z+10	; 0x0a
+ 638:	0e 94 79 02 	call	0x4f2	; 0x4f2 <TMU_Stop>
+ 63c:	78 2e       	mov	r7, r24
+        for(uint64_t i=0;i<sgu16_index;i++)
+ 63e:	ff ef       	ldi	r31, 0xFF	; 255
+ 640:	cf 1a       	sub	r12, r31
+ 642:	df 0a       	sbc	r13, r31
+ 644:	ef 0a       	sbc	r14, r31
+ 646:	ff 0a       	sbc	r15, r31
+ 648:	8d 81       	ldd	r24, Y+5	; 0x05
+ 64a:	9e 81       	ldd	r25, Y+6	; 0x06
+ 64c:	0b 96       	adiw	r24, 0x0b	; 11
+ 64e:	9e 83       	std	Y+6, r25	; 0x06
+ 650:	8d 83       	std	Y+5, r24	; 0x05
+ 652:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <sgu16_index>
+ 656:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <sgu16_index+0x1>
+ 65a:	a0 91 68 00 	lds	r26, 0x0068	; 0x800068 <sgu16_index+0x2>
+ 65e:	b0 91 69 00 	lds	r27, 0x0069	; 0x800069 <sgu16_index+0x3>
+ 662:	c8 16       	cp	r12, r24
+ 664:	d9 06       	cpc	r13, r25
+ 666:	ea 06       	cpc	r14, r26
+ 668:	fb 06       	cpc	r15, r27
+ 66a:	78 f6       	brcc	.-98     	; 0x60a <TMU_Dispatch+0x6c>
+	        u8_Dispatch_Func_Count=((sga_TMU_Events[i].TMU_Node_Period_Count)+1)*sga_TMU_Events[i].Periodicity_MS;
+ 66c:	0d 81       	ldd	r16, Y+5	; 0x05
+ 66e:	1e 81       	ldd	r17, Y+6	; 0x06
+			if((u8_Dispatch_Func_Count==sgu64_TMU_Timer_ISR_Count)&&(sgu64_TMU_Timer_ISR_Count!=0))
+ 670:	80 90 62 00 	lds	r8, 0x0062	; 0x800062 <__data_end>
+ 674:	90 90 63 00 	lds	r9, 0x0063	; 0x800063 <__data_end+0x1>
+ 678:	a0 90 64 00 	lds	r10, 0x0064	; 0x800064 <__data_end+0x2>
+ 67c:	b0 90 65 00 	lds	r11, 0x0065	; 0x800065 <__data_end+0x3>
+	        u8_Dispatch_Func_Count=((sga_TMU_Events[i].TMU_Node_Period_Count)+1)*sga_TMU_Events[i].Periodicity_MS;
+ 680:	d8 01       	movw	r26, r16
+ 682:	15 96       	adiw	r26, 0x05	; 5
+ 684:	2d 91       	ld	r18, X+
+ 686:	3d 91       	ld	r19, X+
+ 688:	4d 91       	ld	r20, X+
+ 68a:	5c 91       	ld	r21, X
+ 68c:	18 97       	sbiw	r26, 0x08	; 8
+ 68e:	2f 5f       	subi	r18, 0xFF	; 255
+ 690:	3f 4f       	sbci	r19, 0xFF	; 255
+ 692:	4f 4f       	sbci	r20, 0xFF	; 255
+ 694:	5f 4f       	sbci	r21, 0xFF	; 255
+ 696:	11 96       	adiw	r26, 0x01	; 1
+ 698:	8d 91       	ld	r24, X+
+ 69a:	9d 91       	ld	r25, X+
+ 69c:	0d 90       	ld	r0, X+
+ 69e:	bc 91       	ld	r27, X
+ 6a0:	a0 2d       	mov	r26, r0
+ 6a2:	bc 01       	movw	r22, r24
+ 6a4:	cd 01       	movw	r24, r26
+ 6a6:	0e 94 d9 05 	call	0xbb2	; 0xbb2 <__mulsi3>
+ 6aa:	69 83       	std	Y+1, r22	; 0x01
+ 6ac:	7a 83       	std	Y+2, r23	; 0x02
+ 6ae:	8b 83       	std	Y+3, r24	; 0x03
+ 6b0:	9c 83       	std	Y+4, r25	; 0x04
+			if((u8_Dispatch_Func_Count==sgu64_TMU_Timer_ISR_Count)&&(sgu64_TMU_Timer_ISR_Count!=0))
+ 6b2:	86 16       	cp	r8, r22
+ 6b4:	97 06       	cpc	r9, r23
+ 6b6:	a8 06       	cpc	r10, r24
+ 6b8:	b9 06       	cpc	r11, r25
+ 6ba:	09 f6       	brne	.-126    	; 0x63e <TMU_Dispatch+0xa0>
+ 6bc:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+ 6c0:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__data_end+0x1>
+ 6c4:	a0 91 64 00 	lds	r26, 0x0064	; 0x800064 <__data_end+0x2>
+ 6c8:	b0 91 65 00 	lds	r27, 0x0065	; 0x800065 <__data_end+0x3>
+ 6cc:	89 2b       	or	r24, r25
+ 6ce:	8a 2b       	or	r24, r26
+ 6d0:	8b 2b       	or	r24, r27
+ 6d2:	09 f4       	brne	.+2      	; 0x6d6 <TMU_Dispatch+0x138>
+ 6d4:	b4 cf       	rjmp	.-152    	; 0x63e <TMU_Dispatch+0xa0>
 				sga_TMU_Events[i].PntrToFunc();
- 6a4:	05 80       	ldd	r0, Z+5	; 0x05
- 6a6:	f6 81       	ldd	r31, Z+6	; 0x06
- 6a8:	e0 2d       	mov	r30, r0
- 6aa:	09 95       	icall
+ 6d6:	d8 01       	movw	r26, r16
+ 6d8:	19 96       	adiw	r26, 0x09	; 9
+ 6da:	ed 91       	ld	r30, X+
+ 6dc:	fc 91       	ld	r31, X
+ 6de:	09 95       	icall
+				sga_TMU_Events[i].TMU_Node_Period_Count=sga_TMU_Events[i].TMU_Node_Period_Count+1;
+ 6e0:	f8 01       	movw	r30, r16
+ 6e2:	85 81       	ldd	r24, Z+5	; 0x05
+ 6e4:	96 81       	ldd	r25, Z+6	; 0x06
+ 6e6:	a7 81       	ldd	r26, Z+7	; 0x07
+ 6e8:	b0 85       	ldd	r27, Z+8	; 0x08
+ 6ea:	01 96       	adiw	r24, 0x01	; 1
+ 6ec:	a1 1d       	adc	r26, r1
+ 6ee:	b1 1d       	adc	r27, r1
+ 6f0:	85 83       	std	Z+5, r24	; 0x05
+ 6f2:	96 83       	std	Z+6, r25	; 0x06
+ 6f4:	a7 83       	std	Z+7, r26	; 0x07
+ 6f6:	b0 87       	std	Z+8, r27	; 0x08
 				if(sga_TMU_Events[i].Periodic_or_not==TMU_Function_ONESHOT)
- 6ac:	f7 01       	movw	r30, r14
- 6ae:	80 81       	ld	r24, Z
- 6b0:	81 30       	cpi	r24, 0x01	; 1
- 6b2:	61 f6       	brne	.-104    	; 0x64c <TMU_Dispatch+0x56>
- 6b4:	c5 cf       	rjmp	.-118    	; 0x640 <TMU_Dispatch+0x4a>
+ 6f8:	80 81       	ld	r24, Z
+ 6fa:	81 30       	cpi	r24, 0x01	; 1
+ 6fc:	09 f0       	breq	.+2      	; 0x700 <TMU_Dispatch+0x162>
+ 6fe:	9f cf       	rjmp	.-194    	; 0x63e <TMU_Dispatch+0xa0>
+ 700:	99 cf       	rjmp	.-206    	; 0x634 <TMU_Dispatch+0x96>
 
-000006b6 <Timer_Init>:
+00000702 <Timer_Init>:
 
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
 	
 uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
 {
- 6b6:	e8 2f       	mov	r30, r24
- 6b8:	f9 2f       	mov	r31, r25
+ 702:	e8 2f       	mov	r30, r24
+ 704:	f9 2f       	mov	r31, r25
 	
 	if(NullPointer!=ps_Copy_TIMER_Init_Config)
- 6ba:	30 97       	sbiw	r30, 0x00	; 0
- 6bc:	09 f4       	brne	.+2      	; 0x6c0 <Timer_Init+0xa>
- 6be:	3f c0       	rjmp	.+126    	; 0x73e <Timer_Init+0x88>
+ 706:	30 97       	sbiw	r30, 0x00	; 0
+ 708:	09 f4       	brne	.+2      	; 0x70c <Timer_Init+0xa>
+ 70a:	3f c0       	rjmp	.+126    	; 0x78a <Timer_Init+0x88>
 	{
 		
 		/*To Check whether the structure values that have been passed is in the scope of configuration nor not*/
 		if(sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]==Enable)            return ERROR_NOK;	
- 6c0:	90 81       	ld	r25, Z
- 6c2:	29 2f       	mov	r18, r25
- 6c4:	30 e0       	ldi	r19, 0x00	; 0
- 6c6:	d9 01       	movw	r26, r18
- 6c8:	a3 58       	subi	r26, 0x83	; 131
- 6ca:	bf 4f       	sbci	r27, 0xFF	; 255
- 6cc:	8c 91       	ld	r24, X
- 6ce:	81 30       	cpi	r24, 0x01	; 1
- 6d0:	f1 f0       	breq	.+60     	; 0x70e <Timer_Init+0x58>
+ 70c:	90 81       	ld	r25, Z
+ 70e:	29 2f       	mov	r18, r25
+ 710:	30 e0       	ldi	r19, 0x00	; 0
+ 712:	d9 01       	movw	r26, r18
+ 714:	a1 57       	subi	r26, 0x71	; 113
+ 716:	bf 4f       	sbci	r27, 0xFF	; 255
+ 718:	8c 91       	ld	r24, X
+ 71a:	81 30       	cpi	r24, 0x01	; 1
+ 71c:	f1 f0       	breq	.+60     	; 0x75a <Timer_Init+0x58>
 		if(ps_Copy_TIMER_Init_Config->Timer_Channel >TIMER2  )                              return ERROR_NOK;	
- 6d2:	93 30       	cpi	r25, 0x03	; 3
- 6d4:	b0 f5       	brcc	.+108    	; 0x742 <Timer_Init+0x8c>
+ 71e:	93 30       	cpi	r25, 0x03	; 3
+ 720:	b0 f5       	brcc	.+108    	; 0x78e <Timer_Init+0x8c>
 		if(ps_Copy_TIMER_Init_Config->Timer_Mode>TIMER_MODE_MILIE )                         return ERROR_NOK;
- 6d6:	82 81       	ldd	r24, Z+2	; 0x02
- 6d8:	83 30       	cpi	r24, 0x03	; 3
- 6da:	a8 f5       	brcc	.+106    	; 0x746 <Timer_Init+0x90>
+ 722:	82 81       	ldd	r24, Z+2	; 0x02
+ 724:	83 30       	cpi	r24, 0x03	; 3
+ 726:	a8 f5       	brcc	.+106    	; 0x792 <Timer_Init+0x90>
 		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode>INTERRUPT)                             return ERROR_NOK;
- 6dc:	43 81       	ldd	r20, Z+3	; 0x03
- 6de:	42 30       	cpi	r20, 0x02	; 2
- 6e0:	a0 f5       	brcc	.+104    	; 0x74a <Timer_Init+0x94>
+ 728:	43 81       	ldd	r20, Z+3	; 0x03
+ 72a:	42 30       	cpi	r20, 0x02	; 2
+ 72c:	a0 f5       	brcc	.+104    	; 0x796 <Timer_Init+0x94>
 		if(ps_Copy_TIMER_Init_Config->Timer_Psc >  Max_Prescaler_possiblities   )           return ERROR_NOK;
- 6e2:	51 81       	ldd	r21, Z+1	; 0x01
- 6e4:	58 30       	cpi	r21, 0x08	; 8
- 6e6:	98 f5       	brcc	.+102    	; 0x74e <Timer_Init+0x98>
+ 72e:	51 81       	ldd	r21, Z+1	; 0x01
+ 730:	58 30       	cpi	r21, 0x08	; 8
+ 732:	98 f5       	brcc	.+102    	; 0x79a <Timer_Init+0x98>
 	
 		/*Adjust the configurations*/
 		
 		sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]=Enable;		
- 6e8:	d9 01       	movw	r26, r18
- 6ea:	a3 58       	subi	r26, 0x83	; 131
- 6ec:	bf 4f       	sbci	r27, 0xFF	; 255
- 6ee:	61 e0       	ldi	r22, 0x01	; 1
- 6f0:	6c 93       	st	X, r22
+ 734:	d9 01       	movw	r26, r18
+ 736:	a1 57       	subi	r26, 0x71	; 113
+ 738:	bf 4f       	sbci	r27, 0xFF	; 255
+ 73a:	61 e0       	ldi	r22, 0x01	; 1
+ 73c:	6c 93       	st	X, r22
 		sgau8_TIMERMode[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Timer_Mode;
- 6f2:	d9 01       	movw	r26, r18
- 6f4:	a0 58       	subi	r26, 0x80	; 128
- 6f6:	bf 4f       	sbci	r27, 0xFF	; 255
- 6f8:	8c 93       	st	X, r24
+ 73e:	d9 01       	movw	r26, r18
+ 740:	ae 56       	subi	r26, 0x6E	; 110
+ 742:	bf 4f       	sbci	r27, 0xFF	; 255
+ 744:	8c 93       	st	X, r24
 		sgau8_Interrupt_Mode[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Interrupt_Mode;
- 6fa:	2d 57       	subi	r18, 0x7D	; 125
- 6fc:	3f 4f       	sbci	r19, 0xFF	; 255
- 6fe:	d9 01       	movw	r26, r18
- 700:	4c 93       	st	X, r20
+ 746:	2b 56       	subi	r18, 0x6B	; 107
+ 748:	3f 4f       	sbci	r19, 0xFF	; 255
+ 74a:	d9 01       	movw	r26, r18
+ 74c:	4c 93       	st	X, r20
 		sgau8_TIMERPrescaler[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Timer_Psc;
 		
     
 		
 		/*In the mode of counter mode the prescaler is entered by the user */
 		if((ps_Copy_TIMER_Init_Config->Timer_Mode)==COUNTER_MODE)
- 702:	81 30       	cpi	r24, 0x01	; 1
- 704:	29 f0       	breq	.+10     	; 0x710 <Timer_Init+0x5a>
+ 74e:	81 30       	cpi	r24, 0x01	; 1
+ 750:	29 f0       	breq	.+10     	; 0x75c <Timer_Init+0x5a>
 			 * the delay is in micro or milie
 			 *************************************************************************/
 		}
 
 		/*Check IF mode of Interrupt is enabled*/
 		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode==INTERRUPT)
- 706:	83 81       	ldd	r24, Z+3	; 0x03
- 708:	81 30       	cpi	r24, 0x01	; 1
- 70a:	a1 f0       	breq	.+40     	; 0x734 <Timer_Init+0x7e>
+ 752:	83 81       	ldd	r24, Z+3	; 0x03
+ 754:	81 30       	cpi	r24, 0x01	; 1
+ 756:	a1 f0       	breq	.+40     	; 0x780 <Timer_Init+0x7e>
 	}
 	else
 	{
 		
 	}
 	return ERROR_OK;
- 70c:	80 e0       	ldi	r24, 0x00	; 0
+ 758:	80 e0       	ldi	r24, 0x00	; 0
 }
- 70e:	08 95       	ret
+ 75a:	08 95       	ret
 			switch(ps_Copy_TIMER_Init_Config->Timer_Channel)
- 710:	91 30       	cpi	r25, 0x01	; 1
- 712:	41 f0       	breq	.+16     	; 0x724 <Timer_Init+0x6e>
- 714:	92 30       	cpi	r25, 0x02	; 2
- 716:	51 f0       	breq	.+20     	; 0x72c <Timer_Init+0x76>
- 718:	91 11       	cpse	r25, r1
- 71a:	f9 cf       	rjmp	.-14     	; 0x70e <Timer_Init+0x58>
+ 75c:	91 30       	cpi	r25, 0x01	; 1
+ 75e:	41 f0       	breq	.+16     	; 0x770 <Timer_Init+0x6e>
+ 760:	92 30       	cpi	r25, 0x02	; 2
+ 762:	51 f0       	breq	.+20     	; 0x778 <Timer_Init+0x76>
+ 764:	91 11       	cpse	r25, r1
+ 766:	f9 cf       	rjmp	.-14     	; 0x75a <Timer_Init+0x58>
 					TIMER0_CNTRL_REG  |=ps_Copy_TIMER_Init_Config->Timer_Psc;
- 71c:	83 b7       	in	r24, 0x33	; 51
- 71e:	58 2b       	or	r21, r24
- 720:	53 bf       	out	0x33, r21	; 51
+ 768:	83 b7       	in	r24, 0x33	; 51
+ 76a:	58 2b       	or	r21, r24
+ 76c:	53 bf       	out	0x33, r21	; 51
 				break;
- 722:	f1 cf       	rjmp	.-30     	; 0x706 <Timer_Init+0x50>
+ 76e:	f1 cf       	rjmp	.-30     	; 0x752 <Timer_Init+0x50>
 					TIMER1_CNTRL_REG_B|=ps_Copy_TIMER_Init_Config->Timer_Psc;
- 724:	8e b5       	in	r24, 0x2e	; 46
- 726:	58 2b       	or	r21, r24
- 728:	5e bd       	out	0x2e, r21	; 46
+ 770:	8e b5       	in	r24, 0x2e	; 46
+ 772:	58 2b       	or	r21, r24
+ 774:	5e bd       	out	0x2e, r21	; 46
 				break;
- 72a:	ed cf       	rjmp	.-38     	; 0x706 <Timer_Init+0x50>
+ 776:	ed cf       	rjmp	.-38     	; 0x752 <Timer_Init+0x50>
 				     TIMER2_CNTRL_REG|=ps_Copy_TIMER_Init_Config->Timer_Psc;
- 72c:	85 b5       	in	r24, 0x25	; 37
- 72e:	58 2b       	or	r21, r24
- 730:	55 bd       	out	0x25, r21	; 37
+ 778:	85 b5       	in	r24, 0x25	; 37
+ 77a:	58 2b       	or	r21, r24
+ 77c:	55 bd       	out	0x25, r21	; 37
 				break;
- 732:	e9 cf       	rjmp	.-46     	; 0x706 <Timer_Init+0x50>
+ 77e:	e9 cf       	rjmp	.-46     	; 0x752 <Timer_Init+0x50>
 				  EnableGeneralInterrupt();
- 734:	8f b7       	in	r24, 0x3f	; 63
- 736:	80 68       	ori	r24, 0x80	; 128
- 738:	8f bf       	out	0x3f, r24	; 63
+ 780:	8f b7       	in	r24, 0x3f	; 63
+ 782:	80 68       	ori	r24, 0x80	; 128
+ 784:	8f bf       	out	0x3f, r24	; 63
 	return ERROR_OK;
- 73a:	80 e0       	ldi	r24, 0x00	; 0
- 73c:	08 95       	ret
- 73e:	80 e0       	ldi	r24, 0x00	; 0
- 740:	08 95       	ret
+ 786:	80 e0       	ldi	r24, 0x00	; 0
+ 788:	08 95       	ret
+ 78a:	80 e0       	ldi	r24, 0x00	; 0
+ 78c:	08 95       	ret
 		if(ps_Copy_TIMER_Init_Config->Timer_Channel >TIMER2  )                              return ERROR_NOK;	
- 742:	81 e0       	ldi	r24, 0x01	; 1
- 744:	08 95       	ret
+ 78e:	81 e0       	ldi	r24, 0x01	; 1
+ 790:	08 95       	ret
 		if(ps_Copy_TIMER_Init_Config->Timer_Mode>TIMER_MODE_MILIE )                         return ERROR_NOK;
- 746:	81 e0       	ldi	r24, 0x01	; 1
- 748:	08 95       	ret
+ 792:	81 e0       	ldi	r24, 0x01	; 1
+ 794:	08 95       	ret
 		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode>INTERRUPT)                             return ERROR_NOK;
- 74a:	81 e0       	ldi	r24, 0x01	; 1
- 74c:	08 95       	ret
+ 796:	81 e0       	ldi	r24, 0x01	; 1
+ 798:	08 95       	ret
 		if(ps_Copy_TIMER_Init_Config->Timer_Psc >  Max_Prescaler_possiblities   )           return ERROR_NOK;
- 74e:	81 e0       	ldi	r24, 0x01	; 1
- 750:	08 95       	ret
+ 79a:	81 e0       	ldi	r24, 0x01	; 1
+ 79c:	08 95       	ret
 
-00000752 <Timer_Start>:
+0000079e <Timer_Start>:
 
 uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_t_Copy_TIMER_Start_ISR)//with sgau8_Prescaler
 {
- 752:	98 2f       	mov	r25, r24
- 754:	26 2f       	mov	r18, r22
- 756:	37 2f       	mov	r19, r23
- 758:	64 2f       	mov	r22, r20
- 75a:	75 2f       	mov	r23, r21
+ 79e:	98 2f       	mov	r25, r24
+ 7a0:	26 2f       	mov	r18, r22
+ 7a2:	37 2f       	mov	r19, r23
+ 7a4:	64 2f       	mov	r22, r20
+ 7a6:	75 2f       	mov	r23, r21
 	
 	uint16_t u16_Count_TIMER_Start=0;
 	
 	switch(u8_Copy_TIMER_Start_TIMERChannel)
- 75c:	81 30       	cpi	r24, 0x01	; 1
- 75e:	09 f4       	brne	.+2      	; 0x762 <Timer_Start+0x10>
- 760:	9a c0       	rjmp	.+308    	; 0x896 <__stack+0x37>
- 762:	82 30       	cpi	r24, 0x02	; 2
- 764:	09 f4       	brne	.+2      	; 0x768 <Timer_Start+0x16>
- 766:	0f c1       	rjmp	.+542    	; 0x986 <__stack+0x127>
- 768:	88 23       	and	r24, r24
- 76a:	11 f0       	breq	.+4      	; 0x770 <Timer_Start+0x1e>
- 76c:	81 e0       	ldi	r24, 0x01	; 1
- 76e:	08 95       	ret
+ 7a8:	81 30       	cpi	r24, 0x01	; 1
+ 7aa:	09 f4       	brne	.+2      	; 0x7ae <Timer_Start+0x10>
+ 7ac:	9a c0       	rjmp	.+308    	; 0x8e2 <__stack+0x83>
+ 7ae:	82 30       	cpi	r24, 0x02	; 2
+ 7b0:	09 f4       	brne	.+2      	; 0x7b4 <Timer_Start+0x16>
+ 7b2:	0f c1       	rjmp	.+542    	; 0x9d2 <__stack+0x173>
+ 7b4:	88 23       	and	r24, r24
+ 7b6:	11 f0       	breq	.+4      	; 0x7bc <Timer_Start+0x1e>
+ 7b8:	81 e0       	ldi	r24, 0x01	; 1
+ 7ba:	08 95       	ret
 	{
 		case TIMER0:
 		{
 			/*Check whether it is counter or timer*/
 			if(sgau8_TIMERMode[TIMER0]!=COUNTER_MODE)
- 770:	40 91 80 00 	lds	r20, 0x0080	; 0x800080 <sgau8_TIMERMode>
- 774:	41 30       	cpi	r20, 0x01	; 1
- 776:	09 f4       	brne	.+2      	; 0x77a <Timer_Start+0x28>
- 778:	6f c0       	rjmp	.+222    	; 0x858 <Timer_Start+0x106>
+ 7bc:	40 91 92 00 	lds	r20, 0x0092	; 0x800092 <sgau8_TIMERMode>
+ 7c0:	41 30       	cpi	r20, 0x01	; 1
+ 7c2:	09 f4       	brne	.+2      	; 0x7c6 <Timer_Start+0x28>
+ 7c4:	6f c0       	rjmp	.+222    	; 0x8a4 <__stack+0x45>
 			{
 				/* Check whether it is time delay in mili or in micro */
 				if(sgau8_TIMERMode[TIMER0]==TIMER_MODE_MICRO)
- 77a:	41 11       	cpse	r20, r1
- 77c:	37 c0       	rjmp	.+110    	; 0x7ec <Timer_Start+0x9a>
+ 7c6:	41 11       	cpse	r20, r1
+ 7c8:	37 c0       	rjmp	.+110    	; 0x838 <Timer_Start+0x9a>
 				{ 
 						/************************************************************
 						 * The prescale divide by 8 and  make count =1 and  the 
 						 * counter =255-1 to get overflow every micro
 						 ************************************************************/
 						TIMER0_CNTRL_REG|=F_CPU_CLOCK_8_TIMER_0;	
- 77e:	83 b7       	in	r24, 0x33	; 51
- 780:	82 60       	ori	r24, 0x02	; 2
- 782:	83 bf       	out	0x33, r24	; 51
+ 7ca:	83 b7       	in	r24, 0x33	; 51
+ 7cc:	82 60       	ori	r24, 0x02	; 2
+ 7ce:	83 bf       	out	0x33, r24	; 51
 						/*Check whether it is polled or not*/
 						if(sgau8_Interrupt_Mode[TIMER0]==POLLING)
- 784:	80 91 83 00 	lds	r24, 0x0083	; 0x800083 <sgau8_Interrupt_Mode>
- 788:	81 11       	cpse	r24, r1
- 78a:	14 c0       	rjmp	.+40     	; 0x7b4 <Timer_Start+0x62>
+ 7d0:	80 91 95 00 	lds	r24, 0x0095	; 0x800095 <sgau8_Interrupt_Mode>
+ 7d4:	81 11       	cpse	r24, r1
+ 7d6:	14 c0       	rjmp	.+40     	; 0x800 <Timer_Start+0x62>
 						{                            
 							/*Loop  until it get the time of delay in micro*/
 							while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 78c:	21 15       	cp	r18, r1
- 78e:	31 05       	cpc	r19, r1
- 790:	09 f4       	brne	.+2      	; 0x794 <Timer_Start+0x42>
- 792:	5d c1       	rjmp	.+698    	; 0xa4e <__stack+0x1ef>
+ 7d8:	21 15       	cp	r18, r1
+ 7da:	31 05       	cpc	r19, r1
+ 7dc:	09 f4       	brne	.+2      	; 0x7e0 <Timer_Start+0x42>
+ 7de:	5d c1       	rjmp	.+698    	; 0xa9a <__stack+0x23b>
 	uint16_t u16_Count_TIMER_Start=0;
- 794:	50 e0       	ldi	r21, 0x00	; 0
- 796:	40 e0       	ldi	r20, 0x00	; 0
+ 7e0:	50 e0       	ldi	r21, 0x00	; 0
+ 7e2:	40 e0       	ldi	r20, 0x00	; 0
 								/************************************************************
 								 * The prescale divide by 64 and  make count =1 and  the 
 								 * counter =255-1 to get overflow every micro
 								 ************************************************************/
 								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
 								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
- 798:	6e ef       	ldi	r22, 0xFE	; 254
+ 7e4:	6e ef       	ldi	r22, 0xFE	; 254
 								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
- 79a:	98 b7       	in	r25, 0x38	; 56
- 79c:	91 60       	ori	r25, 0x01	; 1
- 79e:	98 bf       	out	0x38, r25	; 56
+ 7e6:	98 b7       	in	r25, 0x38	; 56
+ 7e8:	91 60       	ori	r25, 0x01	; 1
+ 7ea:	98 bf       	out	0x38, r25	; 56
 								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
- 7a0:	62 bf       	out	0x32, r22	; 50
+ 7ec:	62 bf       	out	0x32, r22	; 50
 								/*Loop  until overflow happens*/
 								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
- 7a2:	08 b6       	in	r0, 0x38	; 56
- 7a4:	00 fe       	sbrs	r0, 0
- 7a6:	fd cf       	rjmp	.-6      	; 0x7a2 <Timer_Start+0x50>
+ 7ee:	08 b6       	in	r0, 0x38	; 56
+ 7f0:	00 fe       	sbrs	r0, 0
+ 7f2:	fd cf       	rjmp	.-6      	; 0x7ee <Timer_Start+0x50>
 								u16_Count_TIMER_Start++;
- 7a8:	4f 5f       	subi	r20, 0xFF	; 255
- 7aa:	5f 4f       	sbci	r21, 0xFF	; 255
+ 7f4:	4f 5f       	subi	r20, 0xFF	; 255
+ 7f6:	5f 4f       	sbci	r21, 0xFF	; 255
 							while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 7ac:	24 17       	cp	r18, r20
- 7ae:	35 07       	cpc	r19, r21
- 7b0:	a1 f7       	brne	.-24     	; 0x79a <Timer_Start+0x48>
- 7b2:	08 95       	ret
+ 7f8:	24 17       	cp	r18, r20
+ 7fa:	35 07       	cpc	r19, r21
+ 7fc:	a1 f7       	brne	.-24     	; 0x7e6 <Timer_Start+0x48>
+ 7fe:	08 95       	ret
 							}
 							
 						}
 			
 						else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
- 7b4:	81 30       	cpi	r24, 0x01	; 1
- 7b6:	11 f0       	breq	.+4      	; 0x7bc <Timer_Start+0x6a>
+ 800:	81 30       	cpi	r24, 0x01	; 1
+ 802:	11 f0       	breq	.+4      	; 0x808 <Timer_Start+0x6a>
 		{
 			return ERROR_NOK;
 		}
 		break;			
 	}
 	return ERROR_OK;
- 7b8:	84 2f       	mov	r24, r20
- 7ba:	08 95       	ret
+ 804:	84 2f       	mov	r24, r20
+ 806:	08 95       	ret
 						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
- 7bc:	88 b7       	in	r24, 0x38	; 56
- 7be:	81 60       	ori	r24, 0x01	; 1
- 7c0:	88 bf       	out	0x38, r24	; 56
+ 808:	88 b7       	in	r24, 0x38	; 56
+ 80a:	81 60       	ori	r24, 0x01	; 1
+ 80c:	88 bf       	out	0x38, r24	; 56
 							 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
- 7c2:	8e ef       	ldi	r24, 0xFE	; 254
- 7c4:	82 bf       	out	0x32, r24	; 50
+ 80e:	8e ef       	ldi	r24, 0xFE	; 254
+ 810:	82 bf       	out	0x32, r24	; 50
 							 sgu16_TIMER_COUNTER_REG_BUFFER=TIMER0_COUNTER_REG;
- 7c6:	82 b7       	in	r24, 0x32	; 50
- 7c8:	90 e0       	ldi	r25, 0x00	; 0
- 7ca:	90 93 7a 00 	sts	0x007A, r25	; 0x80007a <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
- 7ce:	80 93 79 00 	sts	0x0079, r24	; 0x800079 <sgu16_TIMER_COUNTER_REG_BUFFER>
+ 812:	82 b7       	in	r24, 0x32	; 50
+ 814:	90 e0       	ldi	r25, 0x00	; 0
+ 816:	90 93 8c 00 	sts	0x008C, r25	; 0x80008c <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
+ 81a:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <sgu16_TIMER_COUNTER_REG_BUFFER>
 				             Timer_0_OVF_INT_EN();			  
- 7d2:	89 b7       	in	r24, 0x39	; 57
- 7d4:	81 60       	ori	r24, 0x01	; 1
- 7d6:	89 bf       	out	0x39, r24	; 57
+ 81e:	89 b7       	in	r24, 0x39	; 57
+ 820:	81 60       	ori	r24, 0x01	; 1
+ 822:	89 bf       	out	0x39, r24	; 57
 							 sgPntrToFunc_TIMER_OVF=sgPntrToFunc_TIMER_OVF;													
- 7d8:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <sgPntrToFunc_TIMER_OVF>
- 7dc:	90 91 7c 00 	lds	r25, 0x007C	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 7e0:	90 93 7c 00 	sts	0x007C, r25	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 7e4:	80 93 7b 00 	sts	0x007B, r24	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 824:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <sgPntrToFunc_TIMER_OVF>
+ 828:	90 91 8e 00 	lds	r25, 0x008E	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 82c:	90 93 8e 00 	sts	0x008E, r25	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 830:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 7e8:	84 2f       	mov	r24, r20
- 7ea:	08 95       	ret
+ 834:	84 2f       	mov	r24, r20
+ 836:	08 95       	ret
 				else if(sgau8_TIMERMode[TIMER0]==TIMER_MODE_MILIE)
- 7ec:	42 30       	cpi	r20, 0x02	; 2
- 7ee:	09 f0       	breq	.+2      	; 0x7f2 <Timer_Start+0xa0>
- 7f0:	08 95       	ret
+ 838:	42 30       	cpi	r20, 0x02	; 2
+ 83a:	09 f0       	breq	.+2      	; 0x83e <Timer_Start+0xa0>
+ 83c:	08 95       	ret
 						TIMER0_CNTRL_REG|=F_CPU_CLOCK_64_TIMER_0;	
- 7f2:	83 b7       	in	r24, 0x33	; 51
- 7f4:	83 60       	ori	r24, 0x03	; 3
- 7f6:	83 bf       	out	0x33, r24	; 51
+ 83e:	83 b7       	in	r24, 0x33	; 51
+ 840:	83 60       	ori	r24, 0x03	; 3
+ 842:	83 bf       	out	0x33, r24	; 51
 						if(sgau8_Interrupt_Mode[TIMER0]==POLLING)
- 7f8:	80 91 83 00 	lds	r24, 0x0083	; 0x800083 <sgau8_Interrupt_Mode>
- 7fc:	81 11       	cpse	r24, r1
- 7fe:	14 c0       	rjmp	.+40     	; 0x828 <Timer_Start+0xd6>
+ 844:	80 91 95 00 	lds	r24, 0x0095	; 0x800095 <sgau8_Interrupt_Mode>
+ 848:	81 11       	cpse	r24, r1
+ 84a:	14 c0       	rjmp	.+40     	; 0x874 <__stack+0x15>
 							while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 800:	21 15       	cp	r18, r1
- 802:	31 05       	cpc	r19, r1
- 804:	09 f4       	brne	.+2      	; 0x808 <Timer_Start+0xb6>
- 806:	23 c1       	rjmp	.+582    	; 0xa4e <__stack+0x1ef>
+ 84c:	21 15       	cp	r18, r1
+ 84e:	31 05       	cpc	r19, r1
+ 850:	09 f4       	brne	.+2      	; 0x854 <Timer_Start+0xb6>
+ 852:	23 c1       	rjmp	.+582    	; 0xa9a <__stack+0x23b>
 	uint16_t u16_Count_TIMER_Start=0;
- 808:	50 e0       	ldi	r21, 0x00	; 0
- 80a:	40 e0       	ldi	r20, 0x00	; 0
+ 854:	50 e0       	ldi	r21, 0x00	; 0
+ 856:	40 e0       	ldi	r20, 0x00	; 0
 								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-125U);
- 80c:	62 e8       	ldi	r22, 0x82	; 130
+ 858:	62 e8       	ldi	r22, 0x82	; 130
 								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
- 80e:	98 b7       	in	r25, 0x38	; 56
- 810:	91 60       	ori	r25, 0x01	; 1
- 812:	98 bf       	out	0x38, r25	; 56
+ 85a:	98 b7       	in	r25, 0x38	; 56
+ 85c:	91 60       	ori	r25, 0x01	; 1
+ 85e:	98 bf       	out	0x38, r25	; 56
 								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-125U);
- 814:	62 bf       	out	0x32, r22	; 50
+ 860:	62 bf       	out	0x32, r22	; 50
 								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
- 816:	08 b6       	in	r0, 0x38	; 56
- 818:	00 fe       	sbrs	r0, 0
- 81a:	fd cf       	rjmp	.-6      	; 0x816 <Timer_Start+0xc4>
+ 862:	08 b6       	in	r0, 0x38	; 56
+ 864:	00 fe       	sbrs	r0, 0
+ 866:	fd cf       	rjmp	.-6      	; 0x862 <__stack+0x3>
 								u16_Count_TIMER_Start++;
- 81c:	4f 5f       	subi	r20, 0xFF	; 255
- 81e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 868:	4f 5f       	subi	r20, 0xFF	; 255
+ 86a:	5f 4f       	sbci	r21, 0xFF	; 255
 							while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 820:	24 17       	cp	r18, r20
- 822:	35 07       	cpc	r19, r21
- 824:	a1 f7       	brne	.-24     	; 0x80e <Timer_Start+0xbc>
- 826:	08 95       	ret
+ 86c:	24 17       	cp	r18, r20
+ 86e:	35 07       	cpc	r19, r21
+ 870:	a1 f7       	brne	.-24     	; 0x85a <Timer_Start+0xbc>
+ 872:	08 95       	ret
 						else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
- 828:	81 30       	cpi	r24, 0x01	; 1
- 82a:	11 f0       	breq	.+4      	; 0x830 <Timer_Start+0xde>
+ 874:	81 30       	cpi	r24, 0x01	; 1
+ 876:	11 f0       	breq	.+4      	; 0x87c <__stack+0x1d>
 	return ERROR_OK;
- 82c:	89 2f       	mov	r24, r25
- 82e:	08 95       	ret
+ 878:	89 2f       	mov	r24, r25
+ 87a:	08 95       	ret
 						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
- 830:	88 b7       	in	r24, 0x38	; 56
- 832:	81 60       	ori	r24, 0x01	; 1
- 834:	88 bf       	out	0x38, r24	; 56
+ 87c:	88 b7       	in	r24, 0x38	; 56
+ 87e:	81 60       	ori	r24, 0x01	; 1
+ 880:	88 bf       	out	0x38, r24	; 56
 							 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-125U);
- 836:	82 e8       	ldi	r24, 0x82	; 130
- 838:	82 bf       	out	0x32, r24	; 50
+ 882:	82 e8       	ldi	r24, 0x82	; 130
+ 884:	82 bf       	out	0x32, r24	; 50
 							 sgu16_TIMER_COUNTER_REG_BUFFER=TIMER0_COUNTER_REG;
- 83a:	22 b7       	in	r18, 0x32	; 50
- 83c:	30 e0       	ldi	r19, 0x00	; 0
- 83e:	30 93 7a 00 	sts	0x007A, r19	; 0x80007a <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
- 842:	20 93 79 00 	sts	0x0079, r18	; 0x800079 <sgu16_TIMER_COUNTER_REG_BUFFER>
+ 886:	22 b7       	in	r18, 0x32	; 50
+ 888:	30 e0       	ldi	r19, 0x00	; 0
+ 88a:	30 93 8c 00 	sts	0x008C, r19	; 0x80008c <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
+ 88e:	20 93 8b 00 	sts	0x008B, r18	; 0x80008b <sgu16_TIMER_COUNTER_REG_BUFFER>
 				             Timer_0_OVF_INT_EN();			  
- 846:	89 b7       	in	r24, 0x39	; 57
- 848:	81 60       	ori	r24, 0x01	; 1
- 84a:	89 bf       	out	0x39, r24	; 57
+ 892:	89 b7       	in	r24, 0x39	; 57
+ 894:	81 60       	ori	r24, 0x01	; 1
+ 896:	89 bf       	out	0x39, r24	; 57
 							 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;												
- 84c:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 850:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 898:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 89c:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 854:	89 2f       	mov	r24, r25
- 856:	08 95       	ret
+ 8a0:	89 2f       	mov	r24, r25
+ 8a2:	08 95       	ret
 				if(sgau8_Interrupt_Mode[TIMER0]==POLLING)
- 858:	80 91 83 00 	lds	r24, 0x0083	; 0x800083 <sgau8_Interrupt_Mode>
- 85c:	81 11       	cpse	r24, r1
- 85e:	09 c0       	rjmp	.+18     	; 0x872 <__stack+0x13>
+ 8a4:	80 91 95 00 	lds	r24, 0x0095	; 0x800095 <sgau8_Interrupt_Mode>
+ 8a8:	81 11       	cpse	r24, r1
+ 8aa:	09 c0       	rjmp	.+18     	; 0x8be <__stack+0x5f>
                     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);
- 860:	98 b7       	in	r25, 0x38	; 56
- 862:	91 60       	ori	r25, 0x01	; 1
- 864:	98 bf       	out	0x38, r25	; 56
+ 8ac:	98 b7       	in	r25, 0x38	; 56
+ 8ae:	91 60       	ori	r25, 0x01	; 1
+ 8b0:	98 bf       	out	0x38, r25	; 56
 				    TIMER0_COUNTER_REG=TIMER0_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
- 866:	20 95       	com	r18
- 868:	22 bf       	out	0x32, r18	; 50
+ 8b2:	20 95       	com	r18
+ 8b4:	22 bf       	out	0x32, r18	; 50
 					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
- 86a:	08 b6       	in	r0, 0x38	; 56
- 86c:	00 fe       	sbrs	r0, 0
- 86e:	fd cf       	rjmp	.-6      	; 0x86a <__stack+0xb>
- 870:	08 95       	ret
+ 8b6:	08 b6       	in	r0, 0x38	; 56
+ 8b8:	00 fe       	sbrs	r0, 0
+ 8ba:	fd cf       	rjmp	.-6      	; 0x8b6 <__stack+0x57>
+ 8bc:	08 95       	ret
 				else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
- 872:	81 30       	cpi	r24, 0x01	; 1
- 874:	11 f0       	breq	.+4      	; 0x87a <__stack+0x1b>
+ 8be:	81 30       	cpi	r24, 0x01	; 1
+ 8c0:	11 f0       	breq	.+4      	; 0x8c6 <__stack+0x67>
 	return ERROR_OK;
- 876:	89 2f       	mov	r24, r25
- 878:	08 95       	ret
+ 8c2:	89 2f       	mov	r24, r25
+ 8c4:	08 95       	ret
 					 SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
- 87a:	88 b7       	in	r24, 0x38	; 56
- 87c:	81 60       	ori	r24, 0x01	; 1
- 87e:	88 bf       	out	0x38, r24	; 56
+ 8c6:	88 b7       	in	r24, 0x38	; 56
+ 8c8:	81 60       	ori	r24, 0x01	; 1
+ 8ca:	88 bf       	out	0x38, r24	; 56
 					 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
- 880:	8e ef       	ldi	r24, 0xFE	; 254
- 882:	82 bf       	out	0x32, r24	; 50
+ 8cc:	8e ef       	ldi	r24, 0xFE	; 254
+ 8ce:	82 bf       	out	0x32, r24	; 50
 					 Timer_0_OVF_INT_EN();			  
- 884:	89 b7       	in	r24, 0x39	; 57
- 886:	81 60       	ori	r24, 0x01	; 1
- 888:	89 bf       	out	0x39, r24	; 57
+ 8d0:	89 b7       	in	r24, 0x39	; 57
+ 8d2:	81 60       	ori	r24, 0x01	; 1
+ 8d4:	89 bf       	out	0x39, r24	; 57
 					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
- 88a:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 88e:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 8d6:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 8da:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 892:	89 2f       	mov	r24, r25
- 894:	08 95       	ret
+ 8de:	89 2f       	mov	r24, r25
+ 8e0:	08 95       	ret
 			if(sgau8_TIMERMode[TIMER1]!=COUNTER_MODE)
- 896:	90 91 81 00 	lds	r25, 0x0081	; 0x800081 <sgau8_TIMERMode+0x1>
- 89a:	91 30       	cpi	r25, 0x01	; 1
- 89c:	09 f4       	brne	.+2      	; 0x8a0 <__stack+0x41>
- 89e:	54 c0       	rjmp	.+168    	; 0x948 <__stack+0xe9>
+ 8e2:	90 91 93 00 	lds	r25, 0x0093	; 0x800093 <sgau8_TIMERMode+0x1>
+ 8e6:	91 30       	cpi	r25, 0x01	; 1
+ 8e8:	09 f4       	brne	.+2      	; 0x8ec <__stack+0x8d>
+ 8ea:	54 c0       	rjmp	.+168    	; 0x994 <__stack+0x135>
 				if(sgau8_TIMERMode[TIMER1]==TIMER_MODE_MICRO)
- 8a0:	91 11       	cpse	r25, r1
- 8a2:	27 c0       	rjmp	.+78     	; 0x8f2 <__stack+0x93>
+ 8ec:	91 11       	cpse	r25, r1
+ 8ee:	27 c0       	rjmp	.+78     	; 0x93e <__stack+0xdf>
 					TIMER1_CNTRL_REG_B|=F_CPU_CLOCK_8_TIMER_1;
- 8a4:	8e b5       	in	r24, 0x2e	; 46
- 8a6:	82 60       	ori	r24, 0x02	; 2
- 8a8:	8e bd       	out	0x2e, r24	; 46
+ 8f0:	8e b5       	in	r24, 0x2e	; 46
+ 8f2:	82 60       	ori	r24, 0x02	; 2
+ 8f4:	8e bd       	out	0x2e, r24	; 46
 					if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
- 8aa:	80 91 84 00 	lds	r24, 0x0084	; 0x800084 <sgau8_Interrupt_Mode+0x1>
- 8ae:	81 11       	cpse	r24, r1
- 8b0:	16 c0       	rjmp	.+44     	; 0x8de <__stack+0x7f>
+ 8f6:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <sgau8_Interrupt_Mode+0x1>
+ 8fa:	81 11       	cpse	r24, r1
+ 8fc:	16 c0       	rjmp	.+44     	; 0x92a <__stack+0xcb>
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 8b2:	21 15       	cp	r18, r1
- 8b4:	31 05       	cpc	r19, r1
- 8b6:	09 f4       	brne	.+2      	; 0x8ba <__stack+0x5b>
- 8b8:	ca c0       	rjmp	.+404    	; 0xa4e <__stack+0x1ef>
+ 8fe:	21 15       	cp	r18, r1
+ 900:	31 05       	cpc	r19, r1
+ 902:	09 f4       	brne	.+2      	; 0x906 <__stack+0xa7>
+ 904:	ca c0       	rjmp	.+404    	; 0xa9a <__stack+0x23b>
 	uint16_t u16_Count_TIMER_Start=0;
- 8ba:	50 e0       	ldi	r21, 0x00	; 0
- 8bc:	40 e0       	ldi	r20, 0x00	; 0
+ 906:	50 e0       	ldi	r21, 0x00	; 0
+ 908:	40 e0       	ldi	r20, 0x00	; 0
 							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-1U);
- 8be:	6f ef       	ldi	r22, 0xFF	; 255
- 8c0:	7f ef       	ldi	r23, 0xFF	; 255
+ 90a:	6f ef       	ldi	r22, 0xFF	; 255
+ 90c:	7f ef       	ldi	r23, 0xFF	; 255
 							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);
- 8c2:	98 b7       	in	r25, 0x38	; 56
- 8c4:	94 60       	ori	r25, 0x04	; 4
- 8c6:	98 bf       	out	0x38, r25	; 56
+ 90e:	98 b7       	in	r25, 0x38	; 56
+ 910:	94 60       	ori	r25, 0x04	; 4
+ 912:	98 bf       	out	0x38, r25	; 56
 							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-1U);
- 8c8:	7d bd       	out	0x2d, r23	; 45
- 8ca:	6c bd       	out	0x2c, r22	; 44
+ 914:	7d bd       	out	0x2d, r23	; 45
+ 916:	6c bd       	out	0x2c, r22	; 44
 							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
- 8cc:	08 b6       	in	r0, 0x38	; 56
- 8ce:	02 fe       	sbrs	r0, 2
- 8d0:	fd cf       	rjmp	.-6      	; 0x8cc <__stack+0x6d>
+ 918:	08 b6       	in	r0, 0x38	; 56
+ 91a:	02 fe       	sbrs	r0, 2
+ 91c:	fd cf       	rjmp	.-6      	; 0x918 <__stack+0xb9>
 							u16_Count_TIMER_Start++;
- 8d2:	4f 5f       	subi	r20, 0xFF	; 255
- 8d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 91e:	4f 5f       	subi	r20, 0xFF	; 255
+ 920:	5f 4f       	sbci	r21, 0xFF	; 255
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 8d6:	24 17       	cp	r18, r20
- 8d8:	35 07       	cpc	r19, r21
- 8da:	99 f7       	brne	.-26     	; 0x8c2 <__stack+0x63>
- 8dc:	08 95       	ret
+ 922:	24 17       	cp	r18, r20
+ 924:	35 07       	cpc	r19, r21
+ 926:	99 f7       	brne	.-26     	; 0x90e <__stack+0xaf>
+ 928:	08 95       	ret
 					else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
- 8de:	81 30       	cpi	r24, 0x01	; 1
- 8e0:	11 f0       	breq	.+4      	; 0x8e6 <__stack+0x87>
+ 92a:	81 30       	cpi	r24, 0x01	; 1
+ 92c:	11 f0       	breq	.+4      	; 0x932 <__stack+0xd3>
 	return ERROR_OK;
- 8e2:	89 2f       	mov	r24, r25
- 8e4:	08 95       	ret
+ 92e:	89 2f       	mov	r24, r25
+ 930:	08 95       	ret
 						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
- 8e6:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 8ea:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 932:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 936:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 8ee:	89 2f       	mov	r24, r25
- 8f0:	08 95       	ret
+ 93a:	89 2f       	mov	r24, r25
+ 93c:	08 95       	ret
 				else if(sgau8_TIMERMode[TIMER1]==TIMER_MODE_MILIE)
- 8f2:	92 30       	cpi	r25, 0x02	; 2
- 8f4:	11 f0       	breq	.+4      	; 0x8fa <__stack+0x9b>
+ 93e:	92 30       	cpi	r25, 0x02	; 2
+ 940:	11 f0       	breq	.+4      	; 0x946 <__stack+0xe7>
 	return ERROR_OK;
- 8f6:	80 e0       	ldi	r24, 0x00	; 0
- 8f8:	08 95       	ret
+ 942:	80 e0       	ldi	r24, 0x00	; 0
+ 944:	08 95       	ret
 					TIMER1_CNTRL_REG_B|=F_CPU_CLOCK_64_TIMER_1;
- 8fa:	8e b5       	in	r24, 0x2e	; 46
- 8fc:	83 60       	ori	r24, 0x03	; 3
- 8fe:	8e bd       	out	0x2e, r24	; 46
+ 946:	8e b5       	in	r24, 0x2e	; 46
+ 948:	83 60       	ori	r24, 0x03	; 3
+ 94a:	8e bd       	out	0x2e, r24	; 46
 					if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
- 900:	80 91 84 00 	lds	r24, 0x0084	; 0x800084 <sgau8_Interrupt_Mode+0x1>
- 904:	81 11       	cpse	r24, r1
- 906:	16 c0       	rjmp	.+44     	; 0x934 <__stack+0xd5>
+ 94c:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <sgau8_Interrupt_Mode+0x1>
+ 950:	81 11       	cpse	r24, r1
+ 952:	16 c0       	rjmp	.+44     	; 0x980 <__stack+0x121>
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 908:	21 15       	cp	r18, r1
- 90a:	31 05       	cpc	r19, r1
- 90c:	09 f4       	brne	.+2      	; 0x910 <__stack+0xb1>
- 90e:	9f c0       	rjmp	.+318    	; 0xa4e <__stack+0x1ef>
+ 954:	21 15       	cp	r18, r1
+ 956:	31 05       	cpc	r19, r1
+ 958:	09 f4       	brne	.+2      	; 0x95c <__stack+0xfd>
+ 95a:	9f c0       	rjmp	.+318    	; 0xa9a <__stack+0x23b>
 	uint16_t u16_Count_TIMER_Start=0;
- 910:	50 e0       	ldi	r21, 0x00	; 0
- 912:	40 e0       	ldi	r20, 0x00	; 0
+ 95c:	50 e0       	ldi	r21, 0x00	; 0
+ 95e:	40 e0       	ldi	r20, 0x00	; 0
 							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-125U);
- 914:	63 e8       	ldi	r22, 0x83	; 131
- 916:	7f ef       	ldi	r23, 0xFF	; 255
+ 960:	63 e8       	ldi	r22, 0x83	; 131
+ 962:	7f ef       	ldi	r23, 0xFF	; 255
 							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);							 
- 918:	98 b7       	in	r25, 0x38	; 56
- 91a:	94 60       	ori	r25, 0x04	; 4
- 91c:	98 bf       	out	0x38, r25	; 56
+ 964:	98 b7       	in	r25, 0x38	; 56
+ 966:	94 60       	ori	r25, 0x04	; 4
+ 968:	98 bf       	out	0x38, r25	; 56
 							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-125U);
- 91e:	7d bd       	out	0x2d, r23	; 45
- 920:	6c bd       	out	0x2c, r22	; 44
+ 96a:	7d bd       	out	0x2d, r23	; 45
+ 96c:	6c bd       	out	0x2c, r22	; 44
 							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
- 922:	08 b6       	in	r0, 0x38	; 56
- 924:	02 fe       	sbrs	r0, 2
- 926:	fd cf       	rjmp	.-6      	; 0x922 <__stack+0xc3>
+ 96e:	08 b6       	in	r0, 0x38	; 56
+ 970:	02 fe       	sbrs	r0, 2
+ 972:	fd cf       	rjmp	.-6      	; 0x96e <__stack+0x10f>
 							u16_Count_TIMER_Start++;
- 928:	4f 5f       	subi	r20, 0xFF	; 255
- 92a:	5f 4f       	sbci	r21, 0xFF	; 255
+ 974:	4f 5f       	subi	r20, 0xFF	; 255
+ 976:	5f 4f       	sbci	r21, 0xFF	; 255
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 92c:	24 17       	cp	r18, r20
- 92e:	35 07       	cpc	r19, r21
- 930:	99 f7       	brne	.-26     	; 0x918 <__stack+0xb9>
- 932:	08 95       	ret
+ 978:	24 17       	cp	r18, r20
+ 97a:	35 07       	cpc	r19, r21
+ 97c:	99 f7       	brne	.-26     	; 0x964 <__stack+0x105>
+ 97e:	08 95       	ret
 					else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
- 934:	81 30       	cpi	r24, 0x01	; 1
- 936:	11 f0       	breq	.+4      	; 0x93c <__stack+0xdd>
+ 980:	81 30       	cpi	r24, 0x01	; 1
+ 982:	11 f0       	breq	.+4      	; 0x988 <__stack+0x129>
 	return ERROR_OK;
- 938:	80 e0       	ldi	r24, 0x00	; 0
- 93a:	08 95       	ret
+ 984:	80 e0       	ldi	r24, 0x00	; 0
+ 986:	08 95       	ret
 						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
- 93c:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 940:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 988:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 98c:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 944:	80 e0       	ldi	r24, 0x00	; 0
- 946:	08 95       	ret
+ 990:	80 e0       	ldi	r24, 0x00	; 0
+ 992:	08 95       	ret
 				if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
- 948:	80 91 84 00 	lds	r24, 0x0084	; 0x800084 <sgau8_Interrupt_Mode+0x1>
- 94c:	81 11       	cpse	r24, r1
- 94e:	0c c0       	rjmp	.+24     	; 0x968 <__stack+0x109>
+ 994:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <sgau8_Interrupt_Mode+0x1>
+ 998:	81 11       	cpse	r24, r1
+ 99a:	0c c0       	rjmp	.+24     	; 0x9b4 <__stack+0x155>
                     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);
- 950:	98 b7       	in	r25, 0x38	; 56
- 952:	94 60       	ori	r25, 0x04	; 4
- 954:	98 bf       	out	0x38, r25	; 56
+ 99c:	98 b7       	in	r25, 0x38	; 56
+ 99e:	94 60       	ori	r25, 0x04	; 4
+ 9a0:	98 bf       	out	0x38, r25	; 56
 				    TIMER1_COUNTER_REG=TIMER1_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
- 956:	31 95       	neg	r19
- 958:	21 95       	neg	r18
- 95a:	31 09       	sbc	r19, r1
- 95c:	3d bd       	out	0x2d, r19	; 45
- 95e:	2c bd       	out	0x2c, r18	; 44
+ 9a2:	31 95       	neg	r19
+ 9a4:	21 95       	neg	r18
+ 9a6:	31 09       	sbc	r19, r1
+ 9a8:	3d bd       	out	0x2d, r19	; 45
+ 9aa:	2c bd       	out	0x2c, r18	; 44
 					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
- 960:	08 b6       	in	r0, 0x38	; 56
- 962:	02 fe       	sbrs	r0, 2
- 964:	fd cf       	rjmp	.-6      	; 0x960 <__stack+0x101>
- 966:	08 95       	ret
+ 9ac:	08 b6       	in	r0, 0x38	; 56
+ 9ae:	02 fe       	sbrs	r0, 2
+ 9b0:	fd cf       	rjmp	.-6      	; 0x9ac <__stack+0x14d>
+ 9b2:	08 95       	ret
 				else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
- 968:	81 30       	cpi	r24, 0x01	; 1
- 96a:	11 f0       	breq	.+4      	; 0x970 <__stack+0x111>
+ 9b4:	81 30       	cpi	r24, 0x01	; 1
+ 9b6:	11 f0       	breq	.+4      	; 0x9bc <__stack+0x15d>
 	return ERROR_OK;
- 96c:	80 e0       	ldi	r24, 0x00	; 0
- 96e:	08 95       	ret
+ 9b8:	80 e0       	ldi	r24, 0x00	; 0
+ 9ba:	08 95       	ret
 				    TIMER1_COUNTER_REG=TIMER1_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
- 970:	31 95       	neg	r19
- 972:	21 95       	neg	r18
- 974:	31 09       	sbc	r19, r1
- 976:	3d bd       	out	0x2d, r19	; 45
- 978:	2c bd       	out	0x2c, r18	; 44
+ 9bc:	31 95       	neg	r19
+ 9be:	21 95       	neg	r18
+ 9c0:	31 09       	sbc	r19, r1
+ 9c2:	3d bd       	out	0x2d, r19	; 45
+ 9c4:	2c bd       	out	0x2c, r18	; 44
 					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
- 97a:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 97e:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ 9c6:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ 9ca:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- 982:	80 e0       	ldi	r24, 0x00	; 0
- 984:	08 95       	ret
-			if(sgau8_TIMERMode[TIMER2]!=COUNTER_MODE)
- 986:	90 91 82 00 	lds	r25, 0x0082	; 0x800082 <sgau8_TIMERMode+0x2>
- 98a:	91 30       	cpi	r25, 0x01	; 1
- 98c:	09 f4       	brne	.+2      	; 0x990 <__stack+0x131>
- 98e:	4f c0       	rjmp	.+158    	; 0xa2e <__stack+0x1cf>
-				if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MICRO)
- 990:	91 11       	cpse	r25, r1
- 992:	25 c0       	rjmp	.+74     	; 0x9de <__stack+0x17f>
-					TIMER2_CNTRL_REG|=F_CPU_CLOCK_8_TIMER_2;
- 994:	85 b5       	in	r24, 0x25	; 37
- 996:	82 60       	ori	r24, 0x02	; 2
- 998:	85 bd       	out	0x25, r24	; 37
-					if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
- 99a:	80 91 85 00 	lds	r24, 0x0085	; 0x800085 <sgau8_Interrupt_Mode+0x2>
- 99e:	81 11       	cpse	r24, r1
- 9a0:	14 c0       	rjmp	.+40     	; 0x9ca <__stack+0x16b>
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 9a2:	21 15       	cp	r18, r1
- 9a4:	31 05       	cpc	r19, r1
- 9a6:	09 f4       	brne	.+2      	; 0x9aa <__stack+0x14b>
- 9a8:	52 c0       	rjmp	.+164    	; 0xa4e <__stack+0x1ef>
-	uint16_t u16_Count_TIMER_Start=0;
- 9aa:	50 e0       	ldi	r21, 0x00	; 0
- 9ac:	40 e0       	ldi	r20, 0x00	; 0
-							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-1U);
- 9ae:	6e ef       	ldi	r22, 0xFE	; 254
- 9b0:	64 bd       	out	0x24, r22	; 36
-							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );
- 9b2:	08 b6       	in	r0, 0x38	; 56
- 9b4:	06 fe       	sbrs	r0, 6
- 9b6:	fd cf       	rjmp	.-6      	; 0x9b2 <__stack+0x153>
-							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
- 9b8:	98 b7       	in	r25, 0x38	; 56
- 9ba:	90 64       	ori	r25, 0x40	; 64
- 9bc:	98 bf       	out	0x38, r25	; 56
-							u16_Count_TIMER_Start++;
- 9be:	4f 5f       	subi	r20, 0xFF	; 255
- 9c0:	5f 4f       	sbci	r21, 0xFF	; 255
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 9c2:	24 17       	cp	r18, r20
- 9c4:	35 07       	cpc	r19, r21
- 9c6:	a1 f7       	brne	.-24     	; 0x9b0 <__stack+0x151>
- 9c8:	08 95       	ret
-					else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
- 9ca:	81 30       	cpi	r24, 0x01	; 1
- 9cc:	11 f0       	breq	.+4      	; 0x9d2 <__stack+0x173>
-	return ERROR_OK;
- 9ce:	89 2f       	mov	r24, r25
+ 9ce:	80 e0       	ldi	r24, 0x00	; 0
  9d0:	08 95       	ret
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
- 9d2:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- 9d6:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
-	return ERROR_OK;
- 9da:	89 2f       	mov	r24, r25
- 9dc:	08 95       	ret
-				else if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MILIE)
- 9de:	92 30       	cpi	r25, 0x02	; 2
- 9e0:	11 f0       	breq	.+4      	; 0x9e6 <__stack+0x187>
-	return ERROR_OK;
- 9e2:	80 e0       	ldi	r24, 0x00	; 0
- 9e4:	08 95       	ret
-					TIMER2_CNTRL_REG|=F_CPU_CLOCK_64_TIMER_2;
- 9e6:	85 b5       	in	r24, 0x25	; 37
- 9e8:	84 60       	ori	r24, 0x04	; 4
- 9ea:	85 bd       	out	0x25, r24	; 37
+			if(sgau8_TIMERMode[TIMER2]!=COUNTER_MODE)
+ 9d2:	90 91 94 00 	lds	r25, 0x0094	; 0x800094 <sgau8_TIMERMode+0x2>
+ 9d6:	91 30       	cpi	r25, 0x01	; 1
+ 9d8:	09 f4       	brne	.+2      	; 0x9dc <__stack+0x17d>
+ 9da:	4f c0       	rjmp	.+158    	; 0xa7a <__stack+0x21b>
+				if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MICRO)
+ 9dc:	91 11       	cpse	r25, r1
+ 9de:	25 c0       	rjmp	.+74     	; 0xa2a <__stack+0x1cb>
+					TIMER2_CNTRL_REG|=F_CPU_CLOCK_8_TIMER_2;
+ 9e0:	85 b5       	in	r24, 0x25	; 37
+ 9e2:	82 60       	ori	r24, 0x02	; 2
+ 9e4:	85 bd       	out	0x25, r24	; 37
 					if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
- 9ec:	80 91 85 00 	lds	r24, 0x0085	; 0x800085 <sgau8_Interrupt_Mode+0x2>
- 9f0:	81 11       	cpse	r24, r1
- 9f2:	13 c0       	rjmp	.+38     	; 0xa1a <__stack+0x1bb>
+ 9e6:	80 91 97 00 	lds	r24, 0x0097	; 0x800097 <sgau8_Interrupt_Mode+0x2>
+ 9ea:	81 11       	cpse	r24, r1
+ 9ec:	14 c0       	rjmp	.+40     	; 0xa16 <__stack+0x1b7>
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- 9f4:	21 15       	cp	r18, r1
- 9f6:	31 05       	cpc	r19, r1
- 9f8:	51 f1       	breq	.+84     	; 0xa4e <__stack+0x1ef>
+ 9ee:	21 15       	cp	r18, r1
+ 9f0:	31 05       	cpc	r19, r1
+ 9f2:	09 f4       	brne	.+2      	; 0x9f6 <__stack+0x197>
+ 9f4:	52 c0       	rjmp	.+164    	; 0xa9a <__stack+0x23b>
 	uint16_t u16_Count_TIMER_Start=0;
- 9fa:	50 e0       	ldi	r21, 0x00	; 0
- 9fc:	40 e0       	ldi	r20, 0x00	; 0
-							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-125U);
- 9fe:	62 e8       	ldi	r22, 0x82	; 130
- a00:	64 bd       	out	0x24, r22	; 36
+ 9f6:	50 e0       	ldi	r21, 0x00	; 0
+ 9f8:	40 e0       	ldi	r20, 0x00	; 0
+							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-1U);
+ 9fa:	6e ef       	ldi	r22, 0xFE	; 254
+ 9fc:	64 bd       	out	0x24, r22	; 36
 							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );
- a02:	08 b6       	in	r0, 0x38	; 56
- a04:	06 fe       	sbrs	r0, 6
- a06:	fd cf       	rjmp	.-6      	; 0xa02 <__stack+0x1a3>
+ 9fe:	08 b6       	in	r0, 0x38	; 56
+ a00:	06 fe       	sbrs	r0, 6
+ a02:	fd cf       	rjmp	.-6      	; 0x9fe <__stack+0x19f>
 							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
- a08:	98 b7       	in	r25, 0x38	; 56
- a0a:	90 64       	ori	r25, 0x40	; 64
- a0c:	98 bf       	out	0x38, r25	; 56
+ a04:	98 b7       	in	r25, 0x38	; 56
+ a06:	90 64       	ori	r25, 0x40	; 64
+ a08:	98 bf       	out	0x38, r25	; 56
 							u16_Count_TIMER_Start++;
- a0e:	4f 5f       	subi	r20, 0xFF	; 255
- a10:	5f 4f       	sbci	r21, 0xFF	; 255
+ a0a:	4f 5f       	subi	r20, 0xFF	; 255
+ a0c:	5f 4f       	sbci	r21, 0xFF	; 255
 						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
- a12:	24 17       	cp	r18, r20
- a14:	35 07       	cpc	r19, r21
- a16:	a1 f7       	brne	.-24     	; 0xa00 <__stack+0x1a1>
- a18:	08 95       	ret
+ a0e:	24 17       	cp	r18, r20
+ a10:	35 07       	cpc	r19, r21
+ a12:	a1 f7       	brne	.-24     	; 0x9fc <__stack+0x19d>
+ a14:	08 95       	ret
 					else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
- a1a:	81 30       	cpi	r24, 0x01	; 1
- a1c:	11 f0       	breq	.+4      	; 0xa22 <__stack+0x1c3>
+ a16:	81 30       	cpi	r24, 0x01	; 1
+ a18:	11 f0       	breq	.+4      	; 0xa1e <__stack+0x1bf>
 	return ERROR_OK;
- a1e:	80 e0       	ldi	r24, 0x00	; 0
- a20:	08 95       	ret
+ a1a:	89 2f       	mov	r24, r25
+ a1c:	08 95       	ret
 						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
- a22:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- a26:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ a1e:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ a22:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- a2a:	80 e0       	ldi	r24, 0x00	; 0
- a2c:	08 95       	ret
+ a26:	89 2f       	mov	r24, r25
+ a28:	08 95       	ret
+				else if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MILIE)
+ a2a:	92 30       	cpi	r25, 0x02	; 2
+ a2c:	11 f0       	breq	.+4      	; 0xa32 <__stack+0x1d3>
+	return ERROR_OK;
+ a2e:	80 e0       	ldi	r24, 0x00	; 0
+ a30:	08 95       	ret
+					TIMER2_CNTRL_REG|=F_CPU_CLOCK_64_TIMER_2;
+ a32:	85 b5       	in	r24, 0x25	; 37
+ a34:	84 60       	ori	r24, 0x04	; 4
+ a36:	85 bd       	out	0x25, r24	; 37
+					if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
+ a38:	80 91 97 00 	lds	r24, 0x0097	; 0x800097 <sgau8_Interrupt_Mode+0x2>
+ a3c:	81 11       	cpse	r24, r1
+ a3e:	13 c0       	rjmp	.+38     	; 0xa66 <__stack+0x207>
+						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
+ a40:	21 15       	cp	r18, r1
+ a42:	31 05       	cpc	r19, r1
+ a44:	51 f1       	breq	.+84     	; 0xa9a <__stack+0x23b>
+	uint16_t u16_Count_TIMER_Start=0;
+ a46:	50 e0       	ldi	r21, 0x00	; 0
+ a48:	40 e0       	ldi	r20, 0x00	; 0
+							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-125U);
+ a4a:	62 e8       	ldi	r22, 0x82	; 130
+ a4c:	64 bd       	out	0x24, r22	; 36
+							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );
+ a4e:	08 b6       	in	r0, 0x38	; 56
+ a50:	06 fe       	sbrs	r0, 6
+ a52:	fd cf       	rjmp	.-6      	; 0xa4e <__stack+0x1ef>
+							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
+ a54:	98 b7       	in	r25, 0x38	; 56
+ a56:	90 64       	ori	r25, 0x40	; 64
+ a58:	98 bf       	out	0x38, r25	; 56
+							u16_Count_TIMER_Start++;
+ a5a:	4f 5f       	subi	r20, 0xFF	; 255
+ a5c:	5f 4f       	sbci	r21, 0xFF	; 255
+						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
+ a5e:	24 17       	cp	r18, r20
+ a60:	35 07       	cpc	r19, r21
+ a62:	a1 f7       	brne	.-24     	; 0xa4c <__stack+0x1ed>
+ a64:	08 95       	ret
+					else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
+ a66:	81 30       	cpi	r24, 0x01	; 1
+ a68:	11 f0       	breq	.+4      	; 0xa6e <__stack+0x20f>
+	return ERROR_OK;
+ a6a:	80 e0       	ldi	r24, 0x00	; 0
+ a6c:	08 95       	ret
+						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
+ a6e:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ a72:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
+	return ERROR_OK;
+ a76:	80 e0       	ldi	r24, 0x00	; 0
+ a78:	08 95       	ret
 				if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
- a2e:	80 91 85 00 	lds	r24, 0x0085	; 0x800085 <sgau8_Interrupt_Mode+0x2>
- a32:	81 11       	cpse	r24, r1
- a34:	09 c0       	rjmp	.+18     	; 0xa48 <__stack+0x1e9>
+ a7a:	80 91 97 00 	lds	r24, 0x0097	; 0x800097 <sgau8_Interrupt_Mode+0x2>
+ a7e:	81 11       	cpse	r24, r1
+ a80:	09 c0       	rjmp	.+18     	; 0xa94 <__stack+0x235>
                     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
- a36:	98 b7       	in	r25, 0x38	; 56
- a38:	90 64       	ori	r25, 0x40	; 64
- a3a:	98 bf       	out	0x38, r25	; 56
+ a82:	98 b7       	in	r25, 0x38	; 56
+ a84:	90 64       	ori	r25, 0x40	; 64
+ a86:	98 bf       	out	0x38, r25	; 56
 				    TIMER2_COUNTER_REG=TIMER2_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
- a3c:	20 95       	com	r18
- a3e:	24 bd       	out	0x24, r18	; 36
+ a88:	20 95       	com	r18
+ a8a:	24 bd       	out	0x24, r18	; 36
 					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );					
- a40:	08 b6       	in	r0, 0x38	; 56
- a42:	06 fe       	sbrs	r0, 6
- a44:	fd cf       	rjmp	.-6      	; 0xa40 <__stack+0x1e1>
- a46:	08 95       	ret
+ a8c:	08 b6       	in	r0, 0x38	; 56
+ a8e:	06 fe       	sbrs	r0, 6
+ a90:	fd cf       	rjmp	.-6      	; 0xa8c <__stack+0x22d>
+ a92:	08 95       	ret
 				else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
- a48:	81 30       	cpi	r24, 0x01	; 1
- a4a:	11 f0       	breq	.+4      	; 0xa50 <__stack+0x1f1>
+ a94:	81 30       	cpi	r24, 0x01	; 1
+ a96:	11 f0       	breq	.+4      	; 0xa9c <__stack+0x23d>
 	return ERROR_OK;
- a4c:	80 e0       	ldi	r24, 0x00	; 0
+ a98:	80 e0       	ldi	r24, 0x00	; 0
 }
- a4e:	08 95       	ret
+ a9a:	08 95       	ret
 					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
- a50:	70 93 7c 00 	sts	0x007C, r23	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- a54:	60 93 7b 00 	sts	0x007B, r22	; 0x80007b <sgPntrToFunc_TIMER_OVF>
+ a9c:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ aa0:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <sgPntrToFunc_TIMER_OVF>
 	return ERROR_OK;
- a58:	80 e0       	ldi	r24, 0x00	; 0
- a5a:	08 95       	ret
+ aa4:	80 e0       	ldi	r24, 0x00	; 0
+ aa6:	08 95       	ret
 
-00000a5c <__vector_11>:
+00000aa8 <__vector_11>:
 	
 	return ERROR_OK;
 }
 
 Timer_ISR(TIMER0_OVF_vect_num)
 {
- a5c:	1f 92       	push	r1
- a5e:	0f 92       	push	r0
- a60:	0f b6       	in	r0, 0x3f	; 63
- a62:	0f 92       	push	r0
- a64:	11 24       	eor	r1, r1
- a66:	2f 93       	push	r18
- a68:	3f 93       	push	r19
- a6a:	4f 93       	push	r20
- a6c:	5f 93       	push	r21
- a6e:	6f 93       	push	r22
- a70:	7f 93       	push	r23
- a72:	8f 93       	push	r24
- a74:	9f 93       	push	r25
- a76:	af 93       	push	r26
- a78:	bf 93       	push	r27
- a7a:	ef 93       	push	r30
- a7c:	ff 93       	push	r31
+ aa8:	1f 92       	push	r1
+ aaa:	0f 92       	push	r0
+ aac:	0f b6       	in	r0, 0x3f	; 63
+ aae:	0f 92       	push	r0
+ ab0:	11 24       	eor	r1, r1
+ ab2:	2f 93       	push	r18
+ ab4:	3f 93       	push	r19
+ ab6:	4f 93       	push	r20
+ ab8:	5f 93       	push	r21
+ aba:	6f 93       	push	r22
+ abc:	7f 93       	push	r23
+ abe:	8f 93       	push	r24
+ ac0:	9f 93       	push	r25
+ ac2:	af 93       	push	r26
+ ac4:	bf 93       	push	r27
+ ac6:	ef 93       	push	r30
+ ac8:	ff 93       	push	r31
     /*DIO_toggle_Pin(3);*/
 
 	TIMER0_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
- a7e:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <sgu16_TIMER_COUNTER_REG_BUFFER>
- a82:	90 91 7a 00 	lds	r25, 0x007A	; 0x80007a <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
- a86:	82 bf       	out	0x32, r24	; 50
+ aca:	80 91 8b 00 	lds	r24, 0x008B	; 0x80008b <sgu16_TIMER_COUNTER_REG_BUFFER>
+ ace:	90 91 8c 00 	lds	r25, 0x008C	; 0x80008c <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
+ ad2:	82 bf       	out	0x32, r24	; 50
     sgPntrToFunc_TIMER_OVF();
- a88:	e0 91 7b 00 	lds	r30, 0x007B	; 0x80007b <sgPntrToFunc_TIMER_OVF>
- a8c:	f0 91 7c 00 	lds	r31, 0x007C	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- a90:	09 95       	icall
+ ad4:	e0 91 8d 00 	lds	r30, 0x008D	; 0x80008d <sgPntrToFunc_TIMER_OVF>
+ ad8:	f0 91 8e 00 	lds	r31, 0x008E	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ adc:	09 95       	icall
 
 }
- a92:	ff 91       	pop	r31
- a94:	ef 91       	pop	r30
- a96:	bf 91       	pop	r27
- a98:	af 91       	pop	r26
- a9a:	9f 91       	pop	r25
- a9c:	8f 91       	pop	r24
- a9e:	7f 91       	pop	r23
- aa0:	6f 91       	pop	r22
- aa2:	5f 91       	pop	r21
- aa4:	4f 91       	pop	r20
- aa6:	3f 91       	pop	r19
- aa8:	2f 91       	pop	r18
- aaa:	0f 90       	pop	r0
- aac:	0f be       	out	0x3f, r0	; 63
- aae:	0f 90       	pop	r0
- ab0:	1f 90       	pop	r1
- ab2:	18 95       	reti
+ ade:	ff 91       	pop	r31
+ ae0:	ef 91       	pop	r30
+ ae2:	bf 91       	pop	r27
+ ae4:	af 91       	pop	r26
+ ae6:	9f 91       	pop	r25
+ ae8:	8f 91       	pop	r24
+ aea:	7f 91       	pop	r23
+ aec:	6f 91       	pop	r22
+ aee:	5f 91       	pop	r21
+ af0:	4f 91       	pop	r20
+ af2:	3f 91       	pop	r19
+ af4:	2f 91       	pop	r18
+ af6:	0f 90       	pop	r0
+ af8:	0f be       	out	0x3f, r0	; 63
+ afa:	0f 90       	pop	r0
+ afc:	1f 90       	pop	r1
+ afe:	18 95       	reti
 
-00000ab4 <__vector_9>:
+00000b00 <__vector_9>:
 Timer_ISR(TIMER1_OVF_vect_num)
 {
- ab4:	1f 92       	push	r1
- ab6:	0f 92       	push	r0
- ab8:	0f b6       	in	r0, 0x3f	; 63
- aba:	0f 92       	push	r0
- abc:	11 24       	eor	r1, r1
- abe:	2f 93       	push	r18
- ac0:	3f 93       	push	r19
- ac2:	4f 93       	push	r20
- ac4:	5f 93       	push	r21
- ac6:	6f 93       	push	r22
- ac8:	7f 93       	push	r23
- aca:	8f 93       	push	r24
- acc:	9f 93       	push	r25
- ace:	af 93       	push	r26
- ad0:	bf 93       	push	r27
- ad2:	ef 93       	push	r30
- ad4:	ff 93       	push	r31
+ b00:	1f 92       	push	r1
+ b02:	0f 92       	push	r0
+ b04:	0f b6       	in	r0, 0x3f	; 63
+ b06:	0f 92       	push	r0
+ b08:	11 24       	eor	r1, r1
+ b0a:	2f 93       	push	r18
+ b0c:	3f 93       	push	r19
+ b0e:	4f 93       	push	r20
+ b10:	5f 93       	push	r21
+ b12:	6f 93       	push	r22
+ b14:	7f 93       	push	r23
+ b16:	8f 93       	push	r24
+ b18:	9f 93       	push	r25
+ b1a:	af 93       	push	r26
+ b1c:	bf 93       	push	r27
+ b1e:	ef 93       	push	r30
+ b20:	ff 93       	push	r31
     TIMER1_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
- ad6:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <sgu16_TIMER_COUNTER_REG_BUFFER>
- ada:	90 91 7a 00 	lds	r25, 0x007A	; 0x80007a <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
- ade:	9d bd       	out	0x2d, r25	; 45
- ae0:	8c bd       	out	0x2c, r24	; 44
+ b22:	80 91 8b 00 	lds	r24, 0x008B	; 0x80008b <sgu16_TIMER_COUNTER_REG_BUFFER>
+ b26:	90 91 8c 00 	lds	r25, 0x008C	; 0x80008c <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
+ b2a:	9d bd       	out	0x2d, r25	; 45
+ b2c:	8c bd       	out	0x2c, r24	; 44
 	sgPntrToFunc_TIMER_OVF();
- ae2:	e0 91 7b 00 	lds	r30, 0x007B	; 0x80007b <sgPntrToFunc_TIMER_OVF>
- ae6:	f0 91 7c 00 	lds	r31, 0x007C	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- aea:	09 95       	icall
+ b2e:	e0 91 8d 00 	lds	r30, 0x008D	; 0x80008d <sgPntrToFunc_TIMER_OVF>
+ b32:	f0 91 8e 00 	lds	r31, 0x008E	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ b36:	09 95       	icall
 }
- aec:	ff 91       	pop	r31
- aee:	ef 91       	pop	r30
- af0:	bf 91       	pop	r27
- af2:	af 91       	pop	r26
- af4:	9f 91       	pop	r25
- af6:	8f 91       	pop	r24
- af8:	7f 91       	pop	r23
- afa:	6f 91       	pop	r22
- afc:	5f 91       	pop	r21
- afe:	4f 91       	pop	r20
- b00:	3f 91       	pop	r19
- b02:	2f 91       	pop	r18
- b04:	0f 90       	pop	r0
- b06:	0f be       	out	0x3f, r0	; 63
- b08:	0f 90       	pop	r0
- b0a:	1f 90       	pop	r1
- b0c:	18 95       	reti
+ b38:	ff 91       	pop	r31
+ b3a:	ef 91       	pop	r30
+ b3c:	bf 91       	pop	r27
+ b3e:	af 91       	pop	r26
+ b40:	9f 91       	pop	r25
+ b42:	8f 91       	pop	r24
+ b44:	7f 91       	pop	r23
+ b46:	6f 91       	pop	r22
+ b48:	5f 91       	pop	r21
+ b4a:	4f 91       	pop	r20
+ b4c:	3f 91       	pop	r19
+ b4e:	2f 91       	pop	r18
+ b50:	0f 90       	pop	r0
+ b52:	0f be       	out	0x3f, r0	; 63
+ b54:	0f 90       	pop	r0
+ b56:	1f 90       	pop	r1
+ b58:	18 95       	reti
 
-00000b0e <__vector_5>:
+00000b5a <__vector_5>:
 
 Timer_ISR(TIMER2_OVF_vect_num)
 {
- b0e:	1f 92       	push	r1
- b10:	0f 92       	push	r0
- b12:	0f b6       	in	r0, 0x3f	; 63
- b14:	0f 92       	push	r0
- b16:	11 24       	eor	r1, r1
- b18:	2f 93       	push	r18
- b1a:	3f 93       	push	r19
- b1c:	4f 93       	push	r20
- b1e:	5f 93       	push	r21
- b20:	6f 93       	push	r22
- b22:	7f 93       	push	r23
- b24:	8f 93       	push	r24
- b26:	9f 93       	push	r25
- b28:	af 93       	push	r26
- b2a:	bf 93       	push	r27
- b2c:	ef 93       	push	r30
- b2e:	ff 93       	push	r31
+ b5a:	1f 92       	push	r1
+ b5c:	0f 92       	push	r0
+ b5e:	0f b6       	in	r0, 0x3f	; 63
+ b60:	0f 92       	push	r0
+ b62:	11 24       	eor	r1, r1
+ b64:	2f 93       	push	r18
+ b66:	3f 93       	push	r19
+ b68:	4f 93       	push	r20
+ b6a:	5f 93       	push	r21
+ b6c:	6f 93       	push	r22
+ b6e:	7f 93       	push	r23
+ b70:	8f 93       	push	r24
+ b72:	9f 93       	push	r25
+ b74:	af 93       	push	r26
+ b76:	bf 93       	push	r27
+ b78:	ef 93       	push	r30
+ b7a:	ff 93       	push	r31
     TIMER2_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
- b30:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <sgu16_TIMER_COUNTER_REG_BUFFER>
- b34:	90 91 7a 00 	lds	r25, 0x007A	; 0x80007a <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
- b38:	84 bd       	out	0x24, r24	; 36
+ b7c:	80 91 8b 00 	lds	r24, 0x008B	; 0x80008b <sgu16_TIMER_COUNTER_REG_BUFFER>
+ b80:	90 91 8c 00 	lds	r25, 0x008C	; 0x80008c <sgu16_TIMER_COUNTER_REG_BUFFER+0x1>
+ b84:	84 bd       	out	0x24, r24	; 36
 	sgPntrToFunc_TIMER_OVF();
- b3a:	e0 91 7b 00 	lds	r30, 0x007B	; 0x80007b <sgPntrToFunc_TIMER_OVF>
- b3e:	f0 91 7c 00 	lds	r31, 0x007C	; 0x80007c <sgPntrToFunc_TIMER_OVF+0x1>
- b42:	09 95       	icall
- b44:	ff 91       	pop	r31
- b46:	ef 91       	pop	r30
- b48:	bf 91       	pop	r27
- b4a:	af 91       	pop	r26
- b4c:	9f 91       	pop	r25
- b4e:	8f 91       	pop	r24
- b50:	7f 91       	pop	r23
- b52:	6f 91       	pop	r22
- b54:	5f 91       	pop	r21
- b56:	4f 91       	pop	r20
- b58:	3f 91       	pop	r19
- b5a:	2f 91       	pop	r18
- b5c:	0f 90       	pop	r0
- b5e:	0f be       	out	0x3f, r0	; 63
- b60:	0f 90       	pop	r0
- b62:	1f 90       	pop	r1
- b64:	18 95       	reti
+ b86:	e0 91 8d 00 	lds	r30, 0x008D	; 0x80008d <sgPntrToFunc_TIMER_OVF>
+ b8a:	f0 91 8e 00 	lds	r31, 0x008E	; 0x80008e <sgPntrToFunc_TIMER_OVF+0x1>
+ b8e:	09 95       	icall
+ b90:	ff 91       	pop	r31
+ b92:	ef 91       	pop	r30
+ b94:	bf 91       	pop	r27
+ b96:	af 91       	pop	r26
+ b98:	9f 91       	pop	r25
+ b9a:	8f 91       	pop	r24
+ b9c:	7f 91       	pop	r23
+ b9e:	6f 91       	pop	r22
+ ba0:	5f 91       	pop	r21
+ ba2:	4f 91       	pop	r20
+ ba4:	3f 91       	pop	r19
+ ba6:	2f 91       	pop	r18
+ ba8:	0f 90       	pop	r0
+ baa:	0f be       	out	0x3f, r0	; 63
+ bac:	0f 90       	pop	r0
+ bae:	1f 90       	pop	r1
+ bb0:	18 95       	reti
 
-00000b66 <_exit>:
- b66:	f8 94       	cli
+00000bb2 <__mulsi3>:
+ bb2:	db 01       	movw	r26, r22
+ bb4:	8f 93       	push	r24
+ bb6:	9f 93       	push	r25
+ bb8:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <__muluhisi3>
+ bbc:	bf 91       	pop	r27
+ bbe:	af 91       	pop	r26
+ bc0:	a2 9f       	mul	r26, r18
+ bc2:	80 0d       	add	r24, r0
+ bc4:	91 1d       	adc	r25, r1
+ bc6:	a3 9f       	mul	r26, r19
+ bc8:	90 0d       	add	r25, r0
+ bca:	b2 9f       	mul	r27, r18
+ bcc:	90 0d       	add	r25, r0
+ bce:	11 24       	eor	r1, r1
+ bd0:	08 95       	ret
 
-00000b68 <__stop_program>:
- b68:	ff cf       	rjmp	.-2      	; 0xb68 <__stop_program>
+00000bd2 <__muluhisi3>:
+ bd2:	0e 94 f4 05 	call	0xbe8	; 0xbe8 <__umulhisi3>
+ bd6:	a5 9f       	mul	r26, r21
+ bd8:	90 0d       	add	r25, r0
+ bda:	b4 9f       	mul	r27, r20
+ bdc:	90 0d       	add	r25, r0
+ bde:	a4 9f       	mul	r26, r20
+ be0:	80 0d       	add	r24, r0
+ be2:	91 1d       	adc	r25, r1
+ be4:	11 24       	eor	r1, r1
+ be6:	08 95       	ret
+
+00000be8 <__umulhisi3>:
+ be8:	a2 9f       	mul	r26, r18
+ bea:	b0 01       	movw	r22, r0
+ bec:	b3 9f       	mul	r27, r19
+ bee:	c0 01       	movw	r24, r0
+ bf0:	a3 9f       	mul	r26, r19
+ bf2:	70 0d       	add	r23, r0
+ bf4:	81 1d       	adc	r24, r1
+ bf6:	11 24       	eor	r1, r1
+ bf8:	91 1d       	adc	r25, r1
+ bfa:	b2 9f       	mul	r27, r18
+ bfc:	70 0d       	add	r23, r0
+ bfe:	81 1d       	adc	r24, r1
+ c00:	11 24       	eor	r1, r1
+ c02:	91 1d       	adc	r25, r1
+ c04:	08 95       	ret
+
+00000c06 <_exit>:
+ c06:	f8 94       	cli
+
+00000c08 <__stop_program>:
+ c08:	ff cf       	rjmp	.-2      	; 0xc08 <__stop_program>
