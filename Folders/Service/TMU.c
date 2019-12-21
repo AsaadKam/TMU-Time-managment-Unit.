@@ -5,6 +5,7 @@
  **********************************************/
 /*- INCLUDES ----------------------------------------------*/
 #include"Timer.h"
+#include"DIO.h"
 #include"TMU.h"
 #include"TMU_Config.h"
 #include"Atmega32Registers.h"
@@ -21,11 +22,12 @@
  
 typedef struct 
 {
-	 uint16_t  Periodic_or_not;
-	 uint16_t  Periodicity_MS;
+	 uint8_t      Periodic_or_not;
+	 uint32_t     Periodicity_MS;
+	 uint32_t     TMU_Node_Count;
 	 PntrToFunc_t PntrToFunc;
-	
-}TMU_Node;
+	 
+}TMU_Node_t;
 
 /*- LOCAL FUNCTIONS PROTOTYPES ----------------------------*/
 
@@ -33,90 +35,150 @@ static void TMU_Function_ISR(void);
 
 /*- GLOBAL STATIC VARIABLES -------------------------------*/
 
-static TMU_Node TMU_Events_Array[TMU_Events]={0};
-static uint16_t index=0, sgu16_OverFlow_Counts_TMU=0;
-	
+static volatile TMU_Node_t sga_TMU_Events[TMU_Events]={{0,0,0,NullPointer},{0,0,0,NullPointer},{0,0,0,NullPointer}};
+static volatile uint16_t sgu16_index=0;
+
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
+void  TMU_Function_ISR(void)
+{
+	/*DIO_toggle_Pin(3);*/
+	/*Looping to make incrementing for count*/	
+	for(uint16_t i=0;i<sgu16_index;i++)
+	{
+       sga_TMU_Events[i].TMU_Node_Count=(sga_TMU_Events[i].TMU_Node_Count)+1;
 
+	}
+}
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
 
-uint8_t TMU_Init()
+TMU_Error_t TMU_Init()
 {
-	StrTMU_Configuration_t* psTMU_configuration=NullPointer;
+	StrTMU_Configuration_t strTMU_configuration;
 	
-	psTMU_configuration->TMU_TIMER_IDS=TMU_TIMER_ID0;
-	/*****************************************
-	 *  We will adjust clock sgau8_Prescaler *
-	 *  divded by 8need count 125 to get 1m  *  
-	 *			second tick                  *
-	 *****************************************/
-	psTMU_configuration->TMU_TIMER_PSC=F_CPU_CLOCK_64_TMU_TIMER_0;
-	psTMU_configuration->TMU_TIMER_MODE=TMU_TIMER_COUNTER_MODE;
-	psTMU_configuration->TMU_TIMER_INT_Mode=TMU_TIMER_INT;
+	strTMU_configuration.TMU_TIMER_IDS=TMU_TIMER_ID0;
+	/*******************************************
+	 *  Clock prescaler is adjusted internally *
+	 *           no need to enter it           *  
+	 *******************************************/
+	strTMU_configuration.TMU_TIMER_PSC=TMU_NO_NEED_PSC;
+	strTMU_configuration.TMU_TIMER_MODE=TMU_TIMER_MODE_MILIE;
+	strTMU_configuration.TMU_TIMER_INT_Mode=TMU_TIMER_INT;
 	
-	Timer_Init(psTMU_configuration);
+	Timer_Init(&strTMU_configuration);
 	
-	return Error_OK;
+	return TMU_Error_OK;
 }
 
 
-uint8_t TMU_Start(PntrToFunc_t PntrToFunc,uint16_t Periodicity_MS,uint16_t Periodic_or_not)
+TMU_Error_t TMU_Start(PntrToFunc_t PntrToFunc_Copy_TMU_Start,uint16_t u16_Copy_Periodicity_MS_TMU_Start,uint16_t u16_Copy_Periodic_or_not_TMU_Start)
 {
-	/*static uint8_t First_Start_flag=1;*/
-
-	Timer_Start(TIMER0,TMU_Counts_One_mili_TIMER_ID_ZERO,TMU_Function_ISR);
-
-	if(index>TMU_Events-1) return Error_NOK;
+    TMU_Error_t TMU_Start_Error= TMU_Error_OK;
+	
+	if(sgu16_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
 	else
-	{		
-	
-		TMU_Events_Array[index].PntrToFunc=PntrToFunc;	
-		TMU_Events_Array[index].Periodicity_MS=Periodicity_MS;
+	{  
 
-		index++;
-	
-	}
-	return Error_OK;
-}
+		if(NullPointer!=PntrToFunc_Copy_TMU_Start)
+		{	
+			if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_PERIODIC)
+			{
+                
+				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	
 
-
-uint8_t TMU_Dispatch(void)
-{
-
-	for(uint8_t i=0;i<index-1;i++)
-	{ 
-		/*We need to put counter increment in ISR and also add the idea of call back function to timers*/ 
-		if(sgu16_OverFlow_Counts_TMU!=0)
-		{ 
-		  if(!(TMU_Events_Array[i].Periodicity_MS%sgu16_OverFlow_Counts_TMU)) TMU_Events_Array[i].PntrToFunc(); 			  
+			}
+			else if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_ONESHOT)
+			{
+				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	   
+			}  
+			else 
+			{
+				TMU_Start_Error=TMU_Error_Function_type_undefined;
+			}
+			sga_TMU_Events[sgu16_index].PntrToFunc=PntrToFunc_Copy_TMU_Start;	
+			sga_TMU_Events[sgu16_index].Periodicity_MS=u16_Copy_Periodicity_MS_TMU_Start;
+			sgu16_index++;			
+		}
+		else
+		{
+			TMU_Start_Error=TMU_Error_Start_Null_func;
 		}
 	}
-	
-	return Error_OK;
+	return TMU_Start_Error;
+}
+
+
+TMU_Error_t TMU_Dispatch(void)
+{
+    TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
+    uint8_t static su8_1st_start_Dispatch_Flag=1;
+	/*
+	 *  Check if the disptach is the the first time to 
+	 *  it to start if so start the timer
+	 */
+	if(su8_1st_start_Dispatch_Flag==1)   
+	{
+		/*Timer start working in milies*/
+		TMU_Dispatch_Error=Timer_Start(TIMER0,0,TMU_Function_ISR);
+		su8_1st_start_Dispatch_Flag=0;
+    }
+	else
+	{
+		/*Looping to execute the function which it's time comes(Brain of TMU)*/	
+        for(uint16_t i=0;i<sgu16_index;i++)
+		{ 
+			/*I will increment each function count until i reach to it's periodicity, then i will execute it's routine*/ 
+			if((sga_TMU_Events[i].TMU_Node_Count==sga_TMU_Events[i].Periodicity_MS)&&(sga_TMU_Events[i].TMU_Node_Count!=0))
+			{   
+				/*DIO_toggle_Pin(3);*/
+				sga_TMU_Events[i].TMU_Node_Count=0;
+				sga_TMU_Events[i].PntrToFunc();
+				if(sga_TMU_Events[i].Periodic_or_not==TMU_Function_ONESHOT)
+				{
+					
+					TMU_Dispatch_Error=TMU_Stop(sga_TMU_Events[i].PntrToFunc);
+				
+				}
+				else
+				{
+					
+				}
+			}
+        }
+
+	}
+
+	return TMU_Dispatch_Error;
 }
 
 /*need edit*/
-uint8_t TMU_Stop(PntrToFunc_t PntrToFunc)
+TMU_Error_t TMU_Stop(PntrToFunc_t PntrToFunc_Copy_TMU_Start)
 {
-
-	if(index==0) return Error_NOK;
-	for(uint8_t i=0;i<index-1;i++)
+    TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
+	if(sgu16_index==0) TMU_Dispatch_Error=TMU_Error_Nothing_To_Stop;
+	else
 	{
-		if(TMU_Events_Array[i].PntrToFunc==PntrToFunc) 
+		for(uint8_t i=0;i<sgu16_index-1;i++)
 		{
-			 if(index-1 !=i)
-			 {
-				 TMU_Events_Array[i]=TMU_Events_Array[index-1];
-			 }
-			
+			if(sga_TMU_Events[i].PntrToFunc==PntrToFunc_Copy_TMU_Start) 
+			{
+				 if(sgu16_index-1 !=i)
+				 {
+					 sga_TMU_Events[i]=sga_TMU_Events[sgu16_index-1];
+				 }
+				 {
+				 }
+				
+			}
+			else
+			{
+			}
 		}
+	    /*Decrement the sgu16_index*/
+	    sgu16_index--;
 	}
-	/*Decrement the index*/
-	index--;
-	
-	return Error_OK;
-	
+
+	return TMU_Dispatch_Error;
 }
 

@@ -7,7 +7,7 @@
 /*- INCLUDES ----------------------------------------------*/
 #include "Timer.h"
 #include "BitManipulation.h"
-
+#include"DIO.h"
 
 /*- LOCAL MACROS ------------------------------------------*/
 
@@ -26,7 +26,7 @@ static uint8_t sgau8_Interrupt_Mode[NO_OF_CHANNELS]={0},sgau8_TIMERMode[NO_OF_CH
 static volatile PntrToFunc_t sgPntrToFunc_TIMER_OVF=0;
 static volatile uint16_t sgu16_TIMER_COUNTER_REG_BUFFER=0;
 
-/*- GLOBAL EXTERN VARIABLES -------------------------------*/س
+/*- GLOBAL EXTERN VARIABLES -------------------------------*/
 
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 
@@ -40,7 +40,7 @@ uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
 	{
 		
 		/*To Check whether the structure values that have been passed is in the scope of configuration nor not*/
-		if(sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]==Enable)           return ERROR_NOK;	
+		if(sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]==Enable)            return ERROR_NOK;	
 		if(ps_Copy_TIMER_Init_Config->Timer_Channel >TIMER2  )                              return ERROR_NOK;	
 		if(ps_Copy_TIMER_Init_Config->Timer_Mode>TIMER_MODE_MILIE )                         return ERROR_NOK;
 		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode>INTERRUPT)                             return ERROR_NOK;
@@ -112,7 +112,7 @@ uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
 	return ERROR_OK;
 }
 
-uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_Copy_TIMER_Start_ISR)//with sgau8_Prescaler
+uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_t_Copy_TIMER_Start_ISR)//with sgau8_Prescaler
 {
 	
 	uint16_t u16_Count_TIMER_Start=0;
@@ -164,7 +164,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 							 *Let the ISR execute the increment of count of delay
 							 *Note that we will extern the value of count of delay 
 							 ****************************************************/
-							 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;													
+							 sgPntrToFunc_TIMER_OVF=sgPntrToFunc_TIMER_OVF;													
 						}
 						else
 						{
@@ -210,7 +210,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 							 *Let the ISR execute the increment of count of delay
 							 *Note that we will extern the value of count of delay 
 							 ****************************************************/
-							 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;												
+							 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;												
 						}
 						else
 						{
@@ -245,7 +245,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 					 Timer_0_OVF_INT_EN();			  
 		 	
 					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;						
+					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
 				}
 				else
 				{
@@ -297,7 +297,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						 *Let the ISR execute the increment of count of delay
 						 *Note that we will extern the value of 
 						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;													
+						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
 					}
 					else
 					{
@@ -337,7 +337,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						 *Let the ISR execute the increment of count of delay
 						 *Note that we will extern the value of 
 						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;													
+						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
 					}
 					else
 					{
@@ -362,7 +362,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 				{
 				    TIMER1_COUNTER_REG=TIMER1_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
 					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;						
+					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
 				}
 				else
 				{
@@ -406,7 +406,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						 *Let the ISR execute the increment of count of delay
 						 *Note that we will extern the value of 
 						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;													
+						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
 					}
 					else
 					{
@@ -442,7 +442,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						 *Let the ISR execute the increment of count of delay
 						 *Note that we will extern the value of 
 						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;													
+						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
 					}
 					else
 					{
@@ -469,7 +469,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 				else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
 				{
 					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_Copy_TIMER_Start_ISR;						
+					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
 				}
 				else
 				{
@@ -616,9 +616,11 @@ uint8_t Timer_Reset(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
 
 Timer_ISR(TIMER0_OVF_vect_num)
 {
+    /*DIO_toggle_Pin(3);*/
 
 	TIMER0_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
     sgPntrToFunc_TIMER_OVF();
+
 }
 Timer_ISR(TIMER1_OVF_vect_num)
 {

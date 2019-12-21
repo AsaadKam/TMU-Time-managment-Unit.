@@ -51,8 +51,8 @@ typedef struct
 /*-  Defination of ISR -------------------------------------------*/
 
 #define Timer_ISR(N)            \
-void N(void)__attribute((signal,used)); \
-void N(void)
+void N (void)__attribute((signal,used)); \
+void N (void)
 
 /******************************************************************/
 /*         Names of Timer Registers and bits                      */
@@ -189,7 +189,7 @@ extern uint8_t  Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config);
  * Input     :  Timer Channel(Timer Channel (TIMER0 or Timer1 or Timer2), Tick Counting (Counts given by user)
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-extern uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_Copy_TIMER_Start_ISR);
+extern uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_t_Copy_TIMER_Start_ISR);
 /*_______________________________________________________________________________________________________________________________*/
 
 

@@ -1,6 +1,7 @@
 MCAL/Timer.d MCAL/Timer.o: ../MCAL/Timer.c ../Headers/Timer.h \
  ../Headers/DATA_types.h ../Headers/Atmega32Registers.h \
- ../Headers/BitManipulation.h
+ ../Headers/BitManipulation.h ../Headers/DIO.h \
+ ../Headers/BitManipulation.h ../Headers/DIO.h
 
 ../Headers/Timer.h:
 
@@ -9,3 +10,9 @@ MCAL/Timer.d MCAL/Timer.o: ../MCAL/Timer.c ../Headers/Timer.h \
 ../Headers/Atmega32Registers.h:
 
 ../Headers/BitManipulation.h:
+
+../Headers/DIO.h:
+
+../Headers/BitManipulation.h:
+
+../Headers/DIO.h:

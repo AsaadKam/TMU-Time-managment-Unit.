@@ -1,3 +1,4 @@
+  
 /*
  * APP.C
  *
@@ -9,7 +10,7 @@
 
 #include"DIO.h"
 #include"Timer.h"
-
+#include"TMU.h"
 /*- LOCAL MACROS ------------------------------------------*/
 
 
@@ -19,48 +20,40 @@
 
 /*- GLOBAL STATIC VARIABLES -------------------------------*/
 
-volatile uint16_t sgu16_Count_main=0;
-
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
 
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 
-void function(void)
+void LED_0_500mili_Oneshot(void)
 {
-    sgu16_Count_main++;
+    DIO_Write_Pin(0,HIGH);
 }
-
+void LED_1_100mili_Periodic(void)
+{
+    DIO_toggle_Pin(1);
+}
+void LED_2_200mili_Periodic(void)
+{
+    DIO_toggle_Pin(2);
+}
 int main()
 {
+	
 	DIO_INIT_Pin(0,OUTPUT);
-    DIO_Write_Pin(0,HIGH);
+	DIO_INIT_Pin(1,OUTPUT);
+	DIO_INIT_Pin(2,OUTPUT);
+	/*DIO_INIT_Pin(3,OUTPUT);*/
+	DIO_Write_Pin(0,LOW);
+    TMU_Init();
 	
-    StrTimerConfiguration_t  s_TIMER_Init_Config;
-	
-	s_TIMER_Init_Config.Timer_Channel=TIMER0;
-	s_TIMER_Init_Config.Timer_Psc=F_CPU_CLOCK_8_TIMER_0;
-	s_TIMER_Init_Config.Timer_Mode=TIMER_MODE_MILIE;
-	s_TIMER_Init_Config.Interrupt_Mode=INTERRUPT;
-	
-    Timer_Init(&s_TIMER_Init_Config);
-	
-    Timer_Start(TIMER0,0,function);
-	
+	TMU_Start(LED_0_500mili_Oneshot,500U,TMU_Function_ONESHOT);
+	TMU_Start(LED_1_100mili_Periodic,100U,TMU_Function_PERIODIC);
+	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);    
 	while(1)
 	{
-
-    	if(sgu16_Count_main>=1000U) 	 		
-		{
-	        DIO_toggle_Pin(0);
-			sgu16_Count_main=0;
-		}
-		else
-		{
-		}
+		
+      	TMU_Dispatch();
 
 	}
 }
-
-
-
 
