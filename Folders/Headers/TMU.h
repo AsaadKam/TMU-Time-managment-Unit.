@@ -69,11 +69,12 @@
 /******************************************************************/
 /**                       ERROR                                  **/
 /******************************************************************/
-#define TMU_Error_OK   0
-#define TMU_Error_EXTRA_EVENTS  1
-#define TMU_Error_Start_Null_func  2
-#define TMU_Error_Nothing_To_Stop  3
+#define TMU_Error_OK                       0
+#define TMU_Error_EXTRA_EVENTS             1
+#define TMU_Error_Start_Null_func          2
+#define TMU_Error_Nothing_To_Stop          3
 #define TMU_Error_Function_type_undefined  4
+#define TMU_Error_Nothing_To_Dispatch      5
 
 /*__________________________________________________________*/
 /*- STRUCTS AND UNIONS -------------------------------------*/

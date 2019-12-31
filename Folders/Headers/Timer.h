@@ -12,9 +12,8 @@
 
 /*- INCLUDES -----------------------------------------------*/
 
-#include "DATA_types.h"
-#include "Atmega32Registers.h"
-
+#include"Timer.h"
+#include"Data_Types.h"
 
 
 /*- CONSTANTS ----------------------------------------------*/
@@ -44,9 +43,10 @@ typedef struct
 
 /*-  Defination of Vectors----------------------------------------*/
 
-#define TIMER0_OVF_vect_num		__vector_11
-#define TIMER1_OVF_vect_num		__vector_9
-#define TIMER2_OVF_vect_num		__vector_5
+#define TIMER0_COMP_VECTOR		__vector_10
+#define TIMER1_COMPA_VECTOR  	__vector_7
+#define TIMER1_COMPB_VECTOR 	__vector_8
+#define TIMER2_COMP_VECTOR      __vector_4
 
 /*-  Defination of ISR -------------------------------------------*/
 
@@ -62,6 +62,7 @@ void N (void)
 
 #define TIMER0_COUNTER_REG                   TCNT0
 #define TIMER0_CNTRL_REG	                 TCCR0
+#define TIMER0_CNTRL_REG_CTC_MODE_VALUE      0b00001000U	
 #define TIMER0_COMPARE_Register              OCR0
 #define TIMER0_DATA_DIRCETION_Register       DDRB
 #define TIMER0_Wave_Out_BIT                  D11
@@ -114,7 +115,7 @@ void N (void)
 
 /*________________________________________________________________*/
 /******************************************************************/
-/*                        sgau8_Prescaler                               */
+/*                        sgau8_Prescaler                         */
 /******************************************************************/
 
 /*_______TIMER0__________________________________*/
@@ -122,10 +123,10 @@ void N (void)
 #define F_CPU_CLOCK_TIMER_0   					1U
 #define F_CPU_CLOCK_8_TIMER_0 					2U
 #define F_CPU_CLOCK_64_TIMER_0					3U
-#define F_CPU_CLOCK_256_TIMER_0				4U
+#define F_CPU_CLOCK_256_TIMER_0			     	4U
 #define F_CPU_CLOCK_1024_TIMER_0				5U
 #define F_EXTERNAL_CLOCK_FALLING_TIMER_0		6U
-#define F_EXTERNAL_CLOCK_RISING_TIMER_0		7U
+#define F_EXTERNAL_CLOCK_RISING_TIMER_0		    7U
 
 /*_______TIMER1__________________________________*/
 #define NO_CLOCK_TIMER_1     					0U
@@ -143,11 +144,12 @@ void N (void)
 #define F_CPU_CLOCK_8_TIMER_2 					2U
 #define F_CPU_CLOCK_32_TIMER_2					3U
 #define F_CPU_CLOCK_64_TIMER_2					4U
-#define F_CPU_CLOCK_128_TIMER_2			    5U
-#define F_CPU_CLOCK_256_TIMER_2		 	    6U
+#define F_CPU_CLOCK_128_TIMER_2			        5U
+#define F_CPU_CLOCK_256_TIMER_2		 	        6U
 #define F_CPU_CLOCK_1024_TIMER_2				7U
 
 #define Max_Prescaler_possiblities              7U
+#define TIMER_NOTHING_PASSED_FOR_PRESCALER      0U
 /*________________________________________________________________*/
 /******************************************************************/
 /*                        OverFlow Mode                           */
@@ -160,16 +162,16 @@ void N (void)
 /******************************************************************/
 /*                        ERROR STATUS                            */
 /******************************************************************/
-#define ERROR_OK     0U
-#define ERROR_NOK    1U
+#define TIMER_ERROR_OK     0U
+#define TIMER_ERROR_NOK    1U
 /*______________________________________________________________________________________________________________________________*/
 /******************************************************************/
 /*                    Other types                                 */
 /******************************************************************/
 #define  NO_OF_CHANNELS               3U
 #define  GLOBAL_INTERRUPT             7U
-#define  Enable                       1U
-#define  Disable                      0U
+#define  TIMER_Enable                 1U
+#define  TIMER_Disable                0U
 #define  NoPeriod                    -1
 /*--Externs-------------------------------------------------*/
 /*- FUNCTION-LIKE MACROS -----------------------------------*/
@@ -177,10 +179,10 @@ void N (void)
 
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: Timer/Counter Initialization
- * Input     : Timer_Configuration_S* ps_Copy_TIMER_Init_Config (Struct contain : Timer Channel, sgau8_Prescaler, Timer mode , Mode as described in Struct)
+ * Input     : Timer_Configuration_S* ps_Copy_Measurement_ECU_TIMER_Init_Config (Struct contain : Timer Channel, sgau8_Prescaler, Timer mode , Mode as described in Struct)
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-extern uint8_t  Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config);
+extern uint8_t  Timer_Init(StrTimerConfiguration_t* ps_Copy_Measurement_ECU_TIMER_Init_Config);
 /*_______________________________________________________________________________________________________________________________*/
 
 

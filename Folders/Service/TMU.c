@@ -36,7 +36,7 @@ static void TMU_Function_ISR(void);
 /*- GLOBAL STATIC VARIABLES -------------------------------*/
 
 static  TMU_Node_t sga_TMU_Events[TMU_Events]={0};
-static  uint64_t sgu16_index=0;
+static  uint64_t sgu16_TMU_index=0;
 static  volatile uint64_t sgu64_TMU_Timer_ISR_Count=0;
 
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
@@ -73,7 +73,7 @@ TMU_Error_t TMU_Start(PntrToFunc_t PntrToFunc_Copy_TMU_Start,uint16_t u16_Copy_P
 {
     TMU_Error_t TMU_Start_Error= TMU_Error_OK;
 	
-	if(sgu16_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
+	if(sgu16_TMU_index>TMU_Events) TMU_Start_Error= TMU_Error_EXTRA_EVENTS;
 	else
 	{  
 
@@ -82,20 +82,20 @@ TMU_Error_t TMU_Start(PntrToFunc_t PntrToFunc_Copy_TMU_Start,uint16_t u16_Copy_P
 			if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_PERIODIC)
 			{
                 
-				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	
+				sga_TMU_Events[sgu16_TMU_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	
 
 			}
 			else if(u16_Copy_Periodicity_MS_TMU_Start==TMU_Function_ONESHOT)
 			{
-				sga_TMU_Events[sgu16_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	   
+				sga_TMU_Events[sgu16_TMU_index].Periodic_or_not=u16_Copy_Periodic_or_not_TMU_Start;	   
 			}  
 			else 
 			{
 				TMU_Start_Error=TMU_Error_Function_type_undefined;
 			}
-			sga_TMU_Events[sgu16_index].PntrToFunc=PntrToFunc_Copy_TMU_Start;	
-			sga_TMU_Events[sgu16_index].Periodicity_MS=u16_Copy_Periodicity_MS_TMU_Start;
-			sgu16_index++;			
+			sga_TMU_Events[sgu16_TMU_index].PntrToFunc=PntrToFunc_Copy_TMU_Start;	
+			sga_TMU_Events[sgu16_TMU_index].Periodicity_MS=u16_Copy_Periodicity_MS_TMU_Start;
+			sgu16_TMU_index++;			
 		}
 		else
 		{
@@ -111,25 +111,25 @@ TMU_Error_t TMU_Dispatch(void)
 	
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
     uint8_t static su8_1st_start_Dispatch_Flag=1;
-	uint64_t u8_Dispatch_Func_Count=0;
+	uint64_t u16_Dispatch_Func_Count=0;
 	/*
 	 *  Check if the disptach is the the first time to 
 	 *  it to start if so start the timer
 	 */
-	if(su8_1st_start_Dispatch_Flag==1)   
+	if((su8_1st_start_Dispatch_Flag==1)&&(sgu16_TMU_index!=0))   
 	{
 		/*Timer start working in milies*/
 		TMU_Dispatch_Error=Timer_Start(TIMER0,0,TMU_Function_ISR);
 		su8_1st_start_Dispatch_Flag=0;
     }
-	else
+    else if((su8_1st_start_Dispatch_Flag==1)&&(sgu16_TMU_index!=0))
 	{
 		/*Looping to execute the function which it's time comes(Brain of TMU)*/	
-        for(uint64_t i=0;i<sgu16_index;i++)
+		for(uint64_t i=0;i<sgu16_TMU_index;i++)
 		{ 
-	        u8_Dispatch_Func_Count=((sga_TMU_Events[i].TMU_Node_Period_Count)+1)*sga_TMU_Events[i].Periodicity_MS;
+			u16_Dispatch_Func_Count=((sga_TMU_Events[i].TMU_Node_Period_Count)+1)*sga_TMU_Events[i].Periodicity_MS;
 			/*I will increment each function count until i reach to it's periodicity, then i will execute it's routine*/ 
-			if((u8_Dispatch_Func_Count==sgu64_TMU_Timer_ISR_Count)&&(sgu64_TMU_Timer_ISR_Count!=0))
+			if((u16_Dispatch_Func_Count==sgu64_TMU_Timer_ISR_Count)&&(sgu64_TMU_Timer_ISR_Count!=0))
 			{   
 				/*DIO_toggle_Pin(3);*/
 				sga_TMU_Events[i].PntrToFunc();
@@ -146,9 +146,13 @@ TMU_Error_t TMU_Dispatch(void)
 					
 				}
 			}
-        }
-
+		}
 	}
+	else
+	{
+		TMU_Dispatch_Error=TMU_Error_Nothing_To_Dispatch;
+	}
+
 
 	return TMU_Dispatch_Error;
 }
@@ -157,16 +161,16 @@ TMU_Error_t TMU_Dispatch(void)
 TMU_Error_t TMU_Stop(PntrToFunc_t PntrToFunc_Copy_TMU_Start)
 {
     TMU_Error_t TMU_Dispatch_Error= TMU_Error_OK;
-	if(sgu16_index==0) TMU_Dispatch_Error=TMU_Error_Nothing_To_Stop;
+	if(sgu16_TMU_index==0) TMU_Dispatch_Error=TMU_Error_Nothing_To_Stop;
 	else
 	{
-		for(uint8_t i=0;i<sgu16_index-1;i++)
+		for(uint8_t i=0;i<sgu16_TMU_index-1;i++)
 		{
 			if(sga_TMU_Events[i].PntrToFunc==PntrToFunc_Copy_TMU_Start) 
 			{
-				 if(sgu16_index-1 !=i)
+				 if(sgu16_TMU_index-1 !=i)
 				 {
-					 sga_TMU_Events[i]=sga_TMU_Events[sgu16_index-1];
+					 sga_TMU_Events[i]=sga_TMU_Events[sgu16_TMU_index-1];
 				 }
 				 {
 				 }
@@ -176,8 +180,8 @@ TMU_Error_t TMU_Stop(PntrToFunc_t PntrToFunc_Copy_TMU_Start)
 			{
 			}
 		}
-	    /*Decrement the sgu16_index*/
-	    sgu16_index--;
+	    /*Decrement the sgu16_TMU_index*/
+	    sgu16_TMU_index--;
 	}
 
 	return TMU_Dispatch_Error;

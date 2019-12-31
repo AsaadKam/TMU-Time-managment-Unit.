@@ -16,7 +16,7 @@
 #define  PortSize   DataBus
 #define  No_of_ports 4
 
-
+#define  EnableGeneralInterrupt()      SET_BIT(CPU_FLAG_Register,INT_BIT)
 //TWI Registers
 #define TWBR    ( *((volatile uint8_t* )(0X20)) )
 #define TWSR    ( *((volatile uint8_t* )(0X21)) )
