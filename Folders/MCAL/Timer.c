@@ -15,6 +15,7 @@
 #define  Timer_0_OVF_INT_EN()          SET_BIT(TIMER_ENABLE_INTERRUPT_REGISTER,TIMER0_OVF_COUNT_INT_EN_BIT)
 #define  Timer_1_OVF_INT_EN()          SET_BIT(TIMER_ENABLE_INTERRUPT_REGISTER,TIMER1_OVF_COUNT_INT_EN_BIT)
 #define  Timer_2_OVF_INT_EN()          SET_BIT(TIMER_ENABLE_INTERRUPT_REGISTER,TIMER2_OVF_COUNT_INT_EN_BIT)
+#define  Timer_0_OCF_INT_EN()          SET_BIT(TIMER_ENABLE_INTERRUPT_REGISTER,TIMER0_Compare_INT_EN_BIT)
 
 /*- LOCAL FUNCTIONS PROTOTYPES ----------------------------*/
 
@@ -23,9 +24,8 @@
 /*- GLOBAL STATIC VARIABLES -------------------------------*/
 
 static uint8_t sgau8_Interrupt_Mode[NO_OF_CHANNELS]={0},sgau8_TIMERMode[NO_OF_CHANNELS]={0},sgau8_TIMERChannel[NO_OF_CHANNELS]={0},sgau8_TIMERPrescaler[NO_OF_CHANNELS]={0};
-static volatile PntrToFunc_t sgPntrToFunc_TIMER_OVF=0;
 static volatile uint16_t sgu16_TIMER_COUNTER_REG_BUFFER=0;
-
+static volatile PntrToFunc_t sgpfun_TIMER0_CMP_ISR_Function=NullPointer,sgpfun_TIMER0_CMPA_ISR_Function=NullPointer,sgpfun_TIMER0_CMPB_ISR_Function=NullPointer,sgpfun_TIMER2_CMP_ISR_Function=NullPointer;
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
 
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
@@ -33,58 +33,58 @@ static volatile uint16_t sgu16_TIMER_COUNTER_REG_BUFFER=0;
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
 	
-uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
+uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_Measurement_ECU_TIMER_Init_Config)
 {
 	
-	if(NullPointer!=ps_Copy_TIMER_Init_Config)
+	if(NullPointer!=ps_Copy_Measurement_ECU_TIMER_Init_Config)
 	{
 		
 		/*To Check whether the structure values that have been passed is in the scope of configuration nor not*/
-		if(sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]==Enable)            return ERROR_NOK;	
-		if(ps_Copy_TIMER_Init_Config->Timer_Channel >TIMER2  )                              return ERROR_NOK;	
-		if(ps_Copy_TIMER_Init_Config->Timer_Mode>TIMER_MODE_MILIE )                         return ERROR_NOK;
-		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode>INTERRUPT)                             return ERROR_NOK;
-		if(ps_Copy_TIMER_Init_Config->Timer_Psc >  Max_Prescaler_possiblities   )           return ERROR_NOK;
+		if(sgau8_TIMERChannel[ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel]==TIMER_Enable)            return TIMER_ERROR_NOK;	
+		if(ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel >TIMER2  )                              return TIMER_ERROR_NOK;	
+		if(ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Mode>TIMER_MODE_MILIE )                         return TIMER_ERROR_NOK;
+		if(ps_Copy_Measurement_ECU_TIMER_Init_Config->Interrupt_Mode>INTERRUPT)                             return TIMER_ERROR_NOK;
+		if(ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Psc >  Max_Prescaler_possiblities   )           return TIMER_ERROR_NOK;
 	
 		/*Adjust the configurations*/
 		
-		sgau8_TIMERChannel[ps_Copy_TIMER_Init_Config->Timer_Channel]=Enable;		
-		sgau8_TIMERMode[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Timer_Mode;
-		sgau8_Interrupt_Mode[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Interrupt_Mode;
-		sgau8_TIMERPrescaler[ps_Copy_TIMER_Init_Config->Timer_Channel]=ps_Copy_TIMER_Init_Config->Timer_Psc;
+		sgau8_TIMERChannel[ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel]=TIMER_Enable;		
+		sgau8_TIMERMode[ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel]=ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Mode;
+		sgau8_Interrupt_Mode[ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel]=ps_Copy_Measurement_ECU_TIMER_Init_Config->Interrupt_Mode;
+		sgau8_TIMERPrescaler[ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel]=ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Psc;
 		
     
 		
 		/*In the mode of counter mode the prescaler is entered by the user */
-		if((ps_Copy_TIMER_Init_Config->Timer_Mode)==COUNTER_MODE)
+		if((ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Mode)==COUNTER_MODE)
 		{
 				
-			switch(ps_Copy_TIMER_Init_Config->Timer_Channel)
+			switch(ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Channel)
 			{
 				case TIMER0:
 				{
 					/*Set the initial value of Prescaler*/
-					TIMER0_CNTRL_REG  |=ps_Copy_TIMER_Init_Config->Timer_Psc;
+					TIMER0_CNTRL_REG  |=ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Psc;
 
 				}
 				break;
 				case TIMER1:
 				{
 					/*Set the initial value of Prescaler*/
-					TIMER1_CNTRL_REG_B|=ps_Copy_TIMER_Init_Config->Timer_Psc;
+					TIMER1_CNTRL_REG_B|=ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Psc;
 
 				}
 				break;
 				case TIMER2:
 				{
 					/*Set the initial value of Prescaler*/
-				     TIMER2_CNTRL_REG|=ps_Copy_TIMER_Init_Config->Timer_Psc;
+				     TIMER2_CNTRL_REG|=ps_Copy_Measurement_ECU_TIMER_Init_Config->Timer_Psc;
 
 				}
 				break;
 				default:
 				{
-					return ERROR_NOK;
+					return TIMER_ERROR_NOK;
 				}
 				break;
 			}
@@ -98,7 +98,7 @@ uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
 		}
 
 		/*Check IF mode of Interrupt is enabled*/
-		if(ps_Copy_TIMER_Init_Config->Interrupt_Mode==INTERRUPT)
+		if(ps_Copy_Measurement_ECU_TIMER_Init_Config->Interrupt_Mode==INTERRUPT)
 		{
 				  /*Enable Interrupt if it is chosen in the mode*/
 				  EnableGeneralInterrupt();
@@ -109,7 +109,7 @@ uint8_t Timer_Init(StrTimerConfiguration_t* ps_Copy_TIMER_Init_Config)
 	{
 		
 	}
-	return ERROR_OK;
+	return TIMER_ERROR_OK;
 }
 
 uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_TIMER_Start_tickCounts,PntrToFunc_t PntrToFunc_t_Copy_TIMER_Start_ISR)//with sgau8_Prescaler
@@ -121,6 +121,7 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 	{
 		case TIMER0:
 		{
+			TIMER0_CNTRL_REG|=TIMER0_CNTRL_REG_CTC_MODE_VALUE;
 			/*Check whether it is counter or timer*/
 			if(sgau8_TIMERMode[TIMER0]!=COUNTER_MODE)
 			{
@@ -139,13 +140,13 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 							while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
 							{
 								/************************************************************
-								 * The prescale divide by 64 and  make count =1 and  the 
-								 * counter =255-1 to get overflow every micro
+								 * The prescale divide by 8 and  make countER =1 to get 
+								 * 1 microsecond
 								 ************************************************************/
-								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
-								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
+								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);								 
+								TIMER0_COMPARE_Register=1U;
 								/*Loop  until overflow happens*/
-								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
+								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT) );
 								u16_Count_TIMER_Start++;
 							}
 							
@@ -154,17 +155,17 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
 						{
 
-						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
-							 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
-							 sgu16_TIMER_COUNTER_REG_BUFFER=TIMER0_COUNTER_REG;
+						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);								 
+							 TIMER0_COMPARE_Register=1U;
+							 /*sgu16_TIMER_COUNTER_REG_BUFFER=TIMER0_COUNTER_REG;*/
 							/*Enable OverFlow Interrupt for TIMER (0)*/
-				             Timer_0_OVF_INT_EN();			  
+				             Timer_0_OCF_INT_EN();			  
 				 
 							/*****************************************************
 							 *Let the ISR execute the increment of count of delay
 							 *Note that we will extern the value of count of delay 
 							 ****************************************************/
-							 sgPntrToFunc_TIMER_OVF=sgPntrToFunc_TIMER_OVF;													
+							 sgpfun_TIMER0_CMP_ISR_Function=PntrToFunc_t_Copy_TIMER_Start_ISR;													
 						}
 						else
 						{
@@ -189,10 +190,10 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 								 * The prescale divide by 64 and  make count =125 and  the 
 								 * counter =255-125 to get overflow every mili
 								 ************************************************************/
-								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
-								TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-125U);
+								SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);								 
+								TIMER0_COMPARE_Register=125U;
 								/*Loop  until overflow happens*/
-								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
+								while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT) );
 								u16_Count_TIMER_Start++;
 							}
 							
@@ -200,17 +201,16 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 						else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
 						{
 							 
-						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
-							 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-125U);
-							 sgu16_TIMER_COUNTER_REG_BUFFER=TIMER0_COUNTER_REG;
+						     SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);								 
+							 TIMER0_COMPARE_Register=125U;
 							/*Enable OverFlow Interrupt for TIMER (0)*/
-				             Timer_0_OVF_INT_EN();			  
+				             Timer_0_OCF_INT_EN();			  
 				 
 							/*****************************************************
 							 *Let the ISR execute the increment of count of delay
 							 *Note that we will extern the value of count of delay 
 							 ****************************************************/
-							 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;												
+							 sgpfun_TIMER0_CMP_ISR_Function=PntrToFunc_t_Copy_TIMER_Start_ISR;												
 						}
 						else
 						{
@@ -231,21 +231,20 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 				/*Check whether it is polled or not*/
 				if(sgau8_Interrupt_Mode[TIMER0]==POLLING)
 				{ 
-                    SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);
-				    TIMER0_COUNTER_REG=TIMER0_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
+                    SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);
+				    TIMER0_COMPARE_Register=u32_Copy_TIMER_Start_tickCounts;
 					/*Loop  until overflow happens*/
-					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT) );
+					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT) );
 
 				}
 				else if(sgau8_Interrupt_Mode[TIMER0]==INTERRUPT)
 				{
-					 SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_OVF_COUNT_FLAG_BIT);								 
-					 TIMER0_COUNTER_REG=(TIMER0_OVF_COUNT-1U);
-					/*Enable OverFlow Interrupt for TIMER (0)*/
-					 Timer_0_OVF_INT_EN();			  
-		 	
-					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
+					 SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER0_Compare_FLAG_BIT);								 
+					 TIMER0_COMPARE_Register=u32_Copy_TIMER_Start_tickCounts;
+					 /*Enable OverFlow Interrupt for TIMER (0)*/
+					 Timer_0_OCF_INT_EN();			  
+					 /*Let the ISR execute the called back function*/
+					 sgpfun_TIMER0_CMP_ISR_Function=PntrToFunc_t_Copy_TIMER_Start_ISR;						
 				}
 				else
 				{
@@ -257,236 +256,15 @@ uint8_t Timer_Start(uint8_t u8_Copy_TIMER_Start_TIMERChannel,uint32_t u32_Copy_T
 		}
 		break;
 		
-		case TIMER1:
-		{
-			/*Check whether it is counter or timer*/
-			if(sgau8_TIMERMode[TIMER1]!=COUNTER_MODE)
-			{
-				/* Check whether it is time delay in mili or in micro */
-				if(sgau8_TIMERMode[TIMER1]==TIMER_MODE_MICRO)
-				{ 
-					/************************************************************
-					 * The prescale divide by 8 and  make count =1 and  the 
-					 * counter =65,535-1 to get overflow every micro
-					 ************************************************************/
-					TIMER1_CNTRL_REG_B|=F_CPU_CLOCK_8_TIMER_1;
-					/*Check whether it is polled or not*/
-					if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
-					{  
+	 
 
-						/*Loop  until it get the time of delay in micro*/
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
-						{
-							/************************************************************
-							 * The prescale divide by 8 and  make count =1 and  the 
-							 * counter =65,535-1 to get overflow every micro
-							 ************************************************************/
-							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);
-							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-1U);
-							/*Loop  until overflow happens*/
-							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
-							u16_Count_TIMER_Start++;
-						}
-						
-						
-					}
-				
-					else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
-					{
-						/*****************************************************
-						 *Let the ISR execute the increment of count of delay
-						 *Note that we will extern the value of 
-						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
-					}
-					else
-					{
-					}
-
-				}/*Check whether it is time delay in mili or in micro */
-				else if(sgau8_TIMERMode[TIMER1]==TIMER_MODE_MILIE)
-				{
-					/************************************************************
-					 * The prescale divide by 64 and  make count =1 and  the 
-					 * counter =65,535-125 to get overflow every mili
-					 ************************************************************/
-
-					TIMER1_CNTRL_REG_B|=F_CPU_CLOCK_64_TIMER_1;
-					/*Check whether it is polled or not*/
-					if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
-					{  
-
-						/*Loop  until it get the time of delay in micro*/
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
-						{
-							/************************************************************
-							 * The prescale divide by 64 and  make count =1 and  the 
-							 * counter =65,535-125 to get overflow every mili
-							 ************************************************************/	
-							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);							 
-							TIMER1_COUNTER_REG=(TIMER1_OVF_COUNT-125U);
-							/*Loop  until overflow happens*/
-							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
-							u16_Count_TIMER_Start++;
-						}
-						
-					}
-					else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
-					{
-						/*****************************************************
-						 *Let the ISR execute the increment of count of delay
-						 *Note that we will extern the value of 
-						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
-					}
-					else
-					{
-						
-					}
-						
-			    }
-            }				
-			else if(sgau8_TIMERMode[TIMER1]==COUNTER_MODE)
-			{
-
-				/*Check whether it is polled or not*/
-				if(sgau8_Interrupt_Mode[TIMER1]==POLLING)
-				{ 
-                    SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT);
-				    TIMER1_COUNTER_REG=TIMER1_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
-					/*Loop  until overflow happens*/
-					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER1_OVF_COUNT_FLAG_BIT) );
-
-				}
-				else if(sgau8_Interrupt_Mode[TIMER1]==INTERRUPT)
-				{
-				    TIMER1_COUNTER_REG=TIMER1_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
-					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
-				}
-				else
-				{
-				}
-			}
-			else
-			{
-			}
-		}
-		break;		
-		case TIMER2:
-		{
-			/*Check whether it is counter or timer*/
-			if(sgau8_TIMERMode[TIMER2]!=COUNTER_MODE)
-			{
-				/* Check whether it is time delay in mili or in micro */
-				if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MICRO)
-				{ 
-					TIMER2_CNTRL_REG|=F_CPU_CLOCK_8_TIMER_2;
-					/*Check whether it is polled or not*/
-					if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
-					{                            
-						/*Loop  until it get the time of delay in micro*/
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
-						{
-							/************************************************************
-							 * The prescale divide by 8 and  make count =1U and  the 
-							 * counter =255-1U to get overflow every micro
-							 ************************************************************/
-							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-1U);
-							/*Loop  until overflow happens*/
-							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );
-							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
-							u16_Count_TIMER_Start++;
-						}
-						
-					}
-					else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
-					{
-						/*****************************************************
-						 *Let the ISR execute the increment of count of delay
-						 *Note that we will extern the value of 
-						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
-					}
-					else
-					{
-					}
-
-				}/*Check whether it is time delay in mili or in micro */
-				else if(sgau8_TIMERMode[TIMER2]==TIMER_MODE_MILIE)
-				{
-					 
-
-					TIMER2_CNTRL_REG|=F_CPU_CLOCK_64_TIMER_2;
-					/*Check whether it is polled or not*/
-					if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
-					{                            
-						/*Loop  until it get the time of delay in micro*/
-						while(u32_Copy_TIMER_Start_tickCounts!=u16_Count_TIMER_Start)
-						{
-							/************************************************************
-							 * The prescale divide by 64 and  make count =125U and  the 
-							 * counter =255-125U to get overflow every mili
-							 ************************************************************/
-							TIMER2_COUNTER_REG=(uint8_t)(TIMER2_OVF_COUNT-125U);
-							/*Loop  until overflow happens*/
-							while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );
-							SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
-							u16_Count_TIMER_Start++;
-						}
-						
-					}
-					else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
-					{
-						/*****************************************************
-						 *Let the ISR execute the increment of count of delay
-						 *Note that we will extern the value of 
-						 ****************************************************/
-						 sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;													
-					}
-					else
-					{
-					}
-					
-					
-				}
-				else
-				{
-				}
-
-			}/*Check whether it is counter or timer*/
-			else if(sgau8_TIMERMode[TIMER2]==COUNTER_MODE)
-			{
-
-				/*Check whether it is polled or not*/
-				if(sgau8_Interrupt_Mode[TIMER2]==POLLING)
-				{ 
-                    SET_BIT(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT);
-				    TIMER2_COUNTER_REG=TIMER2_OVF_COUNT-u32_Copy_TIMER_Start_tickCounts;
-					/*Loop  until overflow happens*/
-					while( BIT_IS_CLR(TIMER_EVENT_FLAGS_REG,TIMER2_OVF_COUNT_FLAG_BIT) );					
-				}
-				else if(sgau8_Interrupt_Mode[TIMER2]==INTERRUPT)
-				{
-					/*Let the ISR execute the called back function*/
-					sgPntrToFunc_TIMER_OVF=PntrToFunc_t_Copy_TIMER_Start_ISR;						
-				}
-				else
-				{
-				}
-			}
-			else
-			{
-			}
-		}
-		break;
 		default:
 		{
-			return ERROR_NOK;
+			return TIMER_ERROR_NOK;
 		}
 		break;			
 	}
-	return ERROR_OK;
+	return TIMER_ERROR_OK;
 }
 
 uint8_t Timer_Stop(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
@@ -513,12 +291,12 @@ uint8_t Timer_Stop(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
 		break;
 		default:
 		{
-			return ERROR_NOK;
+			return TIMER_ERROR_NOK;
 		}
 		break;
 
 	}
-	return ERROR_OK;
+	return TIMER_ERROR_OK;
 			
 }
 
@@ -543,12 +321,12 @@ uint8_t Timer_Get_tickCount(uint8_t u8_Copy_TIMER_Start_TIMERChannel, void volat
 		break;
 		default:
 		{
-			return ERROR_NOK;
+			return TIMER_ERROR_NOK;
 		}
 		break;
 
 	}
-	return ERROR_OK;			
+	return TIMER_ERROR_OK;			
 }
 
 uint8_t Timer_Get_FlagStatus(uint8_t u8_Copy_TIMER_Start_TIMERChannel, void volatile*Copy_uint8Ptr_FlagStatus)
@@ -577,12 +355,12 @@ uint8_t Timer_Get_FlagStatus(uint8_t u8_Copy_TIMER_Start_TIMERChannel, void vola
 		break;
 		default:
 		{
-			return ERROR_NOK;
+			return TIMER_ERROR_NOK;
 		}
 		break;
 		
 	}
-	return ERROR_OK;
+	return TIMER_ERROR_OK;
 }
 
 uint8_t Timer_Reset(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
@@ -606,30 +384,29 @@ uint8_t Timer_Reset(uint8_t u8_Copy_TIMER_Start_TIMERChannel)
 		break;
 		default:
 		{
-			return ERROR_NOK;
+			return TIMER_ERROR_NOK;
 		}
 		break;
 	}
 	
-	return ERROR_OK;
+	return TIMER_ERROR_OK;
 }
 
-Timer_ISR(TIMER0_OVF_vect_num)
+Timer_ISR(TIMER0_COMP_VECTOR)
 {
-    /*DIO_toggle_Pin(3);*/
-
-	TIMER0_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
-    sgPntrToFunc_TIMER_OVF();
-
+    sgpfun_TIMER0_CMP_ISR_Function();
 }
-Timer_ISR(TIMER1_OVF_vect_num)
+Timer_ISR(TIMER1_COMPA_VECTOR)
 {
-    TIMER1_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
-	sgPntrToFunc_TIMER_OVF();
+
+	sgpfun_TIMER0_CMPA_ISR_Function();
 }
 
-Timer_ISR(TIMER2_OVF_vect_num)
+Timer_ISR(TIMER1_COMPB_VECTOR)
 {
-    TIMER2_COUNTER_REG=sgu16_TIMER_COUNTER_REG_BUFFER;
-	sgPntrToFunc_TIMER_OVF();
+	sgpfun_TIMER0_CMPB_ISR_Function();
+}
+Timer_ISR(TIMER2_COMP_VECTOR)
+{
+	sgpfun_TIMER2_CMP_ISR_Function();
 }
