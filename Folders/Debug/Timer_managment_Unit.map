@@ -1,11 +1,17 @@
 Archive member included to satisfy reference by file (symbol)
 
+d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+                              Service/TMU.o (__mulsi3)
 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
                               Service/TMU.o (__do_copy_data)
 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
                               Service/TMU.o (__do_clear_bss)
+d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+                              d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o) (__muluhisi3)
+d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+                              d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o) (__umulhisi3)
 
 Discarded input sections
 
@@ -36,8 +42,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Service/TMU.o
  .data          0x0000000000000000        0x0 Service/TMU.o
  .bss           0x0000000000000000        0x0 Service/TMU.o
- .text.TMU_Stop
-                0x0000000000000000       0xac Service/TMU.o
  .text          0x0000000000000000        0x0 MCAL/Timer.o
  .data          0x0000000000000000        0x0 MCAL/Timer.o
  .bss           0x0000000000000000        0x0 MCAL/Timer.o
@@ -51,6 +55,20 @@ Discarded input sections
                 0x0000000000000000       0x2a MCAL/Timer.o
  .bss.sgu16_TIMER_COUNTER_REG_BUFFER
                 0x0000000000000000        0x2 MCAL/Timer.o
+ .text          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .data          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
  .text          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
@@ -99,6 +117,34 @@ Discarded input sections
                 0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
                 0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .text          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .data          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .bss           0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .text          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .data          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .bss           0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
 Memory Configuration
 
@@ -226,7 +272,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x82c
+.text           0x0000000000000000      0xa6e
  *(.vectors)
  .vectors       0x0000000000000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x0000000000000000                __vector_default
@@ -311,51 +357,63 @@ END GROUP
  .text.LED_2_200mili_Periodic
                 0x00000000000000b4       0x10 AAL/APP.o
                 0x00000000000000b4                LED_2_200mili_Periodic
- .text.main     0x00000000000000c4       0x4e AAL/APP.o
+ .text.main     0x00000000000000c4       0x42 AAL/APP.o
                 0x00000000000000c4                main
  .text.DIO_INIT_Pin
-                0x0000000000000112      0x120 MCAL/DIO.o
-                0x0000000000000112                DIO_INIT_Pin
+                0x0000000000000106      0x120 MCAL/DIO.o
+                0x0000000000000106                DIO_INIT_Pin
  .text.DIO_Write_Pin
-                0x0000000000000232      0x120 MCAL/DIO.o
-                0x0000000000000232                DIO_Write_Pin
+                0x0000000000000226      0x120 MCAL/DIO.o
+                0x0000000000000226                DIO_Write_Pin
  .text.DIO_toggle_Pin
-                0x0000000000000352       0x94 MCAL/DIO.o
-                0x0000000000000352                DIO_toggle_Pin
+                0x0000000000000346       0x94 MCAL/DIO.o
+                0x0000000000000346                DIO_toggle_Pin
  .text.TMU_Function_ISR
-                0x00000000000003e6       0x28 Service/TMU.o
+                0x00000000000003da       0x28 Service/TMU.o
  .text.TMU_Init
-                0x000000000000040e       0x30 Service/TMU.o
-                0x000000000000040e                TMU_Init
+                0x0000000000000402       0x30 Service/TMU.o
+                0x0000000000000402                TMU_Init
  .text.TMU_Start
-                0x000000000000043e       0xc0 Service/TMU.o
-                0x000000000000043e                TMU_Start
+                0x0000000000000432       0xc0 Service/TMU.o
+                0x0000000000000432                TMU_Start
+ .text.TMU_Stop
+                0x00000000000004f2       0xac Service/TMU.o
+                0x00000000000004f2                TMU_Stop
  .text.TMU_Dispatch
-                0x00000000000004fe       0x3c Service/TMU.o
-                0x00000000000004fe                TMU_Dispatch
+                0x000000000000059e      0x18a Service/TMU.o
+                0x000000000000059e                TMU_Dispatch
  .text.Timer_Init
-                0x000000000000053a       0x9c MCAL/Timer.o
-                0x000000000000053a                Timer_Init
+                0x0000000000000728       0x9c MCAL/Timer.o
+                0x0000000000000728                Timer_Init
  .text.Timer_Start
-                0x00000000000005d6      0x11a MCAL/Timer.o
-                0x00000000000005d6                Timer_Start
+                0x00000000000007c4      0x11a MCAL/Timer.o
+                0x00000000000007c4                Timer_Start
  .text.__vector_10
-                0x00000000000006f0       0x4e MCAL/Timer.o
-                0x00000000000006f0                __vector_10
+                0x00000000000008de       0x4e MCAL/Timer.o
+                0x00000000000008de                __vector_10
  .text.__vector_7
-                0x000000000000073e       0x4e MCAL/Timer.o
-                0x000000000000073e                __vector_7
+                0x000000000000092c       0x4e MCAL/Timer.o
+                0x000000000000092c                __vector_7
  .text.__vector_8
-                0x000000000000078c       0x4e MCAL/Timer.o
-                0x000000000000078c                __vector_8
+                0x000000000000097a       0x4e MCAL/Timer.o
+                0x000000000000097a                __vector_8
  .text.__vector_4
-                0x00000000000007da       0x4e MCAL/Timer.o
-                0x00000000000007da                __vector_4
-                0x0000000000000828                . = ALIGN (0x2)
+                0x00000000000009c8       0x4e MCAL/Timer.o
+                0x00000000000009c8                __vector_4
+ .text.libgcc.mul
+                0x0000000000000a16       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+                0x0000000000000a16                __mulsi3
+ .text.libgcc.mul
+                0x0000000000000a36       0x16 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+                0x0000000000000a36                __muluhisi3
+ .text.libgcc.mul
+                0x0000000000000a4c       0x1e d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
+                0x0000000000000a4c                __umulhisi3
+                0x0000000000000a6a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000828        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
-                0x0000000000000828                _exit
-                0x0000000000000828                exit
+ .fini9         0x0000000000000a6a        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+                0x0000000000000a6a                _exit
+                0x0000000000000a6a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -374,17 +432,17 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000828        0x4 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000000000000a6a        0x4 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
  *(.hightext)
  *(.hightext*)
  *(.progmemx.*)
-                0x000000000000082c                . = ALIGN (0x2)
+                0x0000000000000a6e                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
-                0x000000000000082c                _etext = .
+                0x0000000000000a6e                _etext = .
 
-.data           0x0000000000800060        0x2 load address 0x000000000000082c
+.data           0x0000000000800060        0x2 load address 0x0000000000000a6e
                 0x0000000000800060                PROVIDE (__data_start = .)
  *(.data)
  *(.data*)
@@ -425,8 +483,8 @@ END GROUP
                 0x0000000000800099        0x3 MCAL/Timer.o
  *(COMMON)
                 0x000000000080009c                PROVIDE (__bss_end = .)
-                0x000000000000082c                __data_load_start = LOADADDR (.data)
-                0x000000000000082e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000a6e                __data_load_start = LOADADDR (.data)
+                0x0000000000000a70                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x000000000080009c        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
@@ -497,7 +555,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x1b0
+.debug_aranges  0x0000000000000000      0x210
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x38 AAL/APP.o
@@ -508,54 +566,69 @@ END GROUP
  .debug_aranges
                 0x00000000000000e8       0x68 MCAL/Timer.o
  .debug_aranges
-                0x0000000000000150       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+                0x0000000000000150       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
  .debug_aranges
-                0x0000000000000170       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+                0x0000000000000170       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  .debug_aranges
-                0x0000000000000190       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+                0x0000000000000190       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_aranges
+                0x00000000000001b0       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_aranges
+                0x00000000000001d0       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .debug_aranges
+                0x00000000000001f0       0x20 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x1257
+.debug_info     0x0000000000000000     0x12c3
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x00000000000004e6      0x268 AAL/APP.o
- .debug_info    0x000000000000074e      0x3b6 MCAL/DIO.o
- .debug_info    0x0000000000000b04      0x343 Service/TMU.o
- .debug_info    0x0000000000000e47      0x39e MCAL/Timer.o
- .debug_info    0x00000000000011e5       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_info    0x000000000000120b       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_info    0x0000000000001231       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_info    0x00000000000004e6      0x246 AAL/APP.o
+ .debug_info    0x000000000000072c      0x3b6 MCAL/DIO.o
+ .debug_info    0x0000000000000ae2      0x35f Service/TMU.o
+ .debug_info    0x0000000000000e41      0x39e MCAL/Timer.o
+ .debug_info    0x00000000000011df       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .debug_info    0x0000000000001205       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_info    0x000000000000122b       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000001251       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_info    0x0000000000001277       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .debug_info    0x000000000000129d       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
-.debug_abbrev   0x0000000000000000      0x98b
+.debug_abbrev   0x0000000000000000      0x9e3
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x00000000000004a3       0xa4 AAL/APP.o
  .debug_abbrev  0x0000000000000547      0x134 MCAL/DIO.o
- .debug_abbrev  0x000000000000067b      0x17b Service/TMU.o
- .debug_abbrev  0x00000000000007f6      0x159 MCAL/Timer.o
- .debug_abbrev  0x000000000000094f       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_abbrev  0x0000000000000963       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_abbrev  0x0000000000000977       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x000000000000067b      0x197 Service/TMU.o
+ .debug_abbrev  0x0000000000000812      0x159 MCAL/Timer.o
+ .debug_abbrev  0x000000000000096b       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .debug_abbrev  0x000000000000097f       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_abbrev  0x0000000000000993       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x00000000000009a7       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x00000000000009bb       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .debug_abbrev  0x00000000000009cf       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
-.debug_line     0x0000000000000000     0x269e
+.debug_line     0x0000000000000000     0x29a3
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x0000000000000115      0x13b AAL/APP.o
- .debug_line    0x0000000000000250     0x1756 MCAL/DIO.o
- .debug_line    0x00000000000019a6      0x3b4 Service/TMU.o
- .debug_line    0x0000000000001d5a      0x7c7 MCAL/Timer.o
- .debug_line    0x0000000000002521       0x61 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_line    0x0000000000002582       0x97 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_line    0x0000000000002619       0x85 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_line    0x0000000000000115      0x123 AAL/APP.o
+ .debug_line    0x0000000000000238     0x1756 MCAL/DIO.o
+ .debug_line    0x000000000000198e      0x4e2 Service/TMU.o
+ .debug_line    0x0000000000001e70      0x7c7 MCAL/Timer.o
+ .debug_line    0x0000000000002637       0xaf d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .debug_line    0x00000000000026e6       0x61 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_line    0x0000000000002747       0x97 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_line    0x00000000000027de       0x85 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_line    0x0000000000002863       0x91 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .debug_line    0x00000000000028f4       0xaf d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
-.debug_frame    0x0000000000000000      0x39c
+.debug_frame    0x0000000000000000      0x3e4
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x54 AAL/APP.o
  .debug_frame   0x0000000000000054       0xc4 MCAL/DIO.o
- .debug_frame   0x0000000000000118       0xb0 Service/TMU.o
- .debug_frame   0x00000000000001c8      0x1d4 MCAL/Timer.o
+ .debug_frame   0x0000000000000118       0xf8 Service/TMU.o
+ .debug_frame   0x0000000000000210      0x1d4 MCAL/Timer.o
 
 .debug_str      0x0000000000000000      0x903
  *(.debug_str)
@@ -568,15 +641,18 @@ END GROUP
                                         0x39b (size before relaxing)
  .debug_str     0x0000000000000650      0x251 MCAL/Timer.o
                                         0x43d (size before relaxing)
- .debug_str     0x00000000000008a1       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_str     0x00000000000008a1       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_mulsi3.o)
+ .debug_str     0x0000000000000903       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  .debug_str     0x0000000000000903       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
  .debug_str     0x0000000000000903       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_str     0x0000000000000903       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_muluhisi3.o)
+ .debug_str     0x0000000000000903       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_umulhisi3.o)
 
-.debug_loc      0x0000000000000000     0x1831
+.debug_loc      0x0000000000000000     0x18b5
  *(.debug_loc)
  .debug_loc     0x0000000000000000     0x139a MCAL/DIO.o
- .debug_loc     0x000000000000139a      0x17f Service/TMU.o
- .debug_loc     0x0000000000001519      0x318 MCAL/Timer.o
+ .debug_loc     0x000000000000139a      0x203 Service/TMU.o
+ .debug_loc     0x000000000000159d      0x318 MCAL/Timer.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -596,12 +672,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000      0x110
+.debug_ranges   0x0000000000000000      0x128
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0x28 AAL/APP.o
  .debug_ranges  0x0000000000000028       0x60 MCAL/DIO.o
- .debug_ranges  0x0000000000000088       0x30 Service/TMU.o
- .debug_ranges  0x00000000000000b8       0x58 MCAL/Timer.o
+ .debug_ranges  0x0000000000000088       0x48 Service/TMU.o
+ .debug_ranges  0x00000000000000d0       0x58 MCAL/Timer.o
 
 .debug_macro
  *(.debug_macro)

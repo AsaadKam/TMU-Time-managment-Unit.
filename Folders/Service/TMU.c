@@ -122,7 +122,7 @@ TMU_Error_t TMU_Dispatch(void)
 		TMU_Dispatch_Error=Timer_Start(TIMER0,0,TMU_Function_ISR);
 		su8_1st_start_Dispatch_Flag=0;
     }
-    else if((su8_1st_start_Dispatch_Flag==1)&&(sgu16_TMU_index!=0))
+    else if((su8_1st_start_Dispatch_Flag==0)&&(sgu16_TMU_index!=0))
 	{
 		/*Looping to execute the function which it's time comes(Brain of TMU)*/	
 		for(uint64_t i=0;i<sgu16_TMU_index;i++)

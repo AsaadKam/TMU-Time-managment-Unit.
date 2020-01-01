@@ -47,16 +47,14 @@ int main()
     TMU_Init();
 	
 
-	TMU_Start(LED_0_500mili_Oneshot,500U,TMU_Function_ONESHOT);
+    TMU_Start(LED_0_500mili_Oneshot,500U,TMU_Function_ONESHOT); 
 	TMU_Start(LED_1_100mili_Periodic,100U,TMU_Function_PERIODIC);
 	TMU_Start(LED_2_200mili_Periodic,200U,TMU_Function_PERIODIC);
 	
 	while(1)
-	{
-	    DIO_toggle_Pin(3);		
+	{	
       	TMU_Dispatch();/*340 mircoseconds excutions*/
-	    DIO_toggle_Pin(3);
-		
+
 	}
 }
 
